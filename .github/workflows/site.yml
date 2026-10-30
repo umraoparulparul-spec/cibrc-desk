@@ -1,0 +1,56 @@
+name: Update and publish site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "30 3 * * *"    # 9:00 AM India time
+    - cron: "30 11 * * *"   # 5:00 PM India time
+  workflow_dispatch:         # "Run workflow" button for a manual check
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: site
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check CIB&RC website for new items
+        if: github.event_name != 'push'
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          NOTIFY_TO: ${{ secrets.NOTIFY_TO }}
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: python scripts/update_site.py
+
+      - name: Save the refreshed list
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "cibrc-update-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add updates.json scripts/seen.json
+          git diff --cached --quiet || git commit -m "Update CIB&RC notices list"
+          git push
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4

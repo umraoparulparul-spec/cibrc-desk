@@ -1,0 +1,1267 @@
+<title>CIB&amp;RC Registration Desk</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<style>
+/* Layout: sticky ask/search band on top; contents rail left, answers + page hits right; one column on phones */
+:root{
+  --bg:#f5f7f4; --panel:#ffffff; --ink:#1b2420; --muted:#5a6862; --line:#dde3de;
+  --accent:#1f6f4a; --accent-ink:#ffffff; --accent-soft:#e2f0e8; --mark:#ffe58a; --must:#fbd9d0; --chip:#edf2ee; --warn:#8a5a00;
+  --f-display:"Source Serif 4",Georgia,serif; --f-body:"Public Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111613; --panel:#19201c; --ink:#e4ebe7; --muted:#97a69f; --line:#2b3530;
+    --accent:#5cc392; --accent-ink:#0c1a12; --accent-soft:#1d3127; --mark:#6b5a12; --must:#5a2a20; --chip:#222b26; --warn:#e7b65a; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111613; --panel:#19201c; --ink:#e4ebe7; --muted:#97a69f; --line:#2b3530;
+  --accent:#5cc392; --accent-ink:#0c1a12; --accent-soft:#1d3127; --mark:#6b5a12; --must:#5a2a20; --chip:#222b26; --warn:#e7b65a; color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1200px;margin:0 auto}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line);padding-block:12px}
+h1{font:600 19px/1.2 var(--f-display);margin:0 0 10px;text-wrap:balance}
+h1 span{font:400 13px var(--f-body);color:var(--muted);margin-left:6px}
+.tabs{display:flex;gap:4px;margin-bottom:8px}
+.tab{font:600 13px var(--f-body);letter-spacing:.03em;border:1px solid var(--line);background:var(--chip);color:var(--ink);padding:5px 14px;border-radius:99px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.row{display:flex;gap:8px}
+#q,#ask{flex:1;min-width:0;font:17px var(--f-body);padding:11px 13px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);outline:none}
+#ask{resize:vertical;min-height:48px;max-height:160px}
+#q:focus,#ask:focus{border-color:var(--accent)}
+.go{font:600 15px var(--f-body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:0 18px;cursor:pointer}
+.go:disabled{opacity:.5;cursor:default}
+.go.stop{background:var(--chip);color:var(--ink);border:1px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:99px;padding:3px 11px;font:13px var(--f-body);cursor:pointer}
+.chip:hover,.chip:focus-visible{border-color:var(--accent);color:var(--accent)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;padding-block:16px}
+aside{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;max-height:calc(100vh - 210px);overflow:auto;position:sticky;top:200px}
+.lbl{font:600 12px var(--f-body);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:4px 0 8px}
+.trow{display:flex;gap:6px;justify-content:space-between;align-items:baseline;border-radius:6px;font-size:13.5px}
+.trow:hover,.trow.on{background:var(--accent-soft)}
+.tlink{all:unset;cursor:pointer;flex:1;padding:3px 6px;color:var(--ink);line-height:1.4}
+.tlink:focus-visible{outline:2px solid var(--accent)}
+.trow a{color:var(--muted);white-space:nowrap;font-size:12px;font-variant-numeric:tabular-nums;text-decoration:none;padding:3px 6px}
+.trow a:hover{color:var(--accent);text-decoration:underline}
+.toc .l1{font-weight:600;margin-top:8px}
+.toc .l2{padding-left:16px}
+.toc .l3{padding-left:30px;font-size:12.5px}
+#tocFilter{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);margin-bottom:6px;font:13px var(--f-body)}
+.meta{color:var(--muted);font-size:13px;margin-bottom:10px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;min-width:0}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.pg{font-weight:700;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.sec{color:var(--muted);font-size:12.5px;min-width:0}
+.snip{margin:6px 0 4px;overflow-wrap:anywhere}
+mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.btn{font:13px var(--f-body);padding:4px 10px;border-radius:7px;border:1px solid var(--line);background:var(--chip);color:var(--ink);cursor:pointer;text-decoration:none}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.full{margin-top:8px;padding:10px 12px;border-left:3px solid var(--accent);background:var(--bg);border-radius:6px;font-size:14px;max-height:460px;overflow:auto;overflow-wrap:anywhere}
+.empty{color:var(--muted);padding:24px 4px;max-width:65ch}
+.gloss{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:13px}
+.gloss b{color:var(--accent)}
+/* Q&A */
+.qa{display:flex;flex-direction:column;gap:12px}
+.turn-q{font:600 16px var(--f-body);color:var(--ink)}
+.answer{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;max-width:80ch;overflow-wrap:anywhere}
+.answer p{margin:0 0 8px}
+.answer ul{margin:4px 0 8px;padding-left:20px}
+.answer li{margin:2px 0}
+.answer a.cite{display:inline-block;font:600 12px var(--f-body);font-variant-numeric:tabular-nums;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:0 5px;text-decoration:none;margin:0 1px}
+.answer a.cite:hover{text-decoration:underline}
+.status{color:var(--muted);font-size:13px;font-style:italic}
+.srcs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.note{font-size:13px;color:var(--warn)}
+.disclaim{font-size:12px;color:var(--muted);margin-top:4px}
+/* Header links + updates */
+.toprow{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin-bottom:10px}
+.toprow h1{margin:0}
+.olinks{display:flex;flex-wrap:wrap;gap:6px}
+.olinks a{font:600 13px var(--f-body);text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:4px 10px;background:var(--panel)}
+.olinks a:hover{border-color:var(--accent);color:var(--accent)}
+.olinks a.crop{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.badge{display:inline-block;min-width:18px;padding:0 5px;margin-left:5px;border-radius:99px;background:var(--must);color:var(--ink);font-size:11px;line-height:18px;text-align:center}
+.ulist{display:flex;flex-direction:column;gap:8px;max-width:90ch}
+.uitem{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;align-items:baseline}
+.uitem .d{font:600 13px var(--f-body);font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.uitem .t{overflow-wrap:anywhere}
+.pill{display:inline-block;font:600 11px var(--f-body);letter-spacing:.04em;text-transform:uppercase;border-radius:5px;padding:1px 6px;margin-right:6px;background:var(--chip);color:var(--muted)}
+.pill.Gazette{background:var(--must);color:var(--ink)}
+.pill.RCminutes{background:var(--accent-soft);color:var(--accent)}
+.pill.Guideline{background:var(--mark);color:var(--ink)}
+.pill.new{background:var(--accent);color:var(--accent-ink)}
+@media (max-width:560px){.uitem{grid-template-columns:1fr}}
+/* Checklist wizard */
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;max-width:900px}
+.opts.one{grid-template-columns:1fr;max-width:760px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;color:var(--ink);font:inherit;transition:border-color .15s,transform .15s}
+.opt:hover,.opt:focus-visible{border-color:var(--accent);transform:translateY(-1px)}
+.opt b{display:block;font-size:15px}
+.opt small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.ico{flex:none;color:var(--accent);margin-top:1px}
+.tag{flex:none;font:700 13px var(--f-body);background:var(--accent-soft);color:var(--accent);border-radius:7px;padding:3px 8px;min-width:52px;text-align:center}
+.wz-crumbs{font-size:13px;color:var(--muted);margin-bottom:10px}
+.linkbtn{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline}
+.progress{height:8px;border-radius:99px;background:var(--chip);overflow:hidden;max-width:520px}
+.progress span{display:block;height:100%;background:var(--accent);transition:width .3s}
+#wzName{padding:5px 9px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);font:14px var(--f-body);min-width:0;width:220px;max-width:100%}
+.grp{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;max-width:900px}
+.grp summary{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;padding:11px 14px;cursor:pointer;font-size:15px}
+.items{padding:0 8px 6px}
+.item{display:grid;grid-template-columns:22px minmax(0,1fr) auto auto;gap:6px 10px;align-items:baseline;padding:7px 6px;border-top:1px solid var(--line);cursor:pointer}
+.item.nr{opacity:.6;cursor:default}
+.item input{margin:0;width:16px;height:16px;accent-color:var(--accent)}
+.itx{overflow-wrap:anywhere}
+.num{color:var(--muted);font-variant-numeric:tabular-nums}
+.stc{font:600 11px var(--f-body);letter-spacing:.03em;border-radius:5px;padding:1px 6px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.stc.cond{background:var(--mark);color:var(--ink)}
+.stc.nrc{background:var(--chip);color:var(--muted)}
+.pgl{font-size:12px;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.gnotes{border-top:1px dashed var(--line);padding:8px 14px 10px;font-size:13px;color:var(--muted)}
+.gnotes p{margin:0 0 5px}
+.wznotes{width:100%;max-width:900px;min-height:80px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font:14px var(--f-body)}
+.prog{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;align-self:center}
+@media (max-width:560px){.item{grid-template-columns:22px minmax(0,1fr)}.item .stc,.item .pgl{grid-column:2}}
+/* Section reader */
+.rhead{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.eyebrow{font:600 12px var(--f-body);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.rhead h2{font:600 24px/1.25 var(--f-display);margin:0;text-wrap:balance}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted)}
+.legend span{display:inline-flex;gap:5px;align-items:center}
+.kp{margin-bottom:14px}
+.kp .lbl{margin:0 0 6px}
+.rpage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 18px 14px;margin-bottom:10px;max-width:86ch}
+.rpg{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--muted);border-bottom:1px dashed var(--line);padding-bottom:6px;margin-bottom:8px;font-variant-numeric:tabular-nums}
+.rpg a{color:var(--accent)}
+.rp{margin:0 0 7px;overflow-wrap:anywhere}
+.rp.li{padding-left:22px;text-indent:-14px}
+.rp.h{font-weight:700;margin-top:10px}
+.hl-must{background:var(--must);border-radius:3px;padding:0 2px;font-weight:600}
+.hl-num{background:var(--mark);border-radius:3px;padding:0 2px;font-weight:600}
+.hl-ref{color:var(--accent);font-weight:600;border-bottom:1px dotted var(--accent)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px}
+/* PDF viewer */
+.viewer{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.vbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-block:10px;background:var(--panel);border-bottom:1px solid var(--line)}
+.vbar .sec{flex:1 1 220px;font-size:13px}
+.vbar input{width:64px;padding:4px 6px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);font:14px var(--f-body);font-variant-numeric:tabular-nums}
+.vbody{flex:1;overflow:auto;padding:16px;display:flex;justify-content:center;align-items:flex-start}
+.vbody canvas{background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.18);max-width:none}
+.vmsg{color:var(--muted);padding:40px 0;text-align:center}
+@media (max-width:820px){
+  main{grid-template-columns:1fr}
+  aside{position:static;max-height:340px;order:2}
+  header{position:static}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<header class="gut"><div class="wrap">
+  <div class="toprow">
+    <h1>CIB&amp;RC Registration Desk <span>472 RC Guidelines for the Registration of Pesticides · 727 pages</span></h1>
+    <nav class="olinks" aria-label="Official websites">
+      <a class="crop" href="https://cropuser.cgg.gov.in/" target="_blank" rel="noopener">CROP portal ↗</a>
+      <a href="https://ppqs.gov.in/divisions/cib-rc/news-update" target="_blank" rel="noopener">CIB&amp;RC news ↗</a>
+      <a href="https://ppqs.gov.in/divisions/cib-rc/guidelines" target="_blank" rel="noopener">Guidelines ↗</a>
+      <a href="https://egazette.gov.in/" target="_blank" rel="noopener">eGazette ↗</a>
+    </nav>
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab" id="tabAsk" role="tab" aria-selected="true">Ask a question</button>
+    <button class="tab" id="tabWiz" role="tab" aria-selected="false">Checklist wizard</button>
+    <button class="tab" id="tabSearch" role="tab" aria-selected="false">Search pages</button>
+    <button class="tab" id="tabUpd" role="tab" aria-selected="false">Latest updates<span class="badge" id="updBadge" hidden></span></button>
+  </div>
+  <div id="askBar">
+    <div class="row">
+      <textarea id="ask" rows="1" placeholder="e.g. What documents are needed to change the company name on a registration certificate?"></textarea>
+      <button class="go" id="askBtn">Ask</button>
+    </div>
+    <div class="chips" id="askChips"></div>
+  </div>
+  <div id="searchBar" hidden>
+    <div class="row"><input id="q" type="search" placeholder='Type words… e.g.  shelf life 9(4)   ·   "free sale certificate"'></div>
+    <div class="chips" id="chips"></div>
+  </div>
+</div></header>
+
+<main class="wrap gut">
+  <aside>
+    <div class="lbl">Contents · click a title to read it here</div>
+    <input id="tocFilter" placeholder="Filter contents…">
+    <div class="toc" id="toc"></div>
+    <div class="lbl" style="margin-top:16px">Abbreviations</div>
+    <div class="gloss" id="gloss"></div>
+  </aside>
+  <section style="min-width:0">
+    <div id="askPane" class="qa"></div>
+    <div id="readPane" hidden></div>
+    <div id="updPane" hidden></div>
+    <div id="wizPane" hidden></div>
+    <div id="searchPane" hidden>
+      <div class="meta" id="meta"></div>
+      <div id="results"></div>
+    </div>
+  </section>
+</main>
+
+<div class="viewer" id="viewer" hidden>
+  <div class="vbar gut">
+    <button class="btn" id="vClose">✕ Close</button>
+    <button class="btn" id="vPrev" aria-label="Previous page">‹ Prev</button>
+    <span>Page <input id="vPage" type="number" min="1"> of <span id="vTotal"></span></span>
+    <button class="btn" id="vNext" aria-label="Next page">Next ›</button>
+    <button class="btn" id="vOut" aria-label="Zoom out">−</button>
+    <button class="btn" id="vIn" aria-label="Zoom in">+</button>
+    <button class="btn" id="vText">Show text</button>
+    <div class="sec" id="vSec"></div>
+  </div>
+  <div class="vbody" id="vBody"></div>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const $ = s => document.querySelector(s);
+const pdfLink = p => `${DATA.pdfUrl}#page=${p}`;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const LOW = DATA.pages.map(t => t.replace(/\n/g, " ").toLowerCase());
+const SECLOW = DATA.sec.map(t => t.toLowerCase());
+const NP = DATA.pages.length;
+
+const QUICK = ["shelf life","9(4)","9(3b) extension","change of name of company","transfer of registration",
+  "additional source of import","free sale certificate","duplicate certificate","RTT import","export",
+  "new packaging","factory address","combination product","seed treatment","biopesticide","household",
+  "biocide","drone","MRL","five folders","KYC CROP","infrastructure","affidavit","label expansion"];
+const ASKS = ["What is needed to change the company name on a registration certificate?",
+  "How do I get a Free Sale Certificate?",
+  "Requirements to extend provisional registration under 9(3B)?",
+  "How to import a small sample quantity for RTT?",
+  "What are the rules for drone spraying of pesticides?",
+  "What goes in the five folders for a 9(3) application?"];
+const GLOSS = [["TI","Technical Import"],["TIM","Technical Indigenous Manufacture"],["FI","Formulation Import"],
+  ["FIM","Formulation Indigenous Manufacture"],["FIT","Formulation Indigenous (from Technical import)"],
+  ["WRT","Without Registering Technical"],["MUP","Manufacture Use Product"],["RTT","Research, Test & Trial"],
+  ["9(3B)","Provisional registration"],["9(3)","Regular registration"],["9(4)","Subsequent (me-too) registration"],
+  ["CROP","Comprehensive Registration of Pesticides portal"],["PDSO","Petroleum Derived Spray Oil"],
+  ["MRL","Maximum Residue Limit"],["a.i.","Active ingredient"],["RC","Registration Committee"]];
+
+function count(hay, needle){ let n = 0, i = 0; while ((i = hay.indexOf(needle, i)) !== -1){ n++; i += needle.length; } return n; }
+const STOP = new Set("the of for a an and in to u/s under is are what which who how do does i we my our can need needed required requirement requirements about on with by from be it this that any or as at me please tell give list get".split(" "));
+
+// ---------- exact search (all words must appear) ----------
+function parse(q){
+  const terms = [];
+  q.replace(/"([^"]+)"|(\S+)/g, (_, ph, w) => { const t = (ph || w).toLowerCase().trim(); if (t) terms.push(t); });
+  const kept = terms.filter(t => !STOP.has(t));
+  return kept.length ? kept : terms;
+}
+function search(q){
+  const terms = parse(q);
+  if (!terms.length) return null;
+  const out = [];
+  for (let i = 0; i < NP; i++){
+    let score = 0, all = true;
+    for (const t of terms){
+      const c = count(LOW[i], t), s = count(SECLOW[i], t);
+      if (!c && !s){ all = false; break; }
+      score += Math.min(c, 8) + s * 6;
+    }
+    if (!all) continue;
+    if (terms.length > 1 && LOW[i].includes(terms.join(" "))) score += 15;
+    const head = LOW[i].slice(0, 250);
+    for (const t of terms) if (head.includes(t)) score += 4;
+    out.push({p: i + 1, score});
+  }
+  out.sort((a, b) => b.score - a.score || a.p - b.p);
+  return {terms, out};
+}
+
+// ---------- loose ranking for questions (any word, rare words weigh more) ----------
+function qWords(text){
+  return [...new Set(text.toLowerCase().replace(/[“”"?,;:!]/g, " ").split(/\s+/).map(w => w.replace(/^\.+|\.+$/g, "")).filter(w => w.length > 1 && !STOP.has(w)))];
+}
+function rank(text, n){
+  const words = qWords(text);
+  const df = words.map(w => LOW.reduce((a, t) => a + (t.includes(w) ? 1 : 0), 0));
+  const scores = [];
+  for (let i = 0; i < NP; i++){
+    let s = 0, hit = 0;
+    words.forEach((w, k) => {
+      if (!df[k]) return;
+      const idf = Math.log(1 + NP / df[k]);
+      const c = count(LOW[i], w), h = count(SECLOW[i], w);
+      if (c || h) hit++;
+      s += idf * (Math.min(c, 6) + h * 4);
+    });
+    if (s) scores.push({p: i + 1, s: s * (1 + hit / Math.max(1, words.length))});
+  }
+  return scores.sort((a, b) => b.s - a.s).slice(0, n).map(x => x.p);
+}
+
+function highlight(text, terms){
+  const h = esc(text);
+  if (!terms.length) return h;
+  const re = new RegExp("(" + terms.map(t => reEsc(esc(t))).sort((a,b)=>b.length-a.length).join("|") + ")", "gi");
+  return h.replace(re, "<mark>$1</mark>");
+}
+function snippet(i, terms){
+  const t = DATA.pages[i], low = LOW[i];
+  let pos = -1;
+  for (const term of terms){ const k = low.indexOf(term); if (k !== -1 && (pos === -1 || k < pos)) pos = k; }
+  const start = Math.max(0, pos - 140), end = Math.min(t.length, pos + 260);
+  return (start ? "… " : "") + highlight(t.slice(start, end), terms) + (end < t.length ? " …" : "");
+}
+function pageCard(p, terms, snip){
+  return `<div class="card" data-p="${p}">
+    <div class="top"><div class="sec">${esc(DATA.sec[p-1] || "Front matter")}</div><div class="pg">Page ${p}</div></div>
+    ${snip ? `<div class="snip">${snippet(p-1, terms)}</div>` : ""}
+    <div class="btns">
+      <a class="btn primary" href="${pdfLink(p)}" target="_blank" rel="noopener">Open page ${p} in PDF</a>
+      <button class="btn" data-act="read">Read full page here</button>
+    </div>
+    <div class="full" hidden></div>
+  </div>`;
+}
+function wireCards(root, terms){
+  root.querySelectorAll("[data-act=read]").forEach(b => b.onclick = () => {
+    const card = b.closest(".card"), p = +card.dataset.p, full = card.querySelector(".full");
+    full.hidden = !full.hidden;
+    if (!full.hidden) full.innerHTML = formatPage(p, terms);
+    b.textContent = full.hidden ? "Read full page here" : "Hide full page";
+  });
+}
+
+function runSearch(){
+  const q = $("#q").value.trim();
+  const r = search(q), box = $("#results");
+  if (!r){
+    $("#meta").textContent = `${NP} pages indexed. Type a word or phrase, or tap a topic. Press / to jump here.`;
+    box.innerHTML = `<div class="empty">Put exact phrases in "quotes". Every word must appear on the page; pages where the words are in a section heading come first.<br><br>"Page N" is the page number your PDF viewer shows, not the small number printed at the foot of each page. Those printed numbers restart in several places.</div>`;
+    return;
+  }
+  const {terms, out} = r;
+  $("#meta").textContent = out.length ? `${out.length} page${out.length > 1 ? "s" : ""} match, best first` : "No page contains all of these words. Try fewer or different words.";
+  box.innerHTML = out.slice(0, 60).map(({p}) => pageCard(p, terms, true)).join("") + (out.length > 60 ? `<div class="meta">Showing top 60 of ${out.length}. Add another word to narrow down.</div>` : "");
+  wireCards(box, terms);
+}
+
+// ---------- tabs ----------
+function show(tab){
+  const ask = tab === "ask", srch = tab === "search", upd = tab === "upd", wiz = tab === "wiz";
+  $("#tabAsk").setAttribute("aria-selected", ask); $("#tabSearch").setAttribute("aria-selected", srch); $("#tabUpd").setAttribute("aria-selected", upd); $("#tabWiz").setAttribute("aria-selected", wiz);
+  $("#wizPane").hidden = !wiz;
+  if (wiz) drawWizard();
+  $("#askBar").hidden = $("#askPane").hidden = !ask;
+  $("#searchBar").hidden = $("#searchPane").hidden = !srch;
+  $("#updPane").hidden = !upd;
+  if (upd) drawUpdates();
+  $("#readPane").hidden = true; curTab = tab;
+  if (curSec !== -1){ curSec = -1; drawToc($("#tocFilter").value); }
+  if (ask) $("#ask").focus(); else if (srch) $("#q").focus();
+  try { localStorage.setItem("rctab", tab); } catch(e) {}
+}
+$("#tabAsk").onclick = () => show("ask");
+$("#tabSearch").onclick = () => show("search");
+$("#tabUpd").onclick = () => show("upd");
+$("#tabWiz").onclick = () => show("wiz");
+
+let timer;
+$("#q").addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(runSearch, 150); });
+document.addEventListener("keydown", e => { if (e.key === "/" && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)){ e.preventDefault(); show("search"); $("#q").select(); } });
+$("#chips").innerHTML = QUICK.map(t => `<button class="chip">${esc(t)}</button>`).join("");
+$("#chips").onclick = e => { if (e.target.classList.contains("chip")){ $("#q").value = e.target.textContent; runSearch(); } };
+
+let curSec = -1, curTab = "ask";
+function drawToc(f){
+  f = (f || "").toLowerCase();
+  $("#toc").innerHTML = DATA.toc.map((e, i) => [e, i]).filter(([[, t]]) => !f || t.toLowerCase().includes(f))
+    .map(([[lv, t, p], i]) => `<div class="trow l${lv}${i === curSec ? " on" : ""}"><button class="tlink" data-i="${i}">${esc(t)}</button><a href="${pdfLink(p)}" target="_blank" rel="noopener" title="Open the original PDF page">p.${p}</a></div>`).join("");
+}
+$("#tocFilter").addEventListener("input", e => drawToc(e.target.value));
+$("#toc").addEventListener("click", e => { const b = e.target.closest(".tlink"); if (b) openSection(+b.dataset.i); });
+drawToc();
+$("#gloss").innerHTML = GLOSS.map(([a, b]) => `<b>${esc(a)}</b><span>${esc(b)}</span>`).join("");
+
+// ---------- Ask a question (Claude) ----------
+const RULES = `You help a regulatory-affairs professional answer questions from their boss or clients about India's CIB&RC "Guidelines for the Registration of Pesticides under the Insecticides Act, 1968 and Rules 1971" (the 472nd RC compilation, ${NP} pages).
+
+Rules:
+- Answer ONLY from the guideline pages given to you or returned by the tools. Never use outside knowledge about fees, timelines or rules that the pages do not state.
+- If the pages you have do not answer the question, call search_guidelines with other wording (synonyms, abbreviations such as TIM/FIM/FI/TI, 9(3)/9(3B)/9(4), RTT, MUP) and read_page for promising pages. If it is still not found, say plainly that the guidelines do not seem to cover it.
+- Cite every fact with the page number in square brackets, like [p.256] or [p.241, p.243]. Page numbers are PDF page numbers as given in the "PAGE n" headers.
+- Write for someone who must reply to a client in a minute: first a direct 1-2 sentence answer, then the key points or document checklist as "- " bullets. Keep it under about 250 words unless a checklist needs more. Plain language; expand abbreviations once.
+- Formatting: plain text, "- " bullets, **bold** for key terms. No headings, no tables.`;
+
+const turns = [];   // {q, a}
+let sample = null, toolsOk = false, ctl = null;
+
+function renderAnswer(text){
+  const lines = esc(text).split(/\n/);
+  let html = "", inList = false;
+  for (let line of lines){
+    line = line.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    const m = line.match(/^\s*(?:[-*•]|\d+[.)])\s+(.*)/);
+    if (m){ if (!inList){ html += "<ul>"; inList = true; } html += `<li>${m[1]}</li>`; continue; }
+    if (inList){ html += "</ul>"; inList = false; }
+    if (line.trim()) html += `<p>${line}</p>`;
+  }
+  if (inList) html += "</ul>";
+  return html.replace(/\[((?:pp?\.?\s*)?\d[\d\s,;\-–p.and]*)\]/gi, (all, inner) => {
+    const nums = [];
+    inner.replace(/(\d+)\s*[-–]\s*(\d+)|(\d+)/g, (_, a, b, c) => { if (c) nums.push(+c); else { for (let k = +a; k <= Math.min(+b, +a + 8); k++) nums.push(k); } });
+    const ok = nums.filter(n => n >= 1 && n <= NP);
+    return ok.length ? ok.map(n => `<a class="cite" href="${pdfLink(n)}" target="_blank" rel="noopener" title="${esc(DATA.sec[n-1] || "")}">p.${n}</a>`).join("") : all;
+  });
+}
+function citedPages(text){
+  const s = new Set();
+  text.replace(/\[([^\]]*\d[^\]]*)\]/g, (_, inner) => { inner.replace(/\d+/g, n => { n = +n; if (n >= 1 && n <= NP) s.add(n); }); });
+  return [...s].sort((a, b) => a - b);
+}
+function pageBlock(p, max){
+  const t = DATA.pages[p-1];
+  return `=== PAGE ${p} | section: ${DATA.sec[p-1] || "front matter"} ===\n${t.length > max ? t.slice(0, max) + " …[page continues; call read_page for the rest]" : t}`;
+}
+
+const TOOLS = [
+  { name: "search_guidelines",
+    description: "Keyword search over all pages of the guideline PDF. Returns up to 8 best pages as {page, section, excerpt}. Use different wording or abbreviations if the first search misses.",
+    inputSchema: {type: "object", properties: {query: {type: "string", description: "keywords, e.g. 'change of name company endorsement'"}}, required: ["query"]},
+    execute(input){
+      const q = String(input.query || "");
+      setStatus(`Searching the guidelines for “${q}”…`);
+      return rank(q, 8).map(p => ({page: p, section: DATA.sec[p-1], excerpt: DATA.pages[p-1].slice(0, 500)}));
+    } },
+  { name: "read_page",
+    description: "Returns the full text of one PDF page (1-" + NP + ") with its section name. Use it to read a page found by search, or the next page when a section continues.",
+    inputSchema: {type: "object", properties: {page: {type: "integer"}}, required: ["page"]},
+    execute(input){
+      const p = Math.round(Number(input.page));
+      if (!(p >= 1 && p <= NP)) throw new Error("page must be between 1 and " + NP);
+      setStatus(`Reading page ${p}…`);
+      return pageBlock(p, 9000);
+    } }
+];
+
+let statusEl = null;
+function setStatus(s){ if (statusEl) statusEl.textContent = s; }
+
+function drawAskIntro(){
+  $("#askPane").innerHTML = `<div class="empty">Ask in your own words. Claude reads the relevant guideline pages and answers with page references you can click to open the PDF at that page.<br><br><span class="disclaim">Answers come from the guideline text only. Check the cited page before you quote it formally.</span></div>`;
+}
+
+async function ask(qText){
+  qText = qText.trim();
+  if (!qText || !sample) return;
+  if (ctl){ ctl.abort(); }
+  if (!turns.length) $("#askPane").innerHTML = "";
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<div class="turn-q">${esc(qText)}</div><div class="answer"><div class="status">Finding the relevant pages…</div><div class="body"></div></div><div class="srcs"></div>`;
+  $("#askPane").prepend(wrap);
+  statusEl = wrap.querySelector(".status");
+  const body = wrap.querySelector(".body");
+  $("#ask").value = "";
+  const btn = $("#askBtn"); btn.textContent = "Stop"; btn.classList.add("stop");
+  ctl = new AbortController();
+  const myCtl = ctl;
+
+  // seed with the best-matching pages, including the previous question for follow-ups
+  const ctxQ = qText + " " + (turns.length ? turns[turns.length - 1].q : "");
+  const seed = rank(ctxQ, 6);
+  const msgs = [{role: "user", content: RULES + "\n\nHere are the pages that best match the question by keyword (they may or may not be relevant):\n\n" + seed.map(p => pageBlock(p, 3500)).join("\n\n")}];
+  for (const t of turns.slice(-3)){ msgs.push({role: "user", content: t.q}); msgs.push({role: "assistant", content: t.a}); }
+  msgs.push({role: "user", content: "Question: " + qText});
+
+  let final = "";
+  try {
+    setStatus("Thinking…");
+    const res = await sample(msgs, {
+      signal: myCtl.signal, cache: false, modelTier: "default",
+      ...(toolsOk ? {tools: TOOLS} : {}),
+      onText: ({text}) => { statusEl.textContent = ""; body.innerHTML = renderAnswer(text); final = text; }
+    });
+    final = res.text;
+    body.innerHTML = renderAnswer(final);
+    statusEl.textContent = res.truncated ? "The answer was cut short. Ask a narrower question for the rest." : "";
+    turns.push({q: qText, a: final});
+  } catch (e) {
+    const kept = e && e.text;
+    if (kept && e.code !== "refused"){ body.innerHTML = renderAnswer(kept); final = kept; } else body.innerHTML = "";
+    const msg = {
+      cancelled: "Stopped.",
+      not_granted: "Claude is not allowed for this page, so only Search pages works here.",
+      sampling_disabled: "Claude is not available for this account, so only Search pages works here.",
+      rate_limited: "Too many questions in a short time, or your Claude usage limit was reached. Wait a little and ask again.",
+      session_expired: "Your Claude session expired. Sign in again, then ask.",
+      prompt_too_large: "That question pulled in too much text. Ask something narrower.",
+      refused: "Claude could not answer this one. Try rewording it.",
+    }[e && e.code] || "Something went wrong reaching Claude. Ask again in a moment.";
+    statusEl.textContent = msg;
+    statusEl.className = e && e.code === "cancelled" ? "status" : "note";
+    if (e && ["not_granted", "sampling_disabled"].includes(e.code)) disableAsk(msg);
+  } finally {
+    if (ctl === myCtl){ ctl = null; btn.textContent = "Ask"; btn.classList.remove("stop"); }
+  }
+  const cites = citedPages(final);
+  if (cites.length){
+    wrap.querySelector(".srcs").innerHTML = `<span class="lbl" style="margin:0;align-self:center">Sources</span>` +
+      cites.slice(0, 12).map(p => `<a class="btn" href="${pdfLink(p)}" target="_blank" rel="noopener" title="${esc(DATA.sec[p-1] || "")}">p.${p} · ${esc((DATA.sec[p-1] || "").split(" › ").pop().slice(0, 48))}</a>`).join("");
+  }
+}
+
+function disableAsk(msg){
+  $("#askBtn").disabled = true; $("#ask").disabled = true;
+  $("#askPane").innerHTML = `<div class="empty">${esc(msg)}${DATA.onlineUrl ? `<br><br>Open the online version to ask questions: <a href="${esc(DATA.onlineUrl)}" target="_blank" rel="noopener">${esc(DATA.onlineUrl)}</a>` : ""}<br><br>You can still use <b>Search pages</b> and the contents list.</div>`;
+}
+
+$("#askBtn").onclick = () => { if (!AI){ askLocal($("#ask").value); return; } if (ctl){ ctl.abort(); return; } ask($("#ask").value); };
+$("#ask").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); if (!AI) askLocal($("#ask").value); else if (!ctl) ask($("#ask").value); } });
+$("#askChips").innerHTML = ASKS.map(t => `<button class="chip">${esc(t)}</button>`).join("");
+$("#askChips").onclick = e => { if (!e.target.classList.contains("chip")) return; if (!AI){ $("#ask").value = e.target.textContent; askLocal(e.target.textContent); } else if (!ctl && sample) ask(e.target.textContent); };
+
+
+// ---------- smart search: answers questions without AI by showing the best-matching paragraphs ----------
+const AI = !!(window.claude && window.claude.use);
+function secIndexFor(p){ let k = -1; DATA.toc.forEach((e, i) => { if (e[2] <= p) k = i; }); return k; }
+function askLocal(qText){
+  qText = qText.trim();
+  if (!qText) return;
+  const words = qWords(qText);
+  const df = words.map(w => LOW.reduce((a, t) => a + (t.includes(w) ? 1 : 0), 0));
+  const pages = rank(qText, 6);
+  const re = words.length ? new RegExp("(" + words.map(w => reEsc(esc(w))).sort((a, b) => b.length - a.length).join("|") + ")(?![^<]*>)", "gi") : null;
+  const cards = pages.map(p => {
+    const paras = DATA.pages[p-1].split("\n");
+    const scored = paras.map((t, i) => {
+      const lt = t.toLowerCase(); let sc = 0;
+      words.forEach((w, k) => { if (df[k] && lt.includes(w)) sc += Math.log(1 + NP / df[k]) * (1 + Math.min(count(lt, w), 3) * .3); });
+      return {i, sc};
+    }).filter(x => x.sc > 0).sort((a, b) => b.sc - a.sc).slice(0, 2).sort((a, b) => a.i - b.i);
+    const pick = new Set();
+    scored.forEach(x => { pick.add(x.i); if (/:$/.test(paras[x.i].trim()) && x.i + 1 < paras.length) pick.add(x.i + 1); });
+    const html = [...pick].sort((a, b) => a - b).map(i => `<p class="rp">${(re ? markImportant(esc(paras[i])).replace(re, "<mark>$1</mark>") : markImportant(esc(paras[i])))}</p>`).join("");
+    const si = secIndexFor(p);
+    return `<div class="card"><div class="top"><div class="sec">${esc(DATA.sec[p-1] || "Front matter")}</div><div class="pg">Page ${p}</div></div>
+      <div class="snip">${html || esc(DATA.pages[p-1].slice(0, 300))}</div>
+      <div class="btns"><a class="btn primary" href="${pdfLink(p)}" target="_blank" rel="noopener">Open page ${p}</a>${si >= 0 ? `<button class="btn" data-sec="${si}">Read this section</button>` : ""}</div></div>`;
+  });
+  $("#askPane").innerHTML = `<div class="turn-q">${esc(qText)}</div>
+    <div class="meta">Best-matching passages in the guidelines, most relevant first. Open the page or section to read it in full.</div>
+    ${cards.length ? cards.join("") : `<div class="empty">No matching passages. Try other words, e.g. the Act section (9(3), 9(4)) or the category (TIM, FIM).</div>`}`;
+  $("#askPane").querySelectorAll("[data-sec]").forEach(b => b.onclick = () => openSection(+b.dataset.sec));
+}
+
+// ---------- section reader ----------
+function secRange(i){
+  const [lv, , start] = DATA.toc[i];
+  let end = NP;
+  for (let j = i + 1; j < DATA.toc.length; j++){ if (DATA.toc[j][0] <= lv){ end = DATA.toc[j][2] - 1; break; } }
+  return [start, Math.max(start, end)];
+}
+// three kinds of "important": obligations, figures, legal references
+const HL = new RegExp([
+  "(\\b(?:shall not|shall|must not|must|mandatory|compulsory|not be (?:allowed|permitted|accepted|considered)|not (?:allowed|permitted)|prohibited|at least|not more than|not less than|minimum of|maximum of)\\b)",
+  "((?:Rs\\.?|INR|₹)\\s*[\\d,]+(?:\\.\\d+)?(?:\\/-)?|\\b\\d+(?:\\.\\d+)?\\s*(?:working days|days|months|month|years|year|weeks|week|hours|%|per ?cent|kg|mg|ml|litres?|ha|hectares?|ppm|°C|℃|g\\/kg|g\\/l)(?![a-z]))",
+  "((?:u\\/s\\.?\\s*|[Ss]ection\\s*)?\\b9\\s*\\(\\s*(?:3B|3b|3|4)\\s*\\)|\\bForm[- ]?(?:[IVX]{1,4}|\\d{1,2})\\b|\\bAnnexure[- ]?[IVX\\d][\\w.]*|\\b[Rr]ule\\s+\\d+\\b|\\bSection\\s+\\d+[A-Z]?\\b)"
+].join("|"), "g");
+function markImportant(h){
+  return h.replace(HL, (m, a, b) => a ? `<span class="hl-must">${m}</span>` : b ? `<span class="hl-num">${m}</span>` : `<span class="hl-ref">${m}</span>`);
+}
+function formatPage(p, terms){
+  terms = terms || [];
+  const termRe = terms.length ? new RegExp("(" + terms.map(x => reEsc(esc(x))).sort((a, b) => b.length - a.length).join("|") + ")(?![^<]*>)", "gi") : null;
+  return DATA.pages[p-1].split("\n").map(line => {
+    let cls = "rp";
+    const t = line.trim();
+    if (/^(?:\d{1,2}(?:\.\d{1,2})*[.)]|\(?[ivx]{1,4}[.)]|\(?[a-hj-z][.)]|[•●▪◦\-–])\s*\S/i.test(t)) cls += " li";
+    else if (t.length <= 110 && (/^(?:sub ?-?category|category|annexure|part|chapter|note)\b/i.test(t) || (/^[^a-z]{8,}$/.test(t) && /[A-Z]{4}/.test(t)) || /:$/.test(t))) cls += " h";
+    let h = markImportant(esc(t));
+    if (termRe) h = h.replace(termRe, "<mark>$1</mark>");
+    return `<p class="${cls}">${h}</p>`;
+  }).join("");
+}
+function sectionText(a, b, cap){
+  let out = "", cut = false;
+  for (let p = a; p <= b; p++){
+    const blk = `=== PAGE ${p} ===\n${DATA.pages[p-1]}\n\n`;
+    if (out.length + blk.length > cap){ cut = p; break; }
+    out += blk;
+  }
+  return {text: out, cut};
+}
+function openSection(i){
+  curSec = i; drawToc($("#tocFilter").value);
+  const title = DATA.toc[i][1];
+  const [a, b] = secRange(i);
+  const n = b - a + 1, MAXP = 60, shown = Math.min(n, MAXP);
+  const prev = i > 0 ? i - 1 : -1, next = i < DATA.toc.length - 1 ? i + 1 : -1;
+  const parent = (DATA.sec[a-1] || "").split(" › ").filter(x => x !== title).join(" › ");
+  let html = `<div class="rhead">
+    <div class="eyebrow">${esc(parent || "Section")} · ${n > 1 ? `pages ${a}–${b} (${n} pages)` : `page ${a}`}</div>
+    <h2>${esc(title)}</h2>
+    <div class="btns">
+      <button class="btn" id="rBack">← Back</button>
+      <button class="btn primary" id="rKey"${sample ? "" : " hidden"}>Key points by Claude</button>
+      <a class="btn" href="${pdfLink(a)}" target="_blank" rel="noopener">Original PDF page ${a}</a>
+      ${prev >= 0 ? `<button class="btn" data-go="${prev}">‹ Previous section</button>` : ""}
+      ${next >= 0 ? `<button class="btn" data-go="${next}">Next section ›</button>` : ""}
+    </div>
+    <div class="legend">
+      <span><i class="sw hl-must"></i>must / shall / not allowed</span>
+      <span><i class="sw hl-num"></i>numbers, time limits, fees</span>
+      <span><b class="hl-ref">9(3)</b>Act sections, forms, annexures</span>
+    </div>
+  </div>
+  <div class="kp" id="kp" hidden></div>`;
+  for (let p = a; p < a + shown; p++){
+    html += `<article class="rpage"><div class="rpg"><span>Page ${p}</span><a href="${pdfLink(p)}" target="_blank" rel="noopener">See original page</a></div>${formatPage(p)}</article>`;
+  }
+  if (n > MAXP) html += `<div class="meta">This section has ${n} pages; the first ${MAXP} are shown. Pick a smaller part from the contents, or open page ${a + MAXP} in the PDF.</div>`;
+  const pane = $("#readPane");
+  pane.innerHTML = html;
+  $("#askPane").hidden = $("#searchPane").hidden = $("#updPane").hidden = $("#wizPane").hidden = true;
+  pane.hidden = false;
+  window.scrollTo({top: 0});
+  $("#rBack").onclick = () => show(curTab);
+  pane.querySelectorAll("[data-go]").forEach(btn => btn.onclick = () => openSection(+btn.dataset.go));
+  $("#rKey").onclick = () => keyPoints(i, a, b);
+}
+async function keyPoints(i, a, b){
+  if (!sample) return;
+  const box = $("#kp"), btn = $("#rKey");
+  box.hidden = false; btn.disabled = true;
+  box.innerHTML = `<div class="lbl">Key points</div><div class="answer"><div class="status">Reading the section…</div><div class="body"></div></div>`;
+  const st = box.querySelector(".status"), body = box.querySelector(".body");
+  const {text, cut} = sectionText(a, b, 140000);
+  const prompt = `Below is one section ("${DATA.toc[i][1]}", PDF pages ${a}-${b}) of India's CIB&RC "Guidelines for the Registration of Pesticides under the Insecticides Act, 1968". ${cut ? `Only pages ${a}-${cut - 1} are included because the section is long.` : ""}
+
+Write the key points for a regulatory-affairs professional who must explain this section to their boss or a client in a minute. Use only this text. Structure:
+- First line: what this section is for and who it applies to (1-2 sentences).
+- Then "- " bullets: the main requirements, documents to submit, conditions, and anything not allowed.
+- Then "- " bullets for any numbers that matter: time limits, validity, quantities, fees.
+Cite the page for every point like [p.${a}]. Plain language, **bold** the key terms, under about 250 words. No headings or tables.
+
+${text}`;
+  try {
+    const res = await sample(prompt, {cache: {gcTime: 86400000}, onText: ({text}) => { st.textContent = ""; body.innerHTML = renderAnswer(text); }});
+    body.innerHTML = renderAnswer(res.text);
+    st.textContent = res.truncated ? "Cut short. Open a smaller part from the contents for full key points." : "";
+  } catch(e){
+    if (e && e.text) body.innerHTML = renderAnswer(e.text);
+    st.className = "note";
+    st.textContent = {not_granted: "Claude is not allowed for this page.", rate_limited: "Too many requests just now. Try again in a little while.", prompt_too_large: "This section is too long to summarize at once. Pick a smaller part from the contents."}[e && e.code] || "Could not get key points. Try again in a moment.";
+  } finally { btn.disabled = false; }
+}
+
+
+// ---------- latest updates from the CIB&RC website (kept in the page's database by a twice-daily check) ----------
+const UPD = {items: [], status: null, filter: "All", live: false};
+const KINDS = ["All", "Gazette", "RC minutes", "Public notice", "Guideline"];
+const isNew = it => it.fresh && it.addedAt && (Date.now() - Date.parse(it.addedAt)) < 14 * 864e5;
+function fmtWhen(iso){
+  const d = new Date(iso);
+  return isNaN(d) ? iso : d.toLocaleString("en-IN", {day: "numeric", month: "short", hour: "numeric", minute: "2-digit"});
+}
+function drawUpdates(){
+  const pane = $("#updPane");
+  const nNew = UPD.items.filter(isNew).length;
+  $("#updBadge").hidden = !nNew; $("#updBadge").textContent = nNew;
+  if (pane.hidden) return;
+  if (!UPD.live){
+    pane.innerHTML = `<div class="empty">${AI || DATA.mode === "site" ? "Loading the latest notices…" : "The latest-updates list lives in the online version of this page" + (DATA.onlineUrl ? `: <a href="${esc(DATA.onlineUrl)}" target="_blank" rel="noopener">${esc(DATA.onlineUrl)}</a>` : ".")}<br><br>You can always check the official list directly: <a href="https://ppqs.gov.in/divisions/cib-rc/news-update" target="_blank" rel="noopener">CIB&amp;RC News &amp; Update</a>.</div>`;
+    return;
+  }
+  const list = UPD.items.filter(it => UPD.filter === "All" || it.kind === UPD.filter);
+  const st = UPD.status;
+  pane.innerHTML = `<div class="rhead">
+      <div class="eyebrow">From ppqs.gov.in · CIB&amp;RC News &amp; Update and Guidelines</div>
+      <h2>Latest notices, RC minutes, Gazettes and guidelines</h2>
+      <div class="meta" style="margin:0">${st ? `Last checked ${esc(fmtWhen(st.checkedAt))}${st.ok === false ? ` · <span class="note">last check failed: ${esc(st.error || "site not reachable")}</span>` : ""} · ` : ""}checked daily at 9 AM and 5 PM; new items are emailed.</div>
+      <div class="chips" id="updChips">${KINDS.map(k => `<button class="chip"${k === UPD.filter ? ' style="border-color:var(--accent);color:var(--accent)"' : ""}>${k}</button>`).join("")}</div>
+    </div>
+    <div class="ulist">${list.length ? list.map(it => `<div class="uitem">
+        <span class="d">${esc(it.date || "")}</span>
+        <span class="t">${isNew(it) ? '<span class="pill new">New</span>' : ""}<span class="pill ${esc(it.kind.replace(/\s/g, ""))}">${esc(it.kind)}</span>${esc(it.title)}</span>
+        ${it.url ? `<a class="btn" href="${esc(it.url)}" target="_blank" rel="noopener">Open PDF ↗</a>` : "<span></span>"}
+      </div>`).join("") : `<div class="empty">Nothing in this category yet.</div>`}</div>`;
+  $("#updChips").onclick = e => { if (e.target.classList.contains("chip")){ UPD.filter = e.target.textContent; drawUpdates(); } };
+}
+if (!AI && DATA.mode === "site"){
+  fetch("updates.json", {cache: "no-store"}).then(r => r.ok ? r.json() : Promise.reject()).then(j => {
+    UPD.items = (j.items || []).slice().sort((a, b) => String(b.sortKey).localeCompare(String(a.sortKey)));
+    UPD.status = {checkedAt: j.checkedAt, ok: j.ok !== false, error: j.error};
+    UPD.live = true; drawUpdates();
+  }).catch(() => { UPD.live = false; drawUpdates(); });
+}
+if (window.claude && window.claude.use){
+  window.claude.use("db").then(db => {
+    if (!db){ UPD.live = false; drawUpdates(); return; }
+    db.collection("updates").orderBy("sortKey", "desc").limit(200).onSnapshot(snap => {
+      UPD.items = snap.docs.map(d => d.data()); UPD.live = true; drawUpdates();
+    }, () => { UPD.live = false; drawUpdates(); });
+    db.collection("meta").doc("status").onSnapshot(d => { UPD.status = d.exists ? d.data() : null; drawUpdates(); }, () => {});
+  });
+}
+
+// ---------- checklist wizard ----------
+// Data requirements from Sub-category 3.1 (PDF pages 74-89), encoded exactly as the tables print them.
+// Category keys: registration type + category, e.g. "3B-TI", "3-FIM", "4-TIM".
+const CATS = ["3B-TI", "3B-TIM", "3B-FIM", "3-TI", "3-TIM", "3-FI", "3-FIM", "4-TI", "4-TIM", "4-FI", "4-FIM"];
+const CHEM_COLS = CATS;
+const BIO_COLS = ["3B-TI", "3B-TIM", "3B-FIM", "3-TI", "3-TIM", "3-FI", "3-FIM"];
+const TOX_COLS = [["3B-TI", "3B-TIM"], ["3-TI", "3-TIM"], ["3B-FIM"], ["3-FIM", "3-FI"], ["4-TIM"], ["4-TI", "4-FIM", "4-FI"]];
+const PACK_COLS = ["3B-TIM", "3B-FIM", "3B-TI", "3-TIM", "3-FIM", "3-TI", "3-FI", "4-TIM", "4-FIM", "4-TI", "4-FI"];
+const v = s => s.split(" ");
+const CHEM = [
+  [76, "Details of source of supply of Technical", v("R NR R R NR R R R NR R R")],
+  [76, "Chemical composition (purity claim of a.i., impurities or adjuvants) in Form-I and label/leaflet", v("R R R R R R R R R R R")],
+  [76, "Physical and chemical properties of the a.i. in Technical, and of adjuvants in a formulation", v("R R R R R R R NR R NR NR")],
+  [76, "Technical bulletin", v("R NR NR R NR R NR NR NR NR NR")],
+  [76, "Product specification in BIS format / BIS No. if published", v("R R R R R R R NR R* NR NR")],
+  [76, "Method of analysis", v("R R R R R R R NR R* NR NR")],
+  [76, "Analytical Test Report (ATR) from a GLP / NABL accredited laboratory", v("R R R R R R R NR R NR NR")],
+  [76, "Characterization (identity test) of a.i. by UV-VIS, IR, MS and NMR spectra", v("R R NR R R NR NR NR R NR NR")],
+  [76, "Identification and quantification of impurities", v("R R NR R R NR NR NR R NR NR")],
+  [76, "Shelf-life claim", v("R R R R R R R R R R R")],
+  [76, "Storage stability data: samples in three agro-climatic conditions for six months beyond the claimed shelf life, with meteorological data", v("R R R R R R R NR NR NR NR")],
+  [76, "Establishment of chemical equivalence", v("NR NR NR NR R*/NR R*/NR R*/NR R R R R")],
+  [77, "Detailed stepwise manufacturing process (reactions with structural formulae, conditions, flow sheet)", v("R R R R R R R NR R NR NR")],
+  [77, "Raw materials used, with their source of supply", v("R R R R R R R NR R NR NR")],
+  [77, "Effluent treatment method with complete details", v("R R R R R R R NR R NR NR")],
+  [77, "Legalized consent letter from the manufacturer (registered and supplying the Technical/Formulation to the applicant)", v("R NR R R NR R R R NR R NR")],
+  [77, "Registration certificate from the Designated National Authority (DNA) of the source country", v("R NR NR R NR R NR R NR R NR")],
+  [77, "If supplied through a supplier: legalized certificate that the supplier is the manufacturer's authorized agent (invoice from the approved source)", v("R NR NR R NR R NR R NR R NR")],
+  [77, "In-process sample (or import sample) with certified reference material (CRM) and standard impurities, for pre-registration verification at CIL Faridabad", v("R R R R R R R NR R NR NR")],
+  [78, "Methodology for residue estimation in BIS format", v("R R R R R R R NR NR NR NR")],
+];
+const CHEM_NOTES = [
+  [78, "R* at items 5 and 6: not required if a BIS specification is published; otherwise the registered product specification is required."],
+  [78, "Chemical equivalence (item 12): not required for the first registration, required for later registrations after the first."],
+  [78, "Adjuvants must be named by common name (not code names or numbers) with their full chemical identity."],
+  [78, "Samples are drawn for 9(3) TIM and 9(4) TIM as per the 442nd RC procedure. For 9(3) TI, a 5-batch GLP analysis report is required."],
+  [78, "Seed treatment products must include the 'Adhesion to Seed Test'."],
+  [78, "Use the same method of analysis for the ATR and the shelf-life data."],
+  [78, "Accelerated storage data can get a provisional shelf life; the certificate is then valid for two years, and real-time storage data (minimum 30 months) must be submitted within two and a half years, or the certificate becomes invalid."],
+];
+const BIO = [
+  [79, "Bio-effectiveness", v("R$ R$ R* R$ R$ R** R**")],
+  [79, "Phytotoxicity", v("R$ R$ R* R$ R$ R** R**")],
+  [79, "Effect on seed germination (seed-treatment fungicides and insecticides)", v("R$ R$ R* R$ R$ R** R**")],
+  [79, "Effect on natural enemies: parasitoids / predators (insecticides)", v("NR NR R* NR NR R** R**")],
+  [79, "Effect on beneficial soil micro-organisms and soil physico-chemical properties (herbicides; seed-treatment and soil-applied products)", v("NR NR R* NR NR R** R**")],
+  [79, "Translocation in plants", v("R R NR R R NR NR")],
+  [79, "Metabolism in soil", v("R R NR R R NR NR")],
+  [79, "Metabolism in water", v("R R NR R R NR NR")],
+  [79, "Metabolism in plant", v("R R NR R R NR NR")],
+  [79, "Persistence in soil", v("R R R R R R R")],
+  [79, "Persistence in water", v("R R R R R R R")],
+  [79, "Persistence in plant", v("NR R R NR R R R")],
+  [79, "Compatibility with other chemicals, if claimed", v("NR NR R NR NR R R")],
+  [79, "Residues in plant", v("NR NR R# NR NR R# R#")],
+  [79, "Residues in soil", v("NR NR R# NR NR R# R#")],
+  [80, "Residue tolerance limits fixed by foreign countries", v("NR NR R NR NR R R")],
+  [80, "Cost-benefit ratio or per-rupee return (per ha)", v("NR NR NR NR NR R R")],
+  [80, "Registration status in foreign countries", v("NR NR R R NR R R")],
+  [80, "MRL proforma, submitted on the CROP portal with the application", v("NR NR R NR NR R R")],
+  [80, "Label and leaflets (Insecticides Rules 18 and 19)", v("R R R R R R R")],
+];
+const BIO_NOTES = [
+  [80, "R*: two seasons/years of data from at least two agro-climatic conditions."],
+  [80, "R**: two seasons/years of data from at least three agro-climatic conditions."],
+  [80, "R#: one season/year from at least four agro-climatic conditions for fungicides, insecticides and PGRs. Herbicides: two seasons/years from at least two zones for 9(3B) and three for 9(3). Seed treatment: one season from at least three conditions. Soil-applied: a second season only if residue at harvest is above LOQ."],
+  [80, "R$: no bio-efficacy data when the TI/TIM application is submitted together with the FI/FIM application."],
+  [80, "Non-edible commercial crops (jute, jatropha, rubber etc.): residue and persistence-in-plant data not required."],
+  [81, "Herbicides: also effect on soil physico-chemical and biological properties, and on three normally cultivated succeeding crops, with residue studies in the same plots."],
+  [82, "Efficacy benchmarks: fungicides at least 60-70% control at 15-20% disease pressure; insecticides at least 70% reduction over control; herbicides at least 70% weed control efficiency, certified by ICAR/SAU."],
+];
+const TOX = [
+  [83, "Acute oral (rat)", v("R R R R NR NR")],
+  [83, "Acute dermal (rat / rabbit)", v("R R R R NR NR")],
+  [83, "Acute inhalation (rat)", v("R R R R NR NR")],
+  [83, "Primary skin irritation (rabbit)", v("R R R R NR NR")],
+  [83, "Acute eye irritation (rabbit)", v("R R R R NR NR")],
+  [83, "Skin sensitization test", v("R R R R NR NR")],
+  [83, "Repeated-dose range-finding oral toxicity, 28 days (rat)", v("R R NR NR NR NR")],
+  [83, "Repeated-dose 90-day oral (rat)", v("R R NR NR NR NR")],
+  [83, "Repeated-dose 90-day oral (dog)", v("R R NR NR NR NR")],
+  [83, "Repeated-dose dermal toxicity (rat / rabbit)", v("R R NR NR NR NR")],
+  [83, "Repeated-dose inhalation toxicity (rat)", v("R R NR NR NR NR")],
+  [83, "Acute neurotoxicity (rodent)", v("R R NR NR NR NR")],
+  [83, "Repeated-dose neurotoxicity (rodent)", v("R R NR NR NR NR")],
+  [83, "Delayed neurotoxicity, OP compounds: acute exposure", v("R R NR NR NR NR")],
+  [83, "Delayed neurotoxicity, OP compounds: repeated exposure", v("R R NR NR NR NR")],
+  [83, "Developmental neurotoxicity (rodent)", v("R R NR NR NR NR")],
+  [83, "Combined carcinogenicity and chronic toxicity (rat)", v("R R NR NR NR NR")],
+  [83, "Carcinogenicity (mice)", v("R R NR NR NR NR")],
+  [83, "Developmental toxicity: (a) rat and (b) rabbit", v("NR R NR NR NR NR")],
+  [84, "Two-generation reproduction toxicity (rat)", v("NR R NR NR NR NR")],
+  [84, "Mutagenicity: Ames test, any two in-vitro and one in-vivo test", v("NR R NR NR R NR")],
+  [84, "Pharmacokinetics and metabolism in rat", v("R R R/NR R/NR NR NR")],
+  [84, "Feeding study incl. metabolism in livestock (goat, cow) / poultry (hen)", v("R R NR NR NR NR")],
+  [84, "Pharmacokinetics and metabolism in other mammals (new molecules, case by case)", v("NR NR NR NR NR NR")],
+  [84, "Immunotoxicity study", v("R R NR NR NR NR")],
+  [84, "Acute avian toxicity", v("R R R R NR NR")],
+  [84, "Repeated-dose avian toxicity (one species)", v("R R NR NR NR NR")],
+  [84, "Avian reproduction toxicity (one species)", v("R R NR NR NR NR")],
+  [84, "Acute toxicity to fresh-water fish (one species)", v("R R R R NR NR")],
+  [84, "Acute toxicity to honey bee (oral and contact)", v("R R R R NR NR")],
+  [84, "Acute toxicity to earthworm", v("R R R R NR NR")],
+  [84, "Medical data", v("R R R R R NR")],
+  [84, "Human toxicity information from foreign countries", v("NR R NR R NR NR")],
+  [84, "Health records of industrial workers (Form-12)", v("NR R NR R NR NR")],
+  [84, "International report on carcinogenicity and genotoxicity", v("NR R NR NR NR NR")],
+];
+const TOX_NOTES = [
+  [84, "Repeated-dose inhalation (90 days) is needed where repeated inhalation exposure is likely: gases, vapours, aerosols, fumigants, mosquito coils, repeatedly used sprays."],
+  [85, "Technical (TI/TIM): give the name and percentage of relevant/toxic impurities and metabolites, with toxicity information from peer-reviewed sources."],
+  [85, "90-day dog study is required for new molecules; published peer-reviewed data is acceptable for other categories."],
+  [87, "Formulations: give adjuvant names, properties and toxicity. Extra studies may be asked if the formulation is more toxic than the technical, or for multi-a.i. products (synergy/antagonism)."],
+  [88, "Waivers are considered case by case on robust weight of evidence (read-across, bridging); OECD-recognised 3Rs alternatives are accepted where valid."],
+];
+const PACK = [
+  [89, "Labels and leaflets as per Insecticides Rules 1971, all applicable fields", v("R R R R R R R NR NR NR NR")],
+  [89, "Manner of labelling and leaflet", v("R R R R R R R R NR NR NR")],
+  [89, "Type of packaging (ultra small, small or big)", v("R R R R R R R R NR NR NR")],
+  [89, "Manner of packaging", v("R R R R R R R R NR NR NR")],
+  [89, "Specification for primary, secondary and transport packages", v("R R R R R R R R NR NR NR")],
+  [89, "Details of packaging material and its compatibility with the content", v("R R R R R R R R NR NR NR")],
+  [89, "Performance of container with content during storage stability (shelf-life) study", v("R* R* R* R R R R NR NR NR NR")],
+  [89, "Transport worthiness test", v("R* R* R* R R R R NR NR NR NR")],
+];
+const PACK_NOTES = [[89, "R*: the data is required before commercialization."]];
+const LEGAL = [
+  [74, "Form-I, duly signed / digitally signed"],
+  [74, "Copy of BOD resolution / affidavit / partnership deed (notarized)", "kyc"],
+  [74, "Affidavit for chemical composition on non-judicial stamp paper (notarized)"],
+  [74, "Certificate as per category of industry / manufacturing licence (notarized)", "kyc"],
+  [74, "PAN (notarized)", "kyc"],
+  [74, "Incorporation certificate (notarized) and other KYC documents", "kyc"],
+  [74, "Proof of ownership / lease agreement of the manufacturing site (notarized)", "kyc"],
+  [74, "Technical used in the formulation must be registered in India, or its application filed in parallel (for import: RC meeting reference). Deemed registration without a certificate is not accepted.", "", ["3B-FIM", "3-FI", "3-FIM", "4-FI", "4-FIM"]],
+  [74, "Name of the registrant of the Formulation Import (RC meeting reference in which it was approved)"],
+];
+const LEGAL_94 = [
+  [74, "Notarized and valid manufacturing licence", "", ["4-TI", "4-FI", "4-FIM"]],
+  [74, "Consent letter from the source of import, authenticated by the Consulate General of India (Indian embassy)", "", ["4-TI", "4-FI"]],
+  [74, "List of products registered, licensed and actually manufactured in the previous 3 years", "kyc", ["4-TI", "4-FI", "4-FIM"]],
+  [74, "Geotagging with photographs of the manufacturing site, legalized / apostilled, with a location map", "", ["4-TI", "4-FI"]],
+];
+
+// situations that change the toxicology requirement (pages 86-88)
+const SITUATIONS = {
+  "3-TI": [["new", "New molecule (first registration in India)", "Toxicology items 1 to 35.", null, 86],
+           ["source", "New source of an already registered technical (TI - New Source)", "Toxicology items 1-11, 21, 26, 27 and 29-34. Impurities must be the same or lower than the registered source.", [1,2,3,4,5,6,7,8,9,10,11,21,26,27,29,30,31,32,33,34], 86]],
+  "3-TIM": [["new", "New molecule (first registration in India)", "Toxicology items 1 to 35.", null, 86],
+            ["same", "Same technical already registered for import, or its formulation is registered (TIM vs TI / FI-WRT / FIM-WRT)", "If impurities are within limits (or within +3% and none toxic/new): toxicology items 1-6, 21 and 32, plus health records of workers if the unit already exists. Otherwise extra tests case by case.", [1,2,3,4,5,6,21,32,34], 86],
+            ["orig", "Same applicant already registered the formulation for import, same composition and process (TIM vs FI original registrant)", "Toxicology: Ames test only.", [21], 87]],
+  "3-FIM": [["normal", "Formulation for indigenous manufacture", "Toxicology items 1-6, 26 and 29-35.", null, 87],
+            ["fit", "Identical to an already registered imported formulation (FIM vs FIT)", "No toxicology data, provided the technical is registered and label claims are unchanged. A different composition needs the full FIM data.", [], 88]],
+  "4-TIM": [["normal", "Me-too technical manufacture", "Toxicology: Ames test only (item 21); if mutagenic, one in-vivo and two in-vitro tests more. The Ames test must use the technical from the source being registered.", [21], 87]],
+};
+
+const TYPE_INFO = {
+  "3B": ["9(3B) Provisional", "New molecule not yet registered in India; provisional registration while data is completed."],
+  "3": ["9(3) Regular", "Full registration with complete data."],
+  "4": ["9(4) Me-too", "Subsequent registration of a product already registered u/s 9(3) by another applicant."],
+};
+const CAT_INFO = {
+  TI: ["TI", "Technical Import", "Import of technical grade active ingredient"],
+  TIM: ["TIM", "Technical Indigenous Manufacture", "Manufacture of the technical in India"],
+  FI: ["FI", "Formulation Import", "Import of a ready formulation"],
+  FIM: ["FIM", "Formulation Indigenous Manufacture", "Formulating in India"],
+};
+const RELATED = {
+  all: [[241, "Five folders: how to submit a 9(3)/9(3B) application"], [8, "1.1 KYC on CROP portal"]],
+  "3B": [[245, "Extension of provisional registration u/s 9(3B)"]],
+  "4-TIM": [[247, "Requirement checklist for 9(4) TIM cases"]],
+  "4-TI": [[249, "Requirement checklist for 9(4) TI/FI"]], "4-FI": [[249, "Requirement checklist for 9(4) TI/FI"]],
+  "3-TI": [[138, "3.16 TI - New Source vs FIM-WRT / FI-WRT / TI"]],
+  "3-TIM": [[128, "3.13 TIM where formulation registered for import without technical"], [133, "3.14 TIM by original registrant under FI"]],
+  "3-FIM": [[116, "3.10 FIM vs FIT u/s 9(3)"], [101, "3.5 Combination pesticides - indigenous 9(3)"]],
+  "3-FI": [[123, "3.12 Three a.i. pre-mix - import"]],
+};
+
+// other application types: route to the sections that govern them
+const ROUTES = [
+  ["chem", "Chemical pesticide for agriculture", "Technical or formulation u/s 9(3B), 9(3) or 9(4)", "flask"],
+  ["bio", "Biopesticide, botanical or pheromone", "Microbials, consortium, plant extracts, neem, semiochemicals", "leaf"],
+  ["house", "Household, public health or biocide", "Household insecticides, public health, aircraft, ectoparasites, biocides", "home"],
+  ["special", "Combination, seed treatment or special case", "Two/three a.i. combinations, seed treatment, PDSO, ethephon, MUP", "layers"],
+  ["export", "Export, or import of RTT samples", "Export-only registration, import for export, research samples", "ship"],
+  ["endorse", "Change or endorsement on a certificate", "Name, address, packaging, shelf life, source of import, transfer, FSC", "edit"],
+];
+const ROUTE_SECTIONS = {
+  bio: t => /^4\.|five folders for registration of biopesticides|Toxicology template Registration of Biopesticides|Biopesticides of/i.test(t),
+  house: t => /^5\.|household/i.test(t),
+  special: t => /^3\.(2|3|4|5|6|7|8|9|10|11|12|15)\b/.test(t),
+  export: t => /^2\.|export|small quantity import|RTT/i.test(t),
+  endorse: t => /^Requirements? for (the )?(endorsement|change|transfer|issue of duplicate|extension of shelf|label expansion|submission of application for attestation)|Free Sale|^1\.6|^1\.7/i.test(t),
+};
+const ICONS = {
+  flask: '<path d="M9 3h6M10 3v6L4.5 18.5A1.8 1.8 0 0 0 6 21h12a1.8 1.8 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/>',
+  leaf: '<path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19l8-8"/>',
+  home: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
+  layers: '<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>',
+  ship: '<path d="M3 17l2 4h14l2-4H3z"/><path d="M6 17V9h12v8"/><path d="M12 9V4"/><path d="M9 6h6"/>',
+  edit: '<path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13 7l4 4"/>',
+  check: '<path d="M5 12l4 4L19 6"/>',
+};
+const icon = (n, s) => `<svg class="ico" width="${s || 22}" height="${s || 22}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]}</svg>`;
+
+const WZ = {step: "start", route: null, type: null, cat: null, sit: null, list: null, saved: null, showNR: false, apps: [], db: null, uid: null};
+
+function statusFor(vals, cols, key){
+  const i = cols.findIndex(c => Array.isArray(c) ? c.includes(key) : c === key);
+  return i === -1 ? null : vals[i];
+}
+const isReq = s => s && /^R/.test(s);
+function buildChemList(type, cat, sit){
+  const key = `${type}-${cat}`;
+  const groups = [];
+  const legal = LEGAL.filter(r => !r[3] || r[3].includes(key)).concat(type === "4" ? LEGAL_94.filter(r => r[3].includes(key)) : []);
+  groups.push({name: "Legal documents", pages: [74, 75], items: legal.map((r, i) => ({id: `legal-${i}`, text: r[1], page: r[0], st: "R", note: r[2] === "kyc" ? "Not needed again if your KYC is active on CROP" : ""})),
+    notes: [[75, "If KYC is active on the CROP portal, the documents marked KYC need not be submitted again."]]});
+  groups.push({name: "Chemistry", pages: [76, 78], items: CHEM.map((r, i) => ({id: `chem-${i + 1}`, n: i + 1, text: r[1], page: r[0], st: statusFor(r[2], CHEM_COLS, key)})), notes: CHEM_NOTES});
+  if (type === "4"){
+    groups.push({name: "Bio-efficacy", pages: [79, 79], items: [], notes: [[79, "9(4) TI / TIM / FI / FIM: no bio-efficacy data. The label claim is granted as per the approved 9(3) formulation or approved label expansion."]]});
+  } else {
+    groups.push({name: "Bio-efficacy", pages: [79, 82], items: BIO.map((r, i) => ({id: `bio-${i + 1}`, n: i + 1, text: r[1], page: r[0], st: statusFor(r[2], BIO_COLS, key)})), notes: BIO_NOTES});
+  }
+  const sitDef = (SITUATIONS[key] || []).find(s => s[0] === sit);
+  let tox = TOX.map((r, i) => ({id: `tox-${i + 1}`, n: i + 1, text: r[1], page: r[0], st: statusFor(r[2], TOX_COLS, key)}));
+  const toxNotes = TOX_NOTES.slice();
+  if (sitDef){
+    toxNotes.unshift([sitDef[4], "For your case: " + sitDef[2]]);
+    if (sitDef[3]) tox = tox.map(it => ({...it, st: sitDef[3].includes(it.n) ? (isReq(it.st) ? it.st : "R") : "NR", over: true}));
+  }
+  groups.push({name: "Toxicology", pages: [83, 88], items: tox, notes: toxNotes});
+  groups.push({name: "Packaging and labelling", pages: [89, 89], items: PACK.map((r, i) => ({id: `pack-${i + 1}`, n: i + 1, text: r[1], page: r[0], st: statusFor(r[2], PACK_COLS, key)})), notes: PACK_NOTES});
+  const rel = [...(RELATED[key] || []), ...(RELATED[type] || []), ...RELATED.all];
+  const title = `${TYPE_INFO[type][0]} · ${cat} (${CAT_INFO[cat][1]})${sitDef ? " · " + sitDef[1] : ""}`;
+  return {kind: "chem", key: [type, cat, sit || ""].join("|"), title, groups, related: rel, caseNote: sitDef ? [sitDef[4], sitDef[2]] : null};
+}
+
+function wzPane(){ return $("#wizPane"); }
+function wzHeader(crumbs){
+  return `<div class="wz-crumbs">${crumbs.map((c, i) => i < crumbs.length - 1 ? `<button class="linkbtn" data-wgo="${c[1]}">${esc(c[0])}</button> ›` : `<b>${esc(c[0])}</b>`).join(" ")}</div>`;
+}
+function drawWizard(){
+  const p = wzPane();
+  if (!p || p.hidden) return;
+  const s = WZ.step;
+  if (s === "start"){
+    const apps = WZ.apps;
+    p.innerHTML = `<div class="rhead"><div class="eyebrow">Checklist wizard</div><h2>What do you need to file?</h2>
+      <div class="meta" style="margin:0">Answer two or three questions and get the exact data and document checklist from the guidelines, with page numbers.</div></div>
+      <div class="opts">${ROUTES.map(r => `<button class="opt" data-route="${r[0]}">${icon(r[3])}<span><b>${esc(r[1])}</b><small>${esc(r[2])}</small></span></button>`).join("")}</div>
+      <div class="lbl" style="margin-top:22px">My saved checklists</div>
+      ${WZ.local ? `<div class="meta" style="margin-top:-4px">Saved in this browser on this device.</div>` : ""}
+      ${!WZ.db && !WZ.local ? `<div class="meta">Loading saved checklists…</div>`
+        : apps.length ? `<div class="ulist">${apps.map(a => `<div class="uitem"><span class="d">${esc((a.updatedAt || "").slice(0, 10))}</span><span class="t"><b>${esc(a.name)}</b><br><small class="sec">${esc(a.title)}</small></span><span class="btns" style="margin:0"><span class="prog">${a.done || 0}/${a.total || 0}</span><button class="btn primary" data-open="${esc(a.id)}">Open</button></span></div>`).join("")}</div>`
+        : `<div class="meta">None yet. Make a checklist and press "Save" to keep your ticks for each product or client.</div>`}`;
+  } else if (s === "type"){
+    p.innerHTML = wzHeader([["Start", "start"], ["Registration type", ""]]) + `<div class="rhead"><h2>Which registration?</h2></div>
+      <div class="opts">${Object.entries(TYPE_INFO).map(([k, t]) => `<button class="opt" data-type="${k}"><span class="tag">${k === "3B" ? "9(3B)" : k === "3" ? "9(3)" : "9(4)"}</span><span><b>${esc(t[0])}</b><small>${esc(t[1])}</small></span></button>`).join("")}</div>`;
+  } else if (s === "cat"){
+    const cats = WZ.type === "3B" ? ["TI", "TIM", "FIM"] : ["TI", "TIM", "FI", "FIM"];
+    p.innerHTML = wzHeader([["Start", "start"], [TYPE_INFO[WZ.type][0], "type"], ["Category", ""]]) + `<div class="rhead"><h2>Which category?</h2></div>
+      <div class="opts">${cats.map(c => `<button class="opt" data-cat="${c}"><span class="tag">${c}</span><span><b>${esc(CAT_INFO[c][1])}</b><small>${esc(CAT_INFO[c][2])}</small></span></button>`).join("")}</div>`;
+  } else if (s === "sit"){
+    const key = `${WZ.type}-${WZ.cat}`;
+    p.innerHTML = wzHeader([["Start", "start"], [TYPE_INFO[WZ.type][0], "type"], [WZ.cat, "cat"], ["Your case", ""]]) + `<div class="rhead"><h2>Which describes your case?</h2><div class="meta" style="margin:0">This changes the toxicology requirement (pages ${SITUATIONS[key][0][4]}–88).</div></div>
+      <div class="opts one">${SITUATIONS[key].map(x => `<button class="opt" data-sit="${x[0]}"><span><b>${esc(x[1])}</b><small>${esc(x[2])}</small></span></button>`).join("")}</div>`;
+  } else if (s === "route"){
+    const test = ROUTE_SECTIONS[WZ.route];
+    const secs = DATA.toc.map((e, i) => [e, i]).filter(([[, t]]) => test(t) && !/^(toxicology template|template|chemistry dossier|format for|templates)/i.test(t));
+    const r = ROUTES.find(x => x[0] === WZ.route);
+    p.innerHTML = wzHeader([["Start", "start"], [r[1], ""]]) + `<div class="rhead"><h2>${esc(r[1])}</h2><div class="meta" style="margin:0">Pick the guideline that fits. Read it, get key points, or let Claude turn it into a checklist with page numbers.</div></div>
+      <div class="ulist">${secs.map(([[lv, t, pg], i]) => { const [a, b] = secRange(i); return `<div class="uitem"><span class="d">p.${a}${b > a ? "–" + b : ""}</span><span class="t">${esc(t)}</span><span class="btns" style="margin:0"><button class="btn" data-read="${i}">Read</button>${sample ? `<button class="btn primary" data-make="${i}">Make checklist</button>` : ""}</span></div>`; }).join("")}</div>`;
+  } else if (s === "list"){
+    drawChecklist();
+    return;
+  }
+  wireWizard();
+}
+function wireWizard(){
+  const p = wzPane();
+  p.querySelectorAll("[data-wgo]").forEach(b => b.onclick = () => { WZ.step = b.dataset.wgo; drawWizard(); });
+  p.querySelectorAll("[data-route]").forEach(b => b.onclick = () => { WZ.route = b.dataset.route; WZ.step = WZ.route === "chem" ? "type" : "route"; drawWizard(); });
+  p.querySelectorAll("[data-type]").forEach(b => b.onclick = () => { WZ.type = b.dataset.type; WZ.step = "cat"; drawWizard(); });
+  p.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => {
+    WZ.cat = b.dataset.cat;
+    if (SITUATIONS[`${WZ.type}-${WZ.cat}`] && SITUATIONS[`${WZ.type}-${WZ.cat}`].length > 1){ WZ.step = "sit"; drawWizard(); }
+    else openList(buildChemList(WZ.type, WZ.cat, (SITUATIONS[`${WZ.type}-${WZ.cat}`] || [[null]])[0][0]));
+  });
+  p.querySelectorAll("[data-sit]").forEach(b => b.onclick = () => openList(buildChemList(WZ.type, WZ.cat, b.dataset.sit)));
+  p.querySelectorAll("[data-read]").forEach(b => b.onclick = () => openSection(+b.dataset.read));
+  p.querySelectorAll("[data-make]").forEach(b => b.onclick = () => makeAiList(+b.dataset.make, b));
+  p.querySelectorAll("[data-open]").forEach(b => b.onclick = () => openSaved(b.dataset.open));
+}
+
+function openList(list, saved){
+  WZ.list = list; WZ.saved = saved || null; WZ.ticks = Object.assign({}, saved && saved.ticks); WZ.notes = (saved && saved.notes) || "";
+  WZ.step = "list"; WZ.showNR = false; drawWizard(); window.scrollTo({top: 0});
+}
+function reqItems(){ return WZ.list.groups.flatMap(g => g.items.filter(it => isReq(it.st))); }
+function drawChecklist(){
+  const L = WZ.list, p = wzPane();
+  const req = reqItems(), done = req.filter(it => WZ.ticks[it.id]).length;
+  const pct = req.length ? Math.round(done / req.length * 100) : 0;
+  const stLabel = st => st === "R" ? "Required" : st;
+  const stTip = st => /\$/.test(st) ? "See R$ note" : /\*\*/.test(st) ? "See R** note" : /#/.test(st) ? "See R# note" : /\*/.test(st) ? "See R* note" : /\//.test(st) ? "Depends: see notes" : "";
+  let html = wzHeader([["Start", "start"], [L.kind === "chem" ? "Checklist" : "AI checklist", ""]]) + `
+    <div class="rhead"><div class="eyebrow">${L.kind === "chem" ? "Data requirements · Sub-category 3.1" : "Made by Claude from the guideline text · check against the pages"}</div>
+      <h2>${esc(L.title)}</h2>
+      ${L.caseNote ? `<div class="gnotes" style="border:1px solid var(--line);border-radius:10px;max-width:900px">${markImportant(esc("Your case: " + L.caseNote[1]))} <a class="pgl" href="${pdfLink(L.caseNote[0])}">p.${L.caseNote[0]}</a></div>` : ""}
+      <div class="progress" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${pct}%"></span></div>
+      <div class="meta" style="margin:0">${done} of ${req.length} required items ticked${WZ.saved ? ` · saved as <b>${esc(WZ.saved.name)}</b>` : ""}</div>
+      <div class="btns">
+        ${WZ.db || WZ.local ? (WZ.saved ? "" : `<input id="wzName" placeholder="Product or client name" aria-label="Checklist name"><button class="btn primary" id="wzSave">Save</button>`) : ""}
+        <button class="btn" id="wzCopy">Copy checklist</button>
+        <a class="btn" id="wzWa" target="_blank" rel="noopener">Share on WhatsApp ↗</a>
+        <button class="btn" id="wzNR">${WZ.showNR ? "Hide" : "Show"} not-required items</button>
+        ${WZ.saved ? `<button class="btn" id="wzDel">Delete</button>` : ""}
+      </div>
+      <div class="note" id="wzMsg" aria-live="polite"></div>
+    </div>`;
+  for (const g of L.groups){
+    const r = g.items.filter(it => isReq(it.st)), nr = g.items.filter(it => !isReq(it.st));
+    html += `<details class="grp" open><summary><b>${esc(g.name)}</b><span class="meta" style="margin:0">${r.length ? `${r.filter(it => WZ.ticks[it.id]).length}/${r.length} done` : g.items.length ? "nothing required" : ""} · <a href="${pdfLink(g.pages[0])}">p.${g.pages[0]}${g.pages[1] > g.pages[0] ? "–" + g.pages[1] : ""}</a></span></summary>
+      <div class="items">${r.map(it => `<label class="item"><input type="checkbox" data-tick="${it.id}"${WZ.ticks[it.id] ? " checked" : ""}><span class="itx">${it.n ? `<span class="num">${it.n}.</span> ` : ""}${markImportant(esc(it.text))}${it.note ? `<small class="sec"> · ${esc(it.note)}</small>` : ""}</span><span class="stc ${it.st === "R" ? "" : "cond"}" title="${esc(stTip(it.st))}">${esc(stLabel(it.st))}</span><a class="pgl" href="${pdfLink(it.page)}">p.${it.page}</a></label>`).join("")}
+      ${WZ.showNR && nr.length ? nr.map(it => `<div class="item nr"><span></span><span class="itx">${it.n ? `<span class="num">${it.n}.</span> ` : ""}${esc(it.text)}</span><span class="stc nrc">${esc(it.st || "NR")}</span><a class="pgl" href="${pdfLink(it.page)}">p.${it.page}</a></div>`).join("") : ""}</div>
+      ${g.notes && g.notes.length ? `<div class="gnotes">${g.notes.map(n => `<p>${markImportant(esc(n[1]))} <a class="pgl" href="${pdfLink(n[0])}">p.${n[0]}</a></p>`).join("")}</div>` : ""}
+    </details>`;
+  }
+  if (L.related && L.related.length){
+    html += `<div class="lbl" style="margin-top:16px">Also read</div><div class="srcs">${L.related.map(r => `<button class="btn" data-relp="${r[0]}">${esc(r[1])} · p.${r[0]}</button>`).join("")}</div>`;
+  }
+  html += `<div class="lbl" style="margin-top:16px">Notes</div><textarea id="wzNotes" class="wznotes" placeholder="Your own notes for this application (saved with the checklist)">${esc(WZ.notes || "")}</textarea>`;
+  p.innerHTML = html;
+  wireWizard();
+  p.querySelectorAll("[data-tick]").forEach(cb => cb.onchange = () => { WZ.ticks[cb.dataset.tick] = cb.checked; if (!cb.checked) delete WZ.ticks[cb.dataset.tick]; drawChecklist(); persist(); });
+  p.querySelectorAll("[data-relp]").forEach(b => b.onclick = () => { const p0 = +b.dataset.relp; const i = DATA.toc.findIndex(e => e[2] === p0); i >= 0 ? openSection(i) : openViewer(p0); });
+  $("#wzNR").onclick = () => { WZ.showNR = !WZ.showNR; drawChecklist(); };
+  $("#wzCopy").onclick = () => copyText(checklistText(), $("#wzMsg"));
+  $("#wzWa").href = "https://wa.me/?text=" + encodeURIComponent(checklistText().slice(0, 3500));
+  const notes = $("#wzNotes"); let nt;
+  notes.oninput = () => { WZ.notes = notes.value; clearTimeout(nt); nt = setTimeout(persist, 800); };
+  if ($("#wzSave")) $("#wzSave").onclick = saveList;
+  if ($("#wzDel")) $("#wzDel").onclick = delList;
+}
+function checklistText(){
+  const L = WZ.list;
+  let t = `${L.title}\n(Guidelines for the Registration of Pesticides, 472 RC compilation; page numbers are PDF pages)\n`;
+  for (const g of L.groups){
+    const r = g.items.filter(it => isReq(it.st));
+    t += `\n${g.name.toUpperCase()} (p.${g.pages[0]}${g.pages[1] > g.pages[0] ? "-" + g.pages[1] : ""})\n`;
+    if (!r.length) t += (g.notes && g.notes[0] ? "- " + g.notes[0][1] : "- Nothing required") + "\n";
+    for (const it of r) t += `${WZ.ticks[it.id] ? "[x]" : "[ ]"} ${it.text}${it.st !== "R" ? ` (${it.st})` : ""} - p.${it.page}\n`;
+  }
+  if (WZ.notes) t += `\nNotes: ${WZ.notes}\n`;
+  return t;
+}
+async function copyText(t, msg){
+  try { await navigator.clipboard.writeText(t); msg.textContent = "Copied. Paste it into email or chat."; }
+  catch(e){
+    const ta = document.createElement("textarea"); ta.value = t; ta.className = "wznotes"; msg.textContent = "Select all and copy:"; msg.after(ta); ta.select();
+  }
+}
+
+// saved checklists: private to each person, under data/users/<id>
+function appsCol(){ return WZ.db.collection("data/users/" + WZ.uid); }
+const LS_KEY = "rc-checklists";
+function lsAll(){ try { return JSON.parse(localStorage.getItem(LS_KEY) || "[]"); } catch(e) { return []; } }
+async function storeSet(id, doc){
+  if (WZ.db) return appsCol().doc(id).set(doc);
+  const arr = lsAll().filter(a => a.id !== id); arr.unshift({id, ...doc});
+  localStorage.setItem(LS_KEY, JSON.stringify(arr));   // throws if storage is blocked; callers report it
+  WZ.apps = arr;
+}
+async function storeDel(id){
+  if (WZ.db) return appsCol().doc(id).delete();
+  const arr = lsAll().filter(a => a.id !== id);
+  localStorage.setItem(LS_KEY, JSON.stringify(arr));
+  WZ.apps = arr;
+}
+function summary(){ const req = reqItems(); return {done: req.filter(it => WZ.ticks[it.id]).length, total: req.length}; }
+async function saveList(){
+  const name = ($("#wzName").value || "").trim();
+  if (!name){ $("#wzMsg").textContent = "Type a product or client name first."; $("#wzName").focus(); return; }
+  const id = "cl-" + Date.now().toString(36);
+  const doc = {name, title: WZ.list.title, key: WZ.list.key, kind: WZ.list.kind, ticks: WZ.ticks, notes: WZ.notes || "", updatedAt: new Date().toISOString(), ...summary()};
+  if (WZ.list.kind !== "chem") doc.list = WZ.list;
+  try { await storeSet(id, doc); WZ.saved = {id, ...doc}; drawChecklist(); $("#wzMsg").textContent = "Saved. Your ticks and notes now save automatically."; }
+  catch(e){ $("#wzMsg").textContent = "Could not save. Check your connection and try again."; }
+}
+let saving = Promise.resolve();
+function persist(){
+  if (!WZ.saved || !(WZ.db || WZ.local)) return;
+  const {id, ...rest} = WZ.saved;
+  const doc = {...rest, ticks: {...WZ.ticks}, notes: WZ.notes || "", updatedAt: new Date().toISOString(), ...summary()};
+  WZ.saved = {id, ...doc};
+  saving = saving.then(() => storeSet(id, doc).catch(() => { const m = $("#wzMsg"); if (m) m.textContent = "Last change was not saved. Check your connection."; }));
+}
+async function delList(){
+  const m = $("#wzMsg");
+  if (m.dataset.confirm !== "1"){ m.dataset.confirm = "1"; m.textContent = "Press Delete again to remove this saved checklist."; return; }
+  try { await storeDel(WZ.saved.id); WZ.saved = null; WZ.step = "start"; drawWizard(); } catch(e){ m.textContent = "Could not delete. Try again."; }
+}
+function openSaved(id){
+  const a = WZ.apps.find(x => x.id === id);
+  if (!a) return;
+  let list;
+  if (a.kind === "chem"){ const [t, c, s] = a.key.split("|"); list = buildChemList(t, c, s || null); }
+  else list = a.list;
+  openList(list, a);
+}
+
+// AI checklist for the other guideline sections
+async function makeAiList(i, btn){
+  if (!sample) return;
+  const [a, b] = secRange(i);
+  btn.disabled = true; const old = btn.textContent; btn.textContent = "Reading the guideline…";
+  const {text, cut} = sectionText(a, b, 120000);
+  const prompt = `From this section of India's CIB&RC "Guidelines for the Registration of Pesticides" ("${DATA.toc[i][1]}", PDF pages ${a}-${b}), list every data item and document an applicant must submit, as a checklist. Use only this text. Group items under short group names (e.g. "Legal documents", "Chemistry", "Bio-efficacy", "Toxicology", "Packaging"; use the section's own groups when it has them). Keep each item short and in plain language. For each item give the PDF page where it appears (from the "=== PAGE n ===" markers). Mark an item "R" if required, or a short condition like "If claimed" if it is conditional.${cut ? ` Only pages ${a}-${cut - 1} are included.` : ""}
+
+Reply with only JSON: {"groups":[{"name":"Chemistry","items":[{"text":"Method of analysis","page":${a},"st":"R"}]}]}
+
+${text}`;
+  try {
+    const out = await sample.json(prompt, {cache: {gcTime: 86400000}});
+    const groups = (out && Array.isArray(out.groups) ? out.groups : []).map((g, gi) => ({
+      name: String(g.name || "Items"), pages: [a, b], notes: [],
+      items: (Array.isArray(g.items) ? g.items : []).map((it, k) => {
+        const pg = Math.round(Number(it.page)); const st = String(it.st || "R");
+        return {id: `ai-${gi}-${k}`, text: String(it.text || ""), page: pg >= a && pg <= b ? pg : a, st: /^r$/i.test(st) ? "R" : "R (" + st + ")"};
+      }).filter(it => it.text)
+    })).filter(g => g.items.length);
+    if (!groups.length) throw {code: "empty"};
+    openList({kind: "ai", key: "sec|" + i, title: DATA.toc[i][1], groups, related: [[a, "Read the full section"]]});
+  } catch(e){
+    btn.textContent = e && e.code === "rate_limited" ? "Too many requests; try later" : "Could not make it; try again";
+    setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 4000);
+    return;
+  }
+}
+
+if (window.claude && window.claude.use){
+  Promise.all([window.claude.use("db"), window.claude.use("user")]).then(async ([db, user]) => {
+    if (!db || !user){ WZ.db = false; WZ.local = true; WZ.apps = lsAll(); drawWizard(); return; }
+    try { WZ.uid = await user.id(); } catch(e) { WZ.uid = null; }
+    if (!WZ.uid){ WZ.db = false; WZ.local = true; WZ.apps = lsAll(); drawWizard(); return; }
+    WZ.db = db;
+    appsCol().orderBy("updatedAt", "desc").limit(100).onSnapshot(snap => {
+      WZ.apps = snap.docs.map(d => ({id: d.id, ...d.data()}));
+      if (WZ.step === "start") drawWizard();
+    }, () => {});
+    drawWizard();
+  });
+} else { WZ.db = false; WZ.local = true; WZ.apps = lsAll(); }
+
+// ---------- in-page PDF viewer (online version: the PDF is only reachable from inside this page) ----------
+const V = {doc: null, loading: null, page: 1, zoom: 1, textMode: false, renderTask: null};
+function loadScript(src){
+  return new Promise((ok, bad) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => bad(new Error("script")); document.head.appendChild(s); });
+}
+function loadPdf(){
+  if (V.loading) return V.loading;
+  V.loading = (async () => {
+    const base = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+    await loadScript(base + "pdf.min.js");
+    await loadScript(base + "pdf.worker.min.js");   // runs pdf.js on the page itself; the frame blocks outside workers
+    const buf = await (await fetch(DATA.pdfUrl)).arrayBuffer();
+    V.doc = await window.pdfjsLib.getDocument({data: new Uint8Array(buf)}).promise;
+    return V.doc;
+  })();
+  V.loading.catch(() => { V.loading = null; });
+  return V.loading;
+}
+async function renderPage(){
+  const p = V.page, body = $("#vBody");
+  $("#vPage").value = p; $("#vTotal").textContent = NP;
+  $("#vSec").textContent = DATA.sec[p-1] || "";
+  $("#vText").textContent = V.textMode ? "Show page image" : "Show text";
+  if (V.textMode || !V.doc){
+    if (V.textMode) body.innerHTML = `<div class="full" style="max-width:80ch;max-height:none;width:100%">${esc(DATA.pages[p-1])}</div>`;
+    return;
+  }
+  const page = await V.doc.getPage(p);
+  if (p !== V.page || V.textMode) return;
+  const fit = Math.min(body.clientWidth - 32, 900) / page.getViewport({scale: 1}).width;
+  const vp = page.getViewport({scale: fit * V.zoom});
+  const dpr = window.devicePixelRatio || 1;
+  const c = document.createElement("canvas");
+  c.width = Math.floor(vp.width * dpr); c.height = Math.floor(vp.height * dpr);
+  c.style.width = Math.floor(vp.width) + "px"; c.style.height = Math.floor(vp.height) + "px";
+  if (V.renderTask) V.renderTask.cancel();
+  V.renderTask = page.render({canvasContext: c.getContext("2d"), viewport: vp, transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null});
+  try { await V.renderTask.promise; } catch(e) { return; }
+  if (p !== V.page || V.textMode) return;
+  body.innerHTML = ""; body.appendChild(c); body.scrollTop = 0;
+}
+async function openViewer(p){
+  V.page = Math.min(NP, Math.max(1, p));
+  $("#viewer").hidden = false; document.body.style.overflow = "hidden";
+  if (!V.doc && !V.textMode){
+    $("#vBody").innerHTML = `<div class="vmsg">Opening the guideline PDF (7.6 MB, first time only)…</div>`;
+    renderPage();
+    try { await loadPdf(); }
+    catch(e){ V.textMode = true; $("#vBody").innerHTML = ""; renderPage(); $("#vSec").textContent = "The PDF image could not load, so this shows the page text. " + (DATA.sec[V.page-1] || ""); return; }
+  }
+  renderPage();
+}
+function closeViewer(){ $("#viewer").hidden = true; document.body.style.overflow = ""; }
+const go = d => { V.page = Math.min(NP, Math.max(1, V.page + d)); renderPage(); };
+$("#vClose").onclick = closeViewer;
+$("#vPrev").onclick = () => go(-1);
+$("#vNext").onclick = () => go(1);
+$("#vIn").onclick = () => { V.zoom = Math.min(3, V.zoom * 1.25); renderPage(); };
+$("#vOut").onclick = () => { V.zoom = Math.max(.5, V.zoom / 1.25); renderPage(); };
+$("#vText").onclick = () => { V.textMode = !V.textMode; if (!V.textMode && !V.doc) openViewer(V.page); else renderPage(); };
+$("#vPage").addEventListener("change", e => { const n = parseInt(e.target.value, 10); if (n) { V.page = Math.min(NP, Math.max(1, n)); renderPage(); } });
+document.addEventListener("keydown", e => {
+  if ($("#viewer").hidden || e.target.tagName === "INPUT") return;
+  if (e.key === "Escape") closeViewer();
+  else if (e.key === "ArrowRight") go(1);
+  else if (e.key === "ArrowLeft") go(-1);
+});
+if (DATA.inlineViewer){
+  // every page link opens the viewer instead of a new tab
+  document.addEventListener("click", e => {
+    const a = e.target.closest && e.target.closest('a[href*="#page="]');
+    if (!a) return;
+    e.preventDefault();
+    openViewer(parseInt(a.getAttribute("href").split("#page=")[1], 10));
+  });
+}
+
+// start
+runSearch();
+let startTab = "ask";
+try { startTab = localStorage.getItem("rctab") || "ask"; } catch(e) {}
+if (!AI){
+  $("#askPane").innerHTML = `<div class="empty">Type your question in your own words. You will see the paragraphs of the guidelines that answer it best, with page numbers.<br><br><span class="disclaim">This version has no AI: it finds and shows the guideline text itself.</span></div>`;
+  show(startTab);
+} else {
+  drawAskIntro();
+  show(startTab);
+  $("#askBtn").disabled = true;
+  window.claude.use("sample").then(async s => {
+    if (!s){ disableAsk("Claude is not available in this view, so only Search pages works here."); return; }
+    sample = s;
+    try { const lim = await s.limits(); toolsOk = !!(lim && lim.tools); } catch(e) { toolsOk = false; }
+    $("#askBtn").disabled = false;
+    const k = $("#rKey"); if (k) k.hidden = false;
+  });
+}
+</script>

@@ -6,18 +6,18 @@
 /* Layout: sticky ask/search band on top; contents rail left, answers + page hits right; one column on phones */
 :root{
   --bg:#f5f7f4; --panel:#ffffff; --ink:#1b2420; --muted:#5a6862; --line:#dde3de;
-  --accent:#1f6f4a; --accent-ink:#ffffff; --accent-soft:#e2f0e8; --mark:#ffe58a; --must:#fbd9d0; --chip:#edf2ee; --warn:#8a5a00;
+  --accent:#1f6f4a; --accent-ink:#ffffff; --accent-soft:#e2f0e8; --mark:#ffe58a; --must:#fbd9d0; --chip:#edf2ee; --warn:#8a5a00; --c-blue:#2563a8; --c-violet:#6b46b8; --c-orange:#c4570f; --c-teal:#0f7b80; --c-rose:#b83260; --c-green:#1f6f4a; --c-on:#ffffff;
   --f-display:"Source Serif 4",Georgia,serif; --f-body:"Public Sans","Segoe UI",system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#111613; --panel:#19201c; --ink:#e4ebe7; --muted:#97a69f; --line:#2b3530;
-    --accent:#5cc392; --accent-ink:#0c1a12; --accent-soft:#1d3127; --mark:#6b5a12; --must:#5a2a20; --chip:#222b26; --warn:#e7b65a; color-scheme:dark;
+    --accent:#5cc392; --accent-ink:#0c1a12; --accent-soft:#1d3127; --mark:#6b5a12; --must:#5a2a20; --chip:#222b26; --warn:#e7b65a; color-scheme:dark; --c-blue:#3b7fc9; --c-violet:#8463cf; --c-orange:#d2691e; --c-teal:#1a9298; --c-rose:#c94a75; --c-green:#2e8a5f; --c-on:#ffffff;
   }
 }
 :root[data-theme="dark"]{
   --bg:#111613; --panel:#19201c; --ink:#e4ebe7; --muted:#97a69f; --line:#2b3530;
-  --accent:#5cc392; --accent-ink:#0c1a12; --accent-soft:#1d3127; --mark:#6b5a12; --must:#5a2a20; --chip:#222b26; --warn:#e7b65a; color-scheme:dark;
+  --accent:#5cc392; --accent-ink:#0c1a12; --accent-soft:#1d3127; --mark:#6b5a12; --must:#5a2a20; --chip:#222b26; --warn:#e7b65a; color-scheme:dark; --c-blue:#3b7fc9; --c-violet:#8463cf; --c-orange:#d2691e; --c-teal:#1a9298; --c-rose:#c94a75; --c-green:#2e8a5f; --c-on:#ffffff;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -88,9 +88,9 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 .toprow{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin-bottom:10px}
 .toprow h1{margin:0}
 .olinks{display:flex;flex-wrap:wrap;gap:6px}
-.olinks a{font:600 13px var(--f-body);text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:4px 10px;background:var(--panel)}
-.olinks a:hover{border-color:var(--accent);color:var(--accent)}
-.olinks a.crop{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.olinks a{display:inline-flex;align-items:center;gap:6px;font:600 13px var(--f-body);text-decoration:none;color:var(--c-on);border-radius:8px;padding:5px 11px;background:var(--c, var(--c-green));transition:filter .15s,transform .15s}
+.olinks a:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.olinks a svg{flex:none}
 .badge{display:inline-block;min-width:18px;padding:0 5px;margin-left:5px;border-radius:99px;background:var(--must);color:var(--ink);font-size:11px;line-height:18px;text-align:center}
 .ulist{display:flex;flex-direction:column;gap:8px;max-width:90ch}
 .uitem{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;align-items:baseline}
@@ -111,7 +111,10 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
 .tile{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;text-decoration:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;color:var(--ink);font:inherit;position:relative;transition:border-color .15s,transform .15s}
 .tile:hover,.tile:focus-visible{border-color:var(--accent);transform:translateY(-2px)}
-.tile .ibox{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.tile .ibox{width:44px;height:44px;border-radius:12px;background:var(--c, var(--c-green));color:var(--c-on);display:grid;place-items:center;box-shadow:0 3px 8px -3px var(--c, var(--c-green))}
+.tile{border-top:3px solid var(--c, var(--c-green))}
+.tile .ibox .ico{color:var(--c-on);margin:0}
+.tile:hover,.tile:focus-visible{border-color:var(--c, var(--c-green))}
 .tile b{font-size:15.5px}
 .tile small{color:var(--muted);font-size:13px;line-height:1.4}
 .tile .badge{position:absolute;top:12px;right:12px;margin:0}
@@ -305,10 +308,10 @@ p.kp-src::after{content:"Key point " attr(data-kpn);display:block;font:600 10.5p
   <div class="toprow">
     <h1>CIB&amp;RC Registration Desk <span>472 RC Guidelines for the Registration of Pesticides · 727 pages</span></h1>
     <nav class="olinks" aria-label="Official websites">
-      <a class="crop" href="https://cropuser.cgg.gov.in/" target="_blank" rel="noopener">CROP portal ↗</a>
-      <a href="https://ppqs.gov.in/divisions/cib-rc/news-update" target="_blank" rel="noopener">CIB&amp;RC news ↗</a>
-      <a href="https://ppqs.gov.in/divisions/cib-rc/guidelines" target="_blank" rel="noopener">Guidelines ↗</a>
-      <a href="https://egazette.gov.in/" target="_blank" rel="noopener">eGazette ↗</a>
+      <a style="--c:var(--c-green)" href="https://cropuser.cgg.gov.in/" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg>CROP portal ↗</a>
+      <a style="--c:var(--c-orange)" href="https://ppqs.gov.in/divisions/cib-rc/news-update" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4l2-2z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>CIB&amp;RC news ↗</a>
+      <a style="--c:var(--c-teal)" href="https://ppqs.gov.in/divisions/cib-rc/guidelines" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M8 7h7M8 10h5"/></svg>Guidelines ↗</a>
+      <a style="--c:var(--c-violet)" href="https://egazette.gov.in/" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4M10 12h6M10 16h6"/></svg>eGazette ↗</a>
     </nav>
   </div>
   <div class="tabs" role="tablist">
@@ -1547,6 +1550,7 @@ function drawHome(){
   const nNew = UPD.items.filter(isNew).length;
   const notices = UPD.items.filter(it => it.source !== "guidelines").slice(0, 3);
   const apps = (WZ.apps || []).slice(0, 3);
+  const COL = {ask: "blue", wiz: "violet", upd: "orange", read: "teal", search: "rose", crop: "green"};
   const tiles = [
     ["ask", "chat", "Ask a question", AI ? "Answers from the guidelines, with page numbers" : "Find the paragraphs that answer your question"],
     ["wiz", "check", "Checklist wizard", "Exact data and documents for 9(3B), 9(3), 9(4)"],
@@ -1563,8 +1567,8 @@ function drawHome(){
       <div class="chips">${ASKS.slice(0, 4).map(t => `<button class="chip" data-hq="${esc(t)}">${esc(t)}</button>`).join("")}</div>
     </div>
     <div class="tiles">${tiles.map(([k, ic, t, d]) => k === "crop"
-      ? `<a class="tile" href="https://cropuser.cgg.gov.in/" target="_blank" rel="noopener"><span class="ibox">${icon(ic)}</span><b>${t} ↗</b><small>${d}</small></a>`
-      : `<button class="tile" data-tile="${k}"><span class="ibox">${icon(ic)}</span><b>${t}</b><small>${d}</small>${k === "upd" && nNew ? `<span class="badge">${nNew} new</span>` : ""}</button>`).join("")}</div>
+      ? `<a class="tile" style="--c:var(--c-${COL[k]})" href="https://cropuser.cgg.gov.in/" target="_blank" rel="noopener"><span class="ibox">${icon(ic)}</span><b>${t} ↗</b><small>${d}</small></a>`
+      : `<button class="tile" style="--c:var(--c-${COL[k]})" data-tile="${k}"><span class="ibox">${icon(ic)}</span><b>${t}</b><small>${d}</small>${k === "upd" && nNew ? `<span class="badge">${nNew} new</span>` : ""}</button>`).join("")}</div>
     <div class="homecols">
       <section class="hcard" aria-label="Latest notices">
         <div class="hhead"><b>Latest from CIB&amp;RC</b><button class="linkbtn" data-tile="upd">See all</button></div>

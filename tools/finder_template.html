@@ -28,7 +28,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line);padding-block:12px}
 h1{font:600 19px/1.2 var(--f-display);margin:0 0 10px;text-wrap:balance}
 h1 span{font:400 13px var(--f-body);color:var(--muted);margin-left:6px}
-.tabs{display:flex;gap:4px;margin-bottom:8px}
+.tabs{display:flex;gap:4px;margin-bottom:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;flex:none}
 .tab{font:600 13px var(--f-body);letter-spacing:.03em;border:1px solid var(--line);background:var(--chip);color:var(--ink);padding:5px 14px;border-radius:99px;cursor:pointer}
 .tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .row{display:flex;gap:8px}
@@ -100,6 +102,35 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 .pill.Guideline{background:var(--mark);color:var(--ink)}
 .pill.new{background:var(--accent);color:var(--accent-ink)}
 @media (max-width:560px){.uitem{grid-template-columns:1fr}}
+/* Home dashboard */
+.hero{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;display:flex;flex-direction:column;gap:12px}
+.hero h2{font:600 clamp(22px,3.2vw,30px)/1.2 var(--f-display);margin:0;text-wrap:balance}
+.hero .row{max-width:820px}
+#homeQ{flex:1;min-width:0;font:17px var(--f-body);padding:12px 14px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);outline:none}
+#homeQ:focus{border-color:var(--accent)}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.tile{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;text-decoration:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;color:var(--ink);font:inherit;position:relative;transition:border-color .15s,transform .15s}
+.tile:hover,.tile:focus-visible{border-color:var(--accent);transform:translateY(-2px)}
+.tile .ibox{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.tile b{font-size:15.5px}
+.tile small{color:var(--muted);font-size:13px;line-height:1.4}
+.tile .badge{position:absolute;top:12px;right:12px;margin:0}
+.homecols{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px;margin-top:14px}
+.hcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.hcard .hhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+.hcard .hhead b{font:600 16px var(--f-display)}
+.nrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:9px 0;border-top:1px solid var(--line)}
+.nrow .t{overflow-wrap:anywhere;font-size:14px}
+.nrow .d{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.nrow .btn{align-self:start;grid-row:span 2}
+.crow{display:flex;flex-direction:column;gap:5px;padding:9px 0;border-top:1px solid var(--line);cursor:pointer;background:none;border-left:0;border-right:0;border-bottom:0;text-align:left;color:var(--ink);font:inherit;width:100%}
+.crow:hover b{color:var(--accent)}
+.crow .progress{height:6px;max-width:none}
+.glance{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:13.5px}
+.glance b{color:var(--accent);white-space:nowrap}
+.ico.sm{margin:0}
+@media (max-width:820px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.homecols{grid-template-columns:1fr}}
+@media (max-width:380px){.tile{padding:12px}.tile small{display:none}}
 /* Checklist wizard */
 .opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;max-width:900px}
 .opts.one{grid-template-columns:1fr;max-width:760px}
@@ -176,7 +207,8 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
     </nav>
   </div>
   <div class="tabs" role="tablist">
-    <button class="tab" id="tabAsk" role="tab" aria-selected="true">Ask a question</button>
+    <button class="tab" id="tabHome" role="tab" aria-selected="true">Home</button>
+    <button class="tab" id="tabAsk" role="tab" aria-selected="false">Ask a question</button>
     <button class="tab" id="tabWiz" role="tab" aria-selected="false">Checklist wizard</button>
     <button class="tab" id="tabSearch" role="tab" aria-selected="false">Search pages</button>
     <button class="tab" id="tabUpd" role="tab" aria-selected="false">Latest updates<span class="badge" id="updBadge" hidden></span></button>
@@ -203,6 +235,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
     <div class="gloss" id="gloss"></div>
   </aside>
   <section style="min-width:0">
+    <div id="homePane" hidden></div>
     <div id="askPane" class="qa"></div>
     <div id="readPane" hidden></div>
     <div id="updPane" hidden></div>
@@ -357,7 +390,10 @@ function runSearch(){
 
 // ---------- tabs ----------
 function show(tab){
-  const ask = tab === "ask", srch = tab === "search", upd = tab === "upd", wiz = tab === "wiz";
+  const ask = tab === "ask", srch = tab === "search", upd = tab === "upd", wiz = tab === "wiz", home = tab === "home";
+  $("#tabHome").setAttribute("aria-selected", home);
+  $("#homePane").hidden = !home;
+  if (home) drawHome();
   $("#tabAsk").setAttribute("aria-selected", ask); $("#tabSearch").setAttribute("aria-selected", srch); $("#tabUpd").setAttribute("aria-selected", upd); $("#tabWiz").setAttribute("aria-selected", wiz);
   $("#wizPane").hidden = !wiz;
   if (wiz) drawWizard();
@@ -370,6 +406,7 @@ function show(tab){
   if (ask) $("#ask").focus(); else if (srch) $("#q").focus();
   try { localStorage.setItem("rctab", tab); } catch(e) {}
 }
+$("#tabHome").onclick = () => show("home");
 $("#tabAsk").onclick = () => show("ask");
 $("#tabSearch").onclick = () => show("search");
 $("#tabUpd").onclick = () => show("upd");
@@ -629,7 +666,7 @@ function openSection(i){
   if (n > MAXP) html += `<div class="meta">This section has ${n} pages; the first ${MAXP} are shown. Pick a smaller part from the contents, or open page ${a + MAXP} in the PDF.</div>`;
   const pane = $("#readPane");
   pane.innerHTML = html;
-  $("#askPane").hidden = $("#searchPane").hidden = $("#updPane").hidden = $("#wizPane").hidden = true;
+  $("#askPane").hidden = $("#searchPane").hidden = $("#updPane").hidden = $("#wizPane").hidden = $("#homePane").hidden = true;
   pane.hidden = false;
   window.scrollTo({top: 0});
   $("#rBack").onclick = () => show(curTab);
@@ -676,6 +713,7 @@ function drawUpdates(){
   const pane = $("#updPane");
   const nNew = UPD.items.filter(isNew).length;
   $("#updBadge").hidden = !nNew; $("#updBadge").textContent = nNew;
+  if (!$("#homePane").hidden) drawHome();
   if (pane.hidden) return;
   if (!UPD.live){
     pane.innerHTML = `<div class="empty">${AI || DATA.mode === "site" ? "Loading the latest notices…" : "The latest-updates list lives in the online version of this page" + (DATA.onlineUrl ? `: <a href="${esc(DATA.onlineUrl)}" target="_blank" rel="noopener">${esc(DATA.onlineUrl)}</a>` : ".")}<br><br>You can always check the official list directly: <a href="https://ppqs.gov.in/divisions/cib-rc/news-update" target="_blank" rel="noopener">CIB&amp;RC News &amp; Update</a>.</div>`;
@@ -1163,10 +1201,90 @@ if (window.claude && window.claude.use){
     appsCol().orderBy("updatedAt", "desc").limit(100).onSnapshot(snap => {
       WZ.apps = snap.docs.map(d => ({id: d.id, ...d.data()}));
       if (WZ.step === "start") drawWizard();
+      if (!$("#homePane").hidden) drawHome();
     }, () => {});
     drawWizard();
   });
 } else { WZ.db = false; WZ.local = true; WZ.apps = lsAll(); }
+
+
+// ---------- home dashboard ----------
+Object.assign(ICONS, {
+  chat: '<path d="M4 5h16v11H9l-5 4V5z"/><path d="M8 9h8M8 12h5"/>',
+  bell: '<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4l2-2z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
+  book: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M8 7h7M8 10h5"/>',
+  search: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/>',
+});
+function greeting(){
+  const h = new Date().getHours();
+  return h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
+}
+function homeAsk(q){
+  q = (q || "").trim();
+  if (!q) { $("#homeQ").focus(); return; }
+  show("ask");
+  $("#ask").value = q;
+  if (!AI) askLocal(q); else if (sample && !ctl) ask(q); else $("#ask").focus();
+}
+function drawHome(){
+  const p = $("#homePane");
+  if (!p || p.hidden) return;
+  const nNew = UPD.items.filter(isNew).length;
+  const notices = UPD.items.filter(it => it.source !== "guidelines").slice(0, 3);
+  const apps = (WZ.apps || []).slice(0, 3);
+  const tiles = [
+    ["ask", "chat", "Ask a question", AI ? "Answers from the guidelines, with page numbers" : "Find the paragraphs that answer your question"],
+    ["wiz", "check", "Checklist wizard", "Exact data and documents for 9(3B), 9(3), 9(4)"],
+    ["upd", "bell", "Latest updates", "New notices, RC minutes and Gazettes"],
+    ["read", "book", "Read the guidelines", "All categories and requirement lists, highlighted"],
+    ["search", "search", "Search pages", "Find any word across all 727 pages"],
+    ["crop", "globe", "CROP portal", "Log in to file and track applications"],
+  ];
+  p.innerHTML = `
+    <div class="hero">
+      <div class="eyebrow">${greeting()} · CIB&amp;RC Registration Desk</div>
+      <h2>What do you need to find today?</h2>
+      <div class="row"><input id="homeQ" type="search" placeholder="Ask anything, e.g. What is needed for a Free Sale Certificate?" aria-label="Ask a question"><button class="go" id="homeGo">Ask</button></div>
+      <div class="chips">${ASKS.slice(0, 4).map(t => `<button class="chip" data-hq="${esc(t)}">${esc(t)}</button>`).join("")}</div>
+    </div>
+    <div class="tiles">${tiles.map(([k, ic, t, d]) => k === "crop"
+      ? `<a class="tile" href="https://cropuser.cgg.gov.in/" target="_blank" rel="noopener"><span class="ibox">${icon(ic)}</span><b>${t} ↗</b><small>${d}</small></a>`
+      : `<button class="tile" data-tile="${k}"><span class="ibox">${icon(ic)}</span><b>${t}</b><small>${d}</small>${k === "upd" && nNew ? `<span class="badge">${nNew} new</span>` : ""}</button>`).join("")}</div>
+    <div class="homecols">
+      <section class="hcard" aria-label="Latest notices">
+        <div class="hhead"><b>Latest from CIB&amp;RC</b><button class="linkbtn" data-tile="upd">See all</button></div>
+        ${notices.length ? notices.map(it => `<div class="nrow"><span class="t">${isNew(it) ? '<span class="pill new">New</span>' : ""}<span class="pill ${esc(it.kind.replace(/\s/g, ""))}">${esc(it.kind)}</span>${esc(it.title.length > 150 ? it.title.slice(0, 147) + "…" : it.title)}</span>${it.url ? `<a class="btn" href="${esc(it.url)}" target="_blank" rel="noopener">PDF ↗</a>` : "<span></span>"}<span class="d">${esc(it.date || "")}</span></div>`).join("")
+          : `<div class="meta">${UPD.live ? "No notices yet." : (AI || DATA.mode === "site") ? "Loading the latest notices…" : `Open the online version for live notices, or the <a href="https://ppqs.gov.in/divisions/cib-rc/news-update" target="_blank" rel="noopener">official list ↗</a>.`}</div>`}
+      </section>
+      <section class="hcard" aria-label="My checklists">
+        <div class="hhead"><b>My checklists</b><button class="linkbtn" data-tile="wiz">${apps.length ? "All checklists" : "Start one"}</button></div>
+        ${apps.length ? apps.map(a => { const pct = a.total ? Math.round((a.done || 0) / a.total * 100) : 0; return `<button class="crow" data-open="${esc(a.id)}"><span><b>${esc(a.name)}</b> <small class="sec">· ${a.done || 0}/${a.total || 0}</small></span><span class="progress"><span style="width:${pct}%"></span></span><small class="sec">${esc(a.title)}</small></button>`; }).join("")
+          : `<div class="meta">Make a checklist for a product or client and save it; your progress shows here.</div>`}
+      </section>
+    </div>
+    <section class="hcard" style="margin-top:14px" aria-label="Registration types at a glance">
+      <div class="hhead"><b>At a glance</b><button class="linkbtn" data-relp="74">Data requirements table · p.74</button></div>
+      <div class="glance">
+        <b>9(3B)</b><span>Provisional registration: a new molecule while data is being completed.</span>
+        <b>9(3)</b><span>Regular registration with full data.</span>
+        <b>9(4)</b><span>Me-too: a product already registered u/s 9(3) by someone else.</span>
+        <b>TI / TIM</b><span>Technical: imported / made in India.</span>
+        <b>FI / FIM</b><span>Formulation: imported / made in India.</span>
+      </div>
+    </section>`;
+  $("#homeGo").onclick = () => homeAsk($("#homeQ").value);
+  $("#homeQ").addEventListener("keydown", e => { if (e.key === "Enter"){ e.preventDefault(); homeAsk($("#homeQ").value); } });
+  p.querySelectorAll("[data-hq]").forEach(b => b.onclick = () => homeAsk(b.dataset.hq));
+  p.querySelectorAll("[data-tile]").forEach(b => b.onclick = () => {
+    const k = b.dataset.tile;
+    if (k === "read"){ const f = $("#tocFilter"); f.focus(); f.scrollIntoView({block: "center"}); return; }
+    if (k === "wiz"){ WZ.step = "start"; }
+    show(k);
+  });
+  p.querySelectorAll("[data-open]").forEach(b => b.onclick = () => { show("wiz"); openSaved(b.dataset.open); });
+  p.querySelectorAll("[data-relp]").forEach(b => b.onclick = () => { const i = DATA.toc.findIndex(e => e[2] === +b.dataset.relp); if (i >= 0) openSection(i); });
+}
 
 // ---------- in-page PDF viewer (online version: the PDF is only reachable from inside this page) ----------
 const V = {doc: null, loading: null, page: 1, zoom: 1, textMode: false, renderTask: null};
@@ -1251,10 +1369,10 @@ let startTab = "ask";
 try { startTab = localStorage.getItem("rctab") || "ask"; } catch(e) {}
 if (!AI){
   $("#askPane").innerHTML = `<div class="empty">Type your question in your own words. You will see the paragraphs of the guidelines that answer it best, with page numbers.<br><br><span class="disclaim">This version has no AI: it finds and shows the guideline text itself.</span></div>`;
-  show(startTab);
+  show("home");
 } else {
   drawAskIntro();
-  show(startTab);
+  show("home");
   $("#askBtn").disabled = true;
   window.claude.use("sample").then(async s => {
     if (!s){ disableAsk("Claude is not available in this view, so only Search pages works here."); return; }

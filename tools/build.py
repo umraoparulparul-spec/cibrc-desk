@@ -172,9 +172,14 @@ PDF_ONLINE = os.environ.get("PDF_ONLINE", "/_blob/2a0ff1fd816dcc2488fb77005683bd
 ONLINE = os.environ.get("ONLINE_URL", "https://claude.ai/artifact/Eiy6yMtxqKKNBjPS5BisHD")
 SITE = Path(__file__).resolve().parent.parent   # the cibrc-desk-site folder
 tpl = TEMPLATE.read_text(encoding="utf-8")
+# pages with tables or forms (slow to detect, so cached): python tools/build.py --tables to refresh
+TP = Path(__file__).with_name("tablepages.json")
+if "--tables" in sys.argv or not TP.exists():
+    TP.write_text(json.dumps([i + 1 for i in range(N) if any(t.row_count >= 3 and t.col_count >= 2 for t in d[i].find_tables().tables)]))
+TABLE_PAGES = json.loads(TP.read_text())
 def render(pdf_url, online, inline=False, mode="local"):
     # mode: "claude" (artifact with AI + database), "site" (free static website), "local" (offline file)
-    data = {"pdfUrl": pdf_url, "onlineUrl": online, "inlineViewer": inline, "mode": mode, "pages": pages, "sec": secmap,
+    data = {"pdfUrl": pdf_url, "onlineUrl": online, "inlineViewer": inline, "mode": mode, "pages": pages, "sec": secmap, "tbl": TABLE_PAGES,
             "toc": [[lv, t, p] for lv, t, p in fixed]}
     return tpl.replace("/*__DATA__*/null", json.dumps(data, ensure_ascii=False).replace("</", "<\/"))
 def page(body):

@@ -213,6 +213,27 @@ p.kp-src::after{content:"Key point " attr(data-kpn);display:block;font:600 10.5p
 .hl-num{background:var(--mark);border-radius:3px;padding:0 2px;font-weight:600}
 .hl-ref{color:var(--accent);font-weight:600;border-bottom:1px dotted var(--accent)}
 .sw{display:inline-block;width:12px;height:12px;border-radius:3px}
+/* Page images in the reader */
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.seg button{all:unset;cursor:pointer;font:600 11.5px var(--f-body);padding:2px 9px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.seg button:focus-visible{outline:2px solid var(--accent)}
+.rpg .tagt{font:600 10.5px var(--f-body);letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-left:6px}
+.rimg{display:flex;flex-direction:column;align-items:center;gap:6px;overflow-x:auto}
+.rimg canvas{background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.15);max-width:100%;height:auto}
+.rimg .meta{margin:0}
+/* Tables in key points */
+.kp-tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.kp-table{border-collapse:collapse;width:100%;font-size:13.5px}
+.kp-table caption{text-align:left;font:600 14px var(--f-body);padding:8px 10px 4px;caption-side:top}
+.kp-table th{background:var(--accent-soft);color:var(--ink);text-align:left;font-weight:600;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.kp-table td{padding:7px 10px;border-top:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}
+.kp-table tr:nth-child(even) td{background:var(--bg)}
+.cell{display:inline-block;font:700 11.5px var(--f-body);border-radius:5px;padding:1px 7px;white-space:nowrap}
+.cell.y{background:var(--accent);color:var(--accent-ink)}
+.cell.n{background:var(--chip);color:var(--muted)}
+.cell.c{background:var(--mark);color:var(--ink)}
+.kp-tsrc{font-size:12px;color:var(--muted);padding:4px 10px 8px}
 /* PDF viewer */
 .viewer{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
 .vbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-block:10px;background:var(--panel);border-bottom:1px solid var(--line)}
@@ -631,6 +652,50 @@ function askLocal(qText){
   $("#askPane").querySelectorAll("[data-sec]").forEach(b => b.onclick = () => openSection(+b.dataset.sec));
 }
 
+
+// ---------- original page images inside the reader ----------
+const TBL = new Set(DATA.tbl || []);
+const IMG_OK = DATA.mode !== "local";   // the offline file cannot load the PDF into the page
+let imgObs = null;
+function setPageMode(art, m){
+  art.dataset.mode = m;
+  art.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === m));
+  art.querySelector(".rtext").hidden = m !== "text";
+  art.querySelector(".rimg").hidden = m !== "img";
+  if (m === "img") drawPageImage(art);
+}
+function watchImages(root){
+  if (imgObs) imgObs.disconnect();
+  if (!("IntersectionObserver" in window)){ root.querySelectorAll('.rpage[data-mode="img"]').forEach(drawPageImage); return; }
+  imgObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && e.target.dataset.mode === "img") drawPageImage(e.target); }), {rootMargin: "600px 0px"});
+  root.querySelectorAll(".rpage").forEach(a => imgObs.observe(a));
+}
+async function drawPageImage(art){
+  const box = art.querySelector(".rimg");
+  if (art.dataset.drawn) return;
+  art.dataset.drawn = "1";
+  const p = +art.dataset.p;
+  box.innerHTML = `<div class="kp-load"><span class="spin" aria-hidden="true"></span>Loading the original page ${p}…</div>`;
+  try {
+    await loadPdf();
+    const page = await V.doc.getPage(p);
+    const w = Math.min(box.clientWidth || 700, 900);
+    const vp = page.getViewport({scale: w / page.getViewport({scale: 1}).width});
+    const dpr = window.devicePixelRatio || 1;
+    const c = document.createElement("canvas");
+    c.width = Math.floor(vp.width * dpr); c.height = Math.floor(vp.height * dpr);
+    c.style.width = Math.floor(vp.width) + "px";
+    await page.render({canvasContext: c.getContext("2d"), viewport: vp, transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null}).promise;
+    c.setAttribute("role", "img"); c.setAttribute("aria-label", `Original page ${p} of the guidelines`);
+    box.innerHTML = ""; box.appendChild(c);
+    box.insertAdjacentHTML("beforeend", `<div class="meta"><a href="${pdfLink(p)}">Open page ${p} full size</a></div>`);
+  } catch(e){
+    delete art.dataset.drawn;
+    setPageMode(art, "text");
+    art.querySelector(".rtext").insertAdjacentHTML("afterbegin", `<p class="note">The page image could not load, so the text is shown.</p>`);
+  }
+}
+
 // ---------- section reader ----------
 function secRange(i){
   const [lv, , start] = DATA.toc[i];
@@ -694,7 +759,10 @@ function openSection(i){
   </div>
   <div class="kp" id="kp" hidden></div>`;
   for (let p = a; p < a + shown; p++){
-    html += `<article class="rpage" data-p="${p}"><div class="rpg"><span>Page ${p}</span><a href="${pdfLink(p)}" target="_blank" rel="noopener">See original page</a></div>${formatPage(p)}</article>`;
+    const img = IMG_OK && TBL.has(p);
+    html += `<article class="rpage" data-p="${p}" data-mode="${img ? "img" : "text"}"><div class="rpg"><span>Page ${p}${TBL.has(p) ? '<span class="tagt">table / form</span>' : ""}</span>
+      <span class="seg" role="group" aria-label="Show page ${p} as"><button data-m="text" aria-pressed="${!img}">Text</button><button data-m="img" aria-pressed="${img}">Page image</button></span></div>
+      <div class="rtext"${img ? " hidden" : ""}>${formatPage(p)}</div><div class="rimg"${img ? "" : " hidden"}></div></article>`;
   }
   if (n > MAXP) html += `<div class="meta">This section has ${n} pages; the first ${MAXP} are shown. Pick a smaller part from the contents, or open page ${a + MAXP} in the PDF.</div>`;
   const pane = $("#readPane");
@@ -704,6 +772,8 @@ function openSection(i){
   window.scrollTo({top: 0});
   $("#rBack").onclick = () => show(curTab);
   pane.querySelectorAll("[data-go]").forEach(btn => btn.onclick = () => openSection(+btn.dataset.go));
+  pane.querySelectorAll(".rpage .seg button").forEach(btn => btn.onclick = () => setPageMode(btn.closest(".rpage"), btn.dataset.m));
+  watchImages(pane);
   $("#rKey").onclick = () => keyPoints(i, a, b);
 }
 async function keyPoints(i, a, b){
@@ -724,10 +794,11 @@ Rules:
 - "quote" is 5-10 consecutive words copied EXACTLY from that page's text, so the point can be found in the text.
 - "mustKnow": the 2-4 most critical points: hard deadlines, conditions that make a certificate invalid, things that cause rejection, things people often miss.
 - "numbers": every important figure: time limits, validity, quantities, percentages, fees, number of seasons/locations. "value" is the figure with its unit (e.g. "30 months"); "label" says what it is in a few words.
+- "tables": 0-2 tables, ONLY where a table is clearer than bullets: a requirement matrix (e.g. R / NR by category), documents with conditions, or items with several attributes. Short cells (max 8 words). Keep "R", "NR", "R*" etc. exactly as printed. Use [] if no table helps.
 - "groups": the rest of the content in 2-5 groups with clear titles such as "Documents to submit", "Data required", "Conditions", "Not allowed", "Process". At most 16 points in all groups together. Do not repeat mustKnow points.
 
 Reply with only this JSON:
-{"oneLine":"what this section is for, one sentence","appliesTo":["who it applies to, 2-6 short chips"],"mustKnow":[{"text":"","page":${a},"quote":""}],"numbers":[{"value":"","label":"","page":${a}}],"groups":[{"title":"","points":[{"text":"","page":${a},"quote":""}]}]}
+{"oneLine":"what this section is for, one sentence","appliesTo":["who it applies to, 2-6 short chips"],"mustKnow":[{"text":"","page":${a},"quote":""}],"numbers":[{"value":"","label":"","page":${a}}],"tables":[{"title":"","columns":["",""],"rows":[["",""]],"page":${a}}],"groups":[{"title":"","points":[{"text":"","page":${a},"quote":""}]}]}
 
 ${text}`;
   try {
@@ -749,6 +820,11 @@ function cleanKp(o, a, b){
     mustKnow: pts(o && o.mustKnow).slice(0, 4),
     numbers: (Array.isArray(o && o.numbers) ? o.numbers : []).map(n => ({value: str(n.value), label: str(n.label), page: pg(n.page)})).filter(n => n.value).slice(0, 8),
     groups: (Array.isArray(o && o.groups) ? o.groups : []).map(g => ({title: str(g.title) || "Points", points: pts(g.points)})).filter(g => g.points.length),
+    tables: (Array.isArray(o && o.tables) ? o.tables : []).map(t => {
+      const cols = (Array.isArray(t.columns) ? t.columns : []).map(str).slice(0, 12);
+      const rows = (Array.isArray(t.rows) ? t.rows : []).filter(Array.isArray).map(r => cols.map((_, k) => str(r[k]))).slice(0, 40);
+      return {title: str(t.title), cols, rows, page: pg(t.page)};
+    }).filter(t => t.cols.length >= 2 && t.rows.length).slice(0, 2),
   };
 }
 // find the paragraph a point came from, so "Show in text" can jump to it
@@ -785,6 +861,7 @@ function renderKp(kp, i, a, b){
     </div>
     ${kp.mustKnow.length ? `<div class="kp-must"><div class="kp-h">Must know</div><ul>${kp.mustKnow.map(p => pointHtml(p, true)).join("")}</ul></div>` : ""}
     ${kp.numbers.length ? `<div class="kp-h">Key numbers</div><div class="kp-nums">${kp.numbers.map(x => `<a class="kp-num" href="${pdfLink(x.page)}"><b>${esc(x.value)}</b><span>${esc(x.label)}</span><small>p.${x.page}</small></a>`).join("")}</div>` : ""}
+    ${kp.tables.map(t => `<div class="kp-tw"><table class="kp-table">${t.title ? `<caption>${esc(t.title)}</caption>` : ""}<thead><tr>${t.cols.map(c => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${t.rows.map(r => `<tr>${r.map(cellHtml).join("")}</tr>`).join("")}</tbody></table><div class="kp-tsrc">From <a class="pgl" href="${pdfLink(t.page)}">p.${t.page}</a></div></div>`).join("")}
     ${kp.groups.map(g => `<div class="kp-h">${esc(g.title)}</div><ul class="kp-list">${g.points.map(p => pointHtml(p, false)).join("")}</ul>`).join("")}
     <div class="disclaim">Check the cited page before quoting formally. Highlighted paragraphs in the text below are where these points come from.</div>
     <div class="note" id="kpMsg" aria-live="polite"></div>
@@ -796,6 +873,8 @@ function renderKp(kp, i, a, b){
   box.querySelectorAll(".kp-show").forEach(btn => btn.onclick = () => {
     const el = targets[+btn.dataset.k];
     if (!el) return;
+    const art = el.closest(".rpage");
+    if (art && art.dataset.mode !== "text") setPageMode(art, "text");
     el.scrollIntoView({block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
     el.classList.remove("kp-flash"); void el.offsetWidth; el.classList.add("kp-flash");
   });
@@ -804,12 +883,20 @@ function renderKp(kp, i, a, b){
   $("#kpWa").href = "https://wa.me/?text=" + encodeURIComponent(txt.slice(0, 3500));
   $("#kpHide").onclick = () => { box.hidden = true; };
 }
+function cellHtml(v){
+  const t = v.trim();
+  if (/^R$/i.test(t)) return `<td><span class="cell y">R</span></td>`;
+  if (/^NR$/i.test(t)) return `<td><span class="cell n">NR</span></td>`;
+  if (/^(R[*#$]+|R\*?\/NR\*?|R\s*\(.*\))$/i.test(t)) return `<td><span class="cell c">${esc(t)}</span></td>`;
+  return `<td>${markImportant(esc(t))}</td>`;
+}
 function kpText(kp, i, a, b){
   let t = `${DATA.toc[i][1]} (CIB&RC guidelines, PDF p.${a}${b > a ? "-" + b : ""})\n`;
   if (kp.oneLine) t += `\n${kp.oneLine}\n`;
   if (kp.appliesTo.length) t += `Applies to: ${kp.appliesTo.join(", ")}\n`;
   if (kp.mustKnow.length) t += `\nMUST KNOW\n` + kp.mustKnow.map(p => `! ${p.text} (p.${p.page})`).join("\n") + "\n";
   if (kp.numbers.length) t += `\nKEY NUMBERS\n` + kp.numbers.map(x => `- ${x.value}: ${x.label} (p.${x.page})`).join("\n") + "\n";
+  for (const tb of kp.tables) t += `\n${(tb.title || "TABLE").toUpperCase()} (p.${tb.page})\n${tb.cols.join(" | ")}\n` + tb.rows.map(r => r.join(" | ")).join("\n") + "\n";
   for (const g of kp.groups) t += `\n${g.title.toUpperCase()}\n` + g.points.map(p => `- ${p.text} (p.${p.page})`).join("\n") + "\n";
   return t;
 }

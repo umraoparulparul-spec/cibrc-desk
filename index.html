@@ -170,8 +170,41 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 .rhead h2{font:600 24px/1.25 var(--f-display);margin:0;text-wrap:balance}
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted)}
 .legend span{display:inline-flex;gap:5px;align-items:center}
-.kp{margin-bottom:14px}
+.kp{margin-bottom:14px;scroll-margin-top:200px}
+p.kp-src,.rpage{scroll-margin-top:200px}
 .kp .lbl{margin:0 0 6px}
+.kpc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;max-width:86ch;display:flex;flex-direction:column;gap:10px}
+.kp-load{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:14px}
+.spin{width:16px;height:16px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--accent);animation:spin .8s linear infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.kp-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 16px;align-items:flex-start}
+.kp-top > div:first-child{flex:1 1 380px;min-width:0}
+.kp-one{font:600 18px/1.4 var(--f-display);margin:6px 0 8px;text-wrap:pretty}
+.kp-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px}
+.kp-chips .pill{text-transform:none;letter-spacing:0;font-size:12.5px;background:var(--accent-soft);color:var(--accent)}
+.kp-h{font:600 12px var(--f-body);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:4px}
+.kp-must{background:var(--must);border-radius:12px;padding:10px 14px}
+.kp-must .kp-h{color:var(--ink);margin:0 0 4px}
+.kpc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.kpi{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:start}
+.kpi.must .kp-tx{font-weight:600}
+.kp-ic{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);margin-top:2px}
+.kp-ic.warn{background:var(--ink);color:var(--panel);font:700 12px var(--f-body)}
+.kp-tx{overflow-wrap:anywhere;line-height:1.5}
+.kp-meta{font-weight:400;font-size:12px;color:var(--muted);white-space:nowrap}
+.kp-nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.kp-num{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.kp-num:hover{border-color:var(--accent)}
+.kp-num b{font:600 20px/1.2 var(--f-display);color:var(--accent);font-variant-numeric:tabular-nums}
+.kp-num span{font-size:13px;line-height:1.35}
+.kp-num small{font-size:11.5px;color:var(--muted)}
+p.kp-src{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:4px;padding:4px 8px 4px 10px;margin-left:-13px;position:relative}
+p.kp-src.li{padding-left:32px}
+p.kp-src-must{background:var(--must);border-left-color:var(--ink)}
+p.kp-src::after{content:"Key point " attr(data-kpn);display:block;font:600 10.5px var(--f-body);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-indent:0;margin-top:2px}
+.kp-flash{animation:kpflash 1.6s ease-out}
+@keyframes kpflash{0%,30%{box-shadow:0 0 0 4px var(--accent)}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion:reduce){.spin,.kp-flash{animation:none}}
 .rpage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 18px 14px;margin-bottom:10px;max-width:86ch}
 .rpg{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--muted);border-bottom:1px dashed var(--line);padding-bottom:6px;margin-bottom:8px;font-variant-numeric:tabular-nums}
 .rpg a{color:var(--accent)}
@@ -663,7 +696,7 @@ function openSection(i){
   </div>
   <div class="kp" id="kp" hidden></div>`;
   for (let p = a; p < a + shown; p++){
-    html += `<article class="rpage"><div class="rpg"><span>Page ${p}</span><a href="${pdfLink(p)}" target="_blank" rel="noopener">See original page</a></div>${formatPage(p)}</article>`;
+    html += `<article class="rpage" data-p="${p}"><div class="rpg"><span>Page ${p}</span><a href="${pdfLink(p)}" target="_blank" rel="noopener">See original page</a></div>${formatPage(p)}</article>`;
   }
   if (n > MAXP) html += `<div class="meta">This section has ${n} pages; the first ${MAXP} are shown. Pick a smaller part from the contents, or open page ${a + MAXP} in the PDF.</div>`;
   const pane = $("#readPane");
@@ -679,29 +712,109 @@ async function keyPoints(i, a, b){
   if (!sample) return;
   const box = $("#kp"), btn = $("#rKey");
   box.hidden = false; btn.disabled = true;
-  box.innerHTML = `<div class="lbl">Key points</div><div class="answer"><div class="status">Reading the section…</div><div class="body"></div></div>`;
-  const st = box.querySelector(".status"), body = box.querySelector(".body");
+  box.innerHTML = `<div class="kpc"><div class="kp-load"><span class="spin" aria-hidden="true"></span>Claude is reading pages ${a}${b > a ? "–" + b : ""} and picking out what matters…</div></div>`;
+  box.scrollIntoView({block: "nearest"});
   const {text, cut} = sectionText(a, b, 140000);
-  const prompt = `Below is one section ("${DATA.toc[i][1]}", PDF pages ${a}-${b}) of India's CIB&RC "Guidelines for the Registration of Pesticides under the Insecticides Act, 1968". ${cut ? `Only pages ${a}-${cut - 1} are included because the section is long.` : ""}
+  const prompt = `You summarise one section of India's CIB&RC "Guidelines for the Registration of Pesticides under the Insecticides Act, 1968" for a regulatory-affairs professional who must brief their boss or a client in one minute.
 
-Write the key points for a regulatory-affairs professional who must explain this section to their boss or a client in a minute. Use only this text. Structure:
-- First line: what this section is for and who it applies to (1-2 sentences).
-- Then "- " bullets: the main requirements, documents to submit, conditions, and anything not allowed.
-- Then "- " bullets for any numbers that matter: time limits, validity, quantities, fees.
-Cite the page for every point like [p.${a}]. Plain language, **bold** the key terms, under about 250 words. No headings or tables.
+Section: "${DATA.toc[i][1]}", PDF pages ${a}-${b}.${cut ? ` Only pages ${a}-${cut - 1} are included because the section is long.` : ""}
+
+Rules:
+- Use ONLY this text. Do not add outside knowledge.
+- Plain, short English. Each point at most 22 words. Expand an abbreviation the first time (e.g. "TIM (Technical Indigenous Manufacture)").
+- "page" is the PDF page number from the "=== PAGE n ===" markers where the point appears.
+- "quote" is 5-10 consecutive words copied EXACTLY from that page's text, so the point can be found in the text.
+- "mustKnow": the 2-4 most critical points: hard deadlines, conditions that make a certificate invalid, things that cause rejection, things people often miss.
+- "numbers": every important figure: time limits, validity, quantities, percentages, fees, number of seasons/locations. "value" is the figure with its unit (e.g. "30 months"); "label" says what it is in a few words.
+- "groups": the rest of the content in 2-5 groups with clear titles such as "Documents to submit", "Data required", "Conditions", "Not allowed", "Process". At most 16 points in all groups together. Do not repeat mustKnow points.
+
+Reply with only this JSON:
+{"oneLine":"what this section is for, one sentence","appliesTo":["who it applies to, 2-6 short chips"],"mustKnow":[{"text":"","page":${a},"quote":""}],"numbers":[{"value":"","label":"","page":${a}}],"groups":[{"title":"","points":[{"text":"","page":${a},"quote":""}]}]}
 
 ${text}`;
   try {
-    const res = await sample(prompt, {cache: {gcTime: 86400000}, onText: ({text}) => { st.textContent = ""; body.innerHTML = renderAnswer(text); }});
-    body.innerHTML = renderAnswer(res.text);
-    st.textContent = res.truncated ? "Cut short. Open a smaller part from the contents for full key points." : "";
+    const out = await sample.json(prompt, {cache: {gcTime: 86400000}});
+    const kp = cleanKp(out, a, b);
+    if (!kp.oneLine && !kp.groups.length && !kp.mustKnow.length) throw {code: "empty"};
+    renderKp(kp, i, a, b);
   } catch(e){
-    if (e && e.text) body.innerHTML = renderAnswer(e.text);
-    st.className = "note";
-    st.textContent = {not_granted: "Claude is not allowed for this page.", rate_limited: "Too many requests just now. Try again in a little while.", prompt_too_large: "This section is too long to summarize at once. Pick a smaller part from the contents."}[e && e.code] || "Could not get key points. Try again in a moment.";
+    box.innerHTML = `<div class="kpc"><div class="note">${esc({not_granted: "Claude is not allowed for this page.", rate_limited: "Too many requests just now. Try again in a little while.", prompt_too_large: "This section is too long to summarize at once. Pick a smaller part from the contents."}[e && e.code] || "Could not get key points. Try again in a moment.")}</div></div>`;
   } finally { btn.disabled = false; }
 }
-
+function cleanKp(o, a, b){
+  const pg = n => { n = Math.round(Number(n)); return n >= a && n <= b ? n : a; };
+  const str = v => String(v == null ? "" : v).trim();
+  const pts = arr => (Array.isArray(arr) ? arr : []).map(p => ({text: str(p.text), page: pg(p.page), quote: str(p.quote)})).filter(p => p.text);
+  return {
+    oneLine: str(o && o.oneLine),
+    appliesTo: (Array.isArray(o && o.appliesTo) ? o.appliesTo : []).map(str).filter(Boolean).slice(0, 6),
+    mustKnow: pts(o && o.mustKnow).slice(0, 4),
+    numbers: (Array.isArray(o && o.numbers) ? o.numbers : []).map(n => ({value: str(n.value), label: str(n.label), page: pg(n.page)})).filter(n => n.value).slice(0, 8),
+    groups: (Array.isArray(o && o.groups) ? o.groups : []).map(g => ({title: str(g.title) || "Points", points: pts(g.points)})).filter(g => g.points.length),
+  };
+}
+// find the paragraph a point came from, so "Show in text" can jump to it
+const normTxt = s => s.toLowerCase().replace(/[^a-z0-9%()]+/g, " ").trim();
+function findPara(pt){
+  const art = document.querySelector(`#readPane .rpage[data-p="${pt.page}"]`);
+  if (!art) return null;
+  const paras = [...art.querySelectorAll("p.rp")];
+  const q = normTxt(pt.quote || "");
+  if (q){
+    let hit = paras.find(p => normTxt(p.textContent).includes(q));
+    if (!hit){ const w = q.split(" "); for (let n = Math.min(6, w.length); n >= 4 && !hit; n--){ const part = w.slice(0, n).join(" "); hit = paras.find(p => normTxt(p.textContent).includes(part)); } }
+    if (hit) return hit;
+  }
+  // fall back to the paragraph sharing the most words with the point
+  const words = normTxt(pt.text).split(" ").filter(w => w.length > 3);
+  let best = null, bestN = 2;
+  for (const p of paras){ const t = normTxt(p.textContent); const n = words.filter(w => t.includes(w)).length; if (n > bestN){ best = p; bestN = n; } }
+  return best || art;
+}
+function renderKp(kp, i, a, b){
+  const box = $("#kp");
+  const all = [...kp.mustKnow.map(p => ({...p, must: true})), ...kp.groups.flatMap(g => g.points)];
+  let n = 0;
+  const pointHtml = (p, must) => {
+    const k = n++;
+    return `<li class="kpi${must ? " must" : ""}" data-k="${k}">${must ? `<span class="kp-ic warn" aria-hidden="true">!</span>` : `<span class="kp-ic" aria-hidden="true">${icon("check", 14)}</span>`}<span class="kp-tx">${markImportant(esc(p.text))} <span class="kp-meta"><a class="pgl" href="${pdfLink(p.page)}">p.${p.page}</a> · <button class="linkbtn kp-show" data-k="${k}">Show in text</button></span></span></li>`;
+  };
+  box.innerHTML = `<div class="kpc">
+    <div class="kp-top"><div><div class="eyebrow">Key points · made by Claude from pages ${a}${b > a ? "–" + b : ""}</div>
+      ${kp.oneLine ? `<p class="kp-one">${markImportant(esc(kp.oneLine))}</p>` : ""}
+      ${kp.appliesTo.length ? `<div class="kp-chips"><span class="sec">Applies to:</span> ${kp.appliesTo.map(t => `<span class="pill">${esc(t)}</span>`).join("")}</div>` : ""}</div>
+      <div class="btns" style="margin:0"><button class="btn" id="kpCopy">Copy</button><a class="btn" id="kpWa" target="_blank" rel="noopener">WhatsApp ↗</a><button class="btn" id="kpHide">Hide</button></div>
+    </div>
+    ${kp.mustKnow.length ? `<div class="kp-must"><div class="kp-h">Must know</div><ul>${kp.mustKnow.map(p => pointHtml(p, true)).join("")}</ul></div>` : ""}
+    ${kp.numbers.length ? `<div class="kp-h">Key numbers</div><div class="kp-nums">${kp.numbers.map(x => `<a class="kp-num" href="${pdfLink(x.page)}"><b>${esc(x.value)}</b><span>${esc(x.label)}</span><small>p.${x.page}</small></a>`).join("")}</div>` : ""}
+    ${kp.groups.map(g => `<div class="kp-h">${esc(g.title)}</div><ul class="kp-list">${g.points.map(p => pointHtml(p, false)).join("")}</ul>`).join("")}
+    <div class="disclaim">Check the cited page before quoting formally. Highlighted paragraphs in the text below are where these points come from.</div>
+    <div class="note" id="kpMsg" aria-live="polite"></div>
+  </div>`;
+  // mark the source paragraphs in the section text
+  document.querySelectorAll("#readPane p.kp-src").forEach(p => { p.classList.remove("kp-src"); p.removeAttribute("data-kpn"); });
+  const targets = all.map(findPara);
+  targets.forEach((el, k) => { if (el && el.tagName === "P"){ el.classList.add("kp-src"); if (all[k].must) el.classList.add("kp-src-must"); el.dataset.kpn = (el.dataset.kpn ? el.dataset.kpn + "," : "") + (k + 1); } });
+  box.querySelectorAll(".kp-show").forEach(btn => btn.onclick = () => {
+    const el = targets[+btn.dataset.k];
+    if (!el) return;
+    el.scrollIntoView({block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+    el.classList.remove("kp-flash"); void el.offsetWidth; el.classList.add("kp-flash");
+  });
+  const txt = kpText(kp, i, a, b);
+  $("#kpCopy").onclick = () => copyText(txt, $("#kpMsg"));
+  $("#kpWa").href = "https://wa.me/?text=" + encodeURIComponent(txt.slice(0, 3500));
+  $("#kpHide").onclick = () => { box.hidden = true; };
+}
+function kpText(kp, i, a, b){
+  let t = `${DATA.toc[i][1]} (CIB&RC guidelines, PDF p.${a}${b > a ? "-" + b : ""})\n`;
+  if (kp.oneLine) t += `\n${kp.oneLine}\n`;
+  if (kp.appliesTo.length) t += `Applies to: ${kp.appliesTo.join(", ")}\n`;
+  if (kp.mustKnow.length) t += `\nMUST KNOW\n` + kp.mustKnow.map(p => `! ${p.text} (p.${p.page})`).join("\n") + "\n";
+  if (kp.numbers.length) t += `\nKEY NUMBERS\n` + kp.numbers.map(x => `- ${x.value}: ${x.label} (p.${x.page})`).join("\n") + "\n";
+  for (const g of kp.groups) t += `\n${g.title.toUpperCase()}\n` + g.points.map(p => `- ${p.text} (p.${p.page})`).join("\n") + "\n";
+  return t;
+}
 
 // ---------- latest updates from the CIB&RC website (kept in the page's database by a twice-daily check) ----------
 const UPD = {items: [], status: null, filter: "All", live: false};

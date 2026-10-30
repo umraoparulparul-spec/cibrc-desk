@@ -1,0 +1,14 @@
+{
+  "Category 1 - General Guidelines": {
+    "one": "Rules that apply across registrations: KYC on CROP, Schedule inclusion, minimum factory infrastructure, extra manufacturing sites and shelf-life enhancement.",
+    "tags": ["All registrants"],
+    "blocks": [
+      {"h": "Pick your section", "pts": [
+        ["KYC on the CROP portal: 1.1", 8],
+        ["Adding a pesticide to the Schedule: 1.2", 41],
+        ["Minimum infrastructure: botanicals 1.2, baculovirus 1.3, microbials 1.4, chemicals 1.5", 42],
+        ["Additional manufacturing site abroad: 1.6 · Shelf-life enhancement for 9(4): 1.7", 53]
+      ]}
+    ]
+  }
+}

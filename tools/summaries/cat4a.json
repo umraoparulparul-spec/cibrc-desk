@@ -1,0 +1,91 @@
+{
+  "Category 4 - Biorational / Biopesticides": {
+    "one": "Registration of biopesticides for agriculture: microbials (4.1), consortia (4.1.2), botanicals (4.2) and pheromones (4.3).",
+    "tags": ["Biopesticides", "Microbial · Botanical · Pheromone"],
+    "blocks": [
+      {"h": "Pick your section", "pts": [
+        ["New microbial strain: 4.1 · strain already registered u/s 9(3): 4.1.1", 144],
+        ["Mixture of microbial strains: 4.1.2 consortium", 159],
+        ["Plant-based: 4.2, with special rules for eucalyptol, rotenone, cymbopogon, pyrethrum, PGRs, neem", 184],
+        ["Pheromones / semiochemicals: 4.3", 206]
+      ]}
+    ]
+  },
+  "4.1 Microbial pest control agents": {
+    "one": "Documents and data for registering microbial biopesticides: bacteria, fungi, NPV and GV.",
+    "tags": ["Microbial (MPCA)", "9(3B) · 9(3)", "Mother culture + formulation"],
+    "nums": [["≤ 1 × 10⁴", "other contaminants per g or ml; pathogens such as Salmonella must be absent", 146], ["500 g / ml", "sample for DNA fingerprinting (NBAIM) and for CIL verification", 146], ["1 × 10⁹", "minimum POB per ml/g for NPV (GV: 5 × 10⁹ capsules)", 147]],
+    "blocks": [
+      {"h": "Documents", "pts": [
+        ["MOU / licence or authorisation from the strain's inventor (Annexure I)", 144],
+        ["Undertakings: free from chemical / botanical pesticides (II), composition (III), GMO-free (IV)", 144],
+        ["Form-I, BOD resolution, PAN, incorporation certificate", 144],
+        ["NBAIM fee receipt for DNA verification; strain deposited in the National Repository", 144]
+      ]},
+      {"h": "Chemistry (mother culture and formulation)", "pts": [
+        ["Genus, species, strain, source of origin, specification, manufacturing process", 145],
+        ["Moisture, carrier and additive percentages, contaminant counts", 146],
+        ["Antagonists: dual culture must give at least 50% reduction (35% for bacteria)", 147]
+      ]}
+    ],
+    "watch": [["First-time strain not meant for field use: chemistry data is not required", 147]]
+  },
+  "4.1.1 Already registered formulation / strain 9(3)": {
+    "one": "Short route for a microbial product using a strain already registered u/s 9(3): one folder of documents.",
+    "tags": ["Registered strain", "9(3)", "One folder"],
+    "nums": [["500 g / ml", "sample each to NBAIM (DNA fingerprint) and to CIB&RC (PRV)", 150]],
+    "blocks": [
+      {"h": "The one folder", "pts": [
+        ["Form-I with fee, BOD resolution, PAN, incorporation certificate", 150],
+        ["Composition exactly as the earlier 9(3) registrant; approved label / leaflet", 150],
+        ["Inventor authorisation or undertaking (Annexure I); strain accession number", 150],
+        ["Undertakings: no chemical pesticides (II), composition (III), GMO-free (IV)", 150],
+        ["Original NBAIM fee receipt", 150]
+      ]},
+      {"h": "How it is processed", "pts": [
+        ["Checked by the Chemistry division; no preliminary scrutiny", 150],
+        ["NBAIM reports directly to CIB&RC whether the DNA matches the original strain", 150],
+        ["Toxicology from non-GLP labs is accepted for biopesticides", 150]
+      ]}
+    ],
+    "watch": [["Declared shelf life (12 / 6 / 4 months) and IS 8190 packing are binding; violations can lead to prosecution", 151]]
+  },
+  "4.1.2 Consortium of biopesticides": {
+    "one": "Registering a mixture of compatible microbial strains (a consortium); same as single biopesticides except the points below.",
+    "tags": ["Consortium", "Microbial mixture"],
+    "nums": [["≥ 98%", "genome identity with a registered strain: no mother-culture data needed", 160], ["2 × 10⁶", "minimum CFU/g for Trichoderma", 162]],
+    "blocks": [
+      {"h": "What is different", "pts": [
+        ["Only the formulated consortium needs data, not each mother culture (if already registered)", 159],
+        ["Give the ratio of each strain in the formulation", 159],
+        ["Strains should be compatible, broad-spectrum, with different modes of action", 159]
+      ]},
+      {"h": "Toxicology by organism", "pts": [
+        ["Inhalation for entomopathogenic bacteria; pulmonary for antagonists, fungi and virus", 159],
+        ["Cell culture and intravenous study for baculovirus", 159]
+      ]},
+      {"h": "Allowed organisms", "pts": [["Only organisms on the list (Trichoderma, Pseudomonas, Bacillus, Beauveria, Metarhizium…); others need Schedule inclusion first", 161]]}
+    ]
+  },
+  "4.2 Botanical / plant origin pesticides": {
+    "one": "Data for plant-based pesticides: neem, eucalyptol, cymbopogon, pyrethrum, rotenone, essential oils.",
+    "tags": ["Botanicals", "9(3B) · 9(3) · 9(4)"],
+    "blocks": [
+      {"h": "General rules", "pts": [
+        ["Home-made remedies for own use need no registration; anything sold does", 184],
+        ["Data waivers possible for well-studied substances, if justified", 184],
+        ["9(4): same plant part, same extraction process and identical composition as the 9(3) registrant", 184]
+      ]},
+      {"h": "Chemistry", "pts": [
+        ["Plant part used, extract content, composition, BIS-format specification", 185],
+        ["Undertaking that no chemical pesticide is added; ATR from NABL / GLP lab", 185],
+        ["Shelf-life data not needed for eucalyptol, rotenone and cymbopogon products", 186]
+      ]},
+      {"h": "Bio-efficacy and toxicity", "pts": [
+        ["Bio-effectiveness and phytotoxicity on target crops; waiting period, application details", 187],
+        ["Six acute studies for all; longer-term studies for 9(3) TI / TIM", 188],
+        ["9(4): no bio-efficacy or toxicity data", 187]
+      ]}
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "Category 2 - Export & Import": {
+    "one": "Overall rules for export-only registration: minimal data, priority processing and fixed time frames (380th RC, 2017).",
+    "tags": ["Exporters", "Import for export"],
+    "nums": [["5 working days", "Fast Track (firm export order)", 59], ["7 / 10 days", "Star Export House: Category A / B", 59], ["3 months", "Other export-only, Category B", 59], ["~90%", "applications are Category A", 58]],
+    "blocks": [
+      {"h": "Two categories", "pts": [
+        ["A: pesticide already registered for use in India (any purity or formulation): only basic chemistry", 58],
+        ["B: not registered in India: chemistry plus toxicity, to judge worker safety", 58]
+      ]},
+      {"h": "Three application types", "pts": [
+        ["Fast Track: with a firm export order; certificate for that quantity only, restriction removable later", 60],
+        ["Star Export House: accredited as per Ministry of Commerce", 60],
+        ["All other export-only applications", 60]
+      ]},
+      {"h": "Useful rules", "pts": [
+        ["No separate export registration needed if the product is already registered for domestic use", 59],
+        ["Export packs may follow the importing country's packaging requirement", 59],
+        ["No bio-efficacy data is asked for export-only registration", 58],
+        ["Toxicity: published WHO, FAO/WHO, IARC, USA/EU/Canada/Japan evaluations or MSDS are accepted", 61]
+      ]}
+    ],
+    "watch": [["Import for export of a product registered in India only from the registered source; an unregistered source needs a firm export order and keeps its quantity limit", 59]]
+  },
+  "2.1 Indigenous manufacture for export u/s 9(3)": {
+    "one": "What to submit to manufacture a pesticide in India only for export, by category.",
+    "tags": ["Export only", "Indigenous manufacture", "9(3)"],
+    "blocks": [
+      {"h": "Fast Track", "pts": [
+        ["Firm export order and the product's registration in the importing country", 62],
+        ["B II, B III, B IV: also registration in a developed country (EU, USA, Australia, Japan, Canada)", 62],
+        ["Certificate for the order quantity, issued by Secretary CIB&RC; RC approves later", 62]
+      ]},
+      {"h": "Data by category", "pts": [
+        ["A I (registered in India): chemistry items 1-2 + packaging/label undertaking", 62],
+        ["A III (registered microbial strain): Table 2 chemistry except 4-6 + undertaking", 62],
+        ["B I (already registered for export by someone): chemistry 1, 2, 3, 4, 6", 62],
+        ["B II (not registered in India): chemistry 1-6 + toxicity 1-12 for technical", 63],
+        ["B III botanical / B IV microbial not registered: all Table 2 chemistry + selected toxicity", 63]
+      ]}
+    ],
+    "watch": [["Every category needs an undertaking on packaging and label/leaflet as per Insecticides Rules 1971", 62]]
+  },
+  "2.2 Import for export u/s 9(3)": {
+    "one": "What to submit to import a technical or formulation only to re-export it.",
+    "tags": ["Import for export", "9(3)"],
+    "nums": [["3 years", "past import/export details to submit (except Star Export)", 68]],
+    "blocks": [
+      {"h": "Fast Track", "pts": [
+        ["Firm export order and the product's registration in the importing country", 67],
+        ["Certificate shows product names, quantities and compositions imported and exported (468th RC, 2026)", 67]
+      ]},
+      {"h": "A II: from a source already registered in India", "pts": [
+        ["Chemistry items 1, 2 and 6 (composition, properties, source of import)", 68],
+        ["Undertaking on packaging and label/leaflet", 68]
+      ]}
+    ],
+    "watch": [["Certificate is issued only after documents and/or sites are verified by a CIB&RC team (357th RC)", 68]]
+  },
+  "2.3 Import of sample quantity for RTT": {
+    "one": "Permission to import small quantities for research, trial and test (RTT), given by the Secretary CIB&RC (380th RC, 2017).",
+    "tags": ["RTT import", "Form C"],
+    "nums": [["< 50 mg/kg", "LD50 (red triangle): Secretary cannot permit", 70]],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Completed Form C, plus technical bulletin from the inventor / manufacturer", 70],
+        ["Chemistry, toxicity and bio-efficacy information with a reference (e.g. Pesticide Manual)", 70],
+        ["Justification for the quantity", 70],
+        ["Registration certificate or manufacturing licence in the source country", 70],
+        ["Manufacturer's authorisation to the applicant (and to the supplier, if different)", 70]
+      ]},
+      {"h": "Special cases", "pts": [
+        ["Coded / unregistered compounds: authentic document from the inventor", 70],
+        ["RTT technical for registration in India: affidavit on its indigenous-manufacture registration status", 70]
+      ]}
+    ],
+    "watch": [["Extremely toxic (red triangle) and coded compounds not registered anywhere go to the RC, not the Secretary", 70]]
+  },
+  "2.4 Export of small quantity samples for RTT": {
+    "one": "Application (Form C) to export small sample quantities for research, trial and test abroad (455th RC, 2023).",
+    "tags": ["RTT export", "Form C"],
+    "blocks": [
+      {"h": "Form C asks for", "pts": [
+        ["Exporter details, importing country and overseas importer", 72],
+        ["Active ingredient / formulation, code or common name, chemical class, Schedule status", 72],
+        ["Purpose, quantity, type of packing", 72],
+        ["Manufacturer and manufacturing site in India", 72]
+      ]}
+    ]
+  }
+}

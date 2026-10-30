@@ -1,0 +1,127 @@
+{
+  "3.9 New formulation (same a.i.) for seed treatment": {
+    "one": "Data for a new seed-treatment formulation when another formulation of the same a.i. is already registered for seed treatment (296th RC, 2008).",
+    "tags": ["Seed treatment", "Same a.i.", "9(3)"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Composition, adjuvant properties, specification and method, ATR, shelf-life claim and data, process", 114],
+        ["Sample with reference standard; residue method in BIS format", 114]
+      ]},
+      {"h": "Bio-efficacy", "pts": [
+        ["Different pest: two seasons, multilocation", 114],
+        ["Same pest: one season at 3–4 locations", 114],
+        ["Residue and persistence only for additional crops, vegetables, or crops eaten as young seedlings", 114]
+      ]},
+      {"h": "Toxicity", "pts": [["Six acute studies, birds, fish, bees, earthworm, medical data, worker health records", 115]]}
+    ]
+  },
+  "3.10 FIM vs FIT u/s 9(3)": {
+    "one": "Making in India a formulation identical to one already registered for import, with the same label claims (317th RC, 2011).",
+    "tags": ["FIM vs FIT", "9(3)", "Mostly documents"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Index, page numbering, pages authenticated by the authorised signatory", 116],
+        ["Form-I, fee, BOD resolution, composition affidavit, licence, PAN, incorporation", 116],
+        ["Proof that the technical source is registered (RC meeting reference)", 116],
+        ["Name of the FI registrant and the RC meeting that approved the import", 117],
+        ["ATR from an independent laboratory, and a sample for CIL", 117]
+      ]}
+    ],
+    "watch": [["Deemed registration of the technical, without a certificate, is not accepted", 116]]
+  },
+  "3.11 Three a.i. pre-mix - indigenous manufacture": {
+    "one": "Data for making in India a ready-mix formulation with three active ingredients (336th RC, 2013).",
+    "tags": ["Three-way combination", "Indigenous manufacture", "9(3)"],
+    "blocks": [
+      {"h": "General conditions", "pts": [
+        ["Every a.i. must come from a technical registered in India", 118],
+        ["Unregistered a.i. or source: separate full TIM / TI application", 118]
+      ]},
+      {"h": "Chemistry", "pts": [
+        ["One clear analytical method separating all three a.i.", 118],
+        ["Data on chemical interaction among the a.i.; traceability of samples", 119]
+      ]},
+      {"h": "Bio-efficacy", "pts": [
+        ["Rationale for combining more than two a.i.", 119],
+        ["Two seasons, at least 3 agro-climatic conditions; cost-benefit ratio", 119],
+        ["Persistence / residues only if dose is higher, a new compound forms, or adjuvants differ", 120]
+      ]}
+    ]
+  },
+  "3.12 Three a.i. pre-mix - import": {
+    "one": "Data for importing a ready-mix formulation with three active ingredients (336th RC, 2013).",
+    "tags": ["Three-way combination", "Formulation import", "9(3)"],
+    "blocks": [
+      {"h": "General conditions", "pts": [
+        ["Every a.i. must come from a technical registered in India; otherwise full TI data", 123],
+        ["One clear analytical separation method for all three a.i.", 124]
+      ]},
+      {"h": "Import documents", "pts": [
+        ["Consent letter from the source with its registration certificate, verifiable by the DNA", 124],
+        ["Authorised dealer certificate; GLP / ISO quality report with the first consignment", 124]
+      ]},
+      {"h": "Bio-efficacy", "pts": [["Same as 3.11: rationale, two seasons at 3 conditions, cost-benefit", 125]]}
+    ]
+  },
+  "3.13 TIM where formulation registered for import without technical": {
+    "one": "Registering a technical for indigenous manufacture (TIM) when its formulation was registered for import without registering the technical (FI-WRT) (359th RC, 2015).",
+    "tags": ["TIM vs FI-WRT", "TI vs FIM-WRT", "Gujarat High Court orders"],
+    "blocks": [
+      {"h": "Key rules", "pts": [
+        ["Submit bridging data on shelf life and packaging, plus any data the RC asks (bio-efficacy, toxicity)", 128],
+        ["Technical in an FI-registered formulation is never 'deemed registered'", 128],
+        ["FI applicants must send a technical sample to CIL for pre-registration verification", 128]
+      ]},
+      {"h": "Data", "pts": [
+        ["Chemistry: composition, identity, impurities, chemical equivalence, process from step 1", 129],
+        ["Toxicity: acute studies, mutagenicity, medical data", 131],
+        ["Worker health records only if the manufacturing unit already exists", 131]
+      ]}
+    ]
+  },
+  "3.14 TIM by original registrant under FI": {
+    "one": "When the original Formulation Import registrant starts manufacturing the technical in India through technology transfer (389th RC, 2018).",
+    "tags": ["TIM vs FI (original registrant)", "Technology transfer"],
+    "blocks": [
+      {"h": "Legal documents", "pts": [
+        ["Form-I and the technology-transfer agreement", 133],
+        ["Consent from the original source to use the data submitted for FI", 133],
+        ["Undertaking: same specification, quality, composition and manufacturing process", 133]
+      ]}
+    ],
+    "watch": [["Toxicology for this case: Ames test only (see 3.1, p.87)", 87]]
+  },
+  "3.15 Manufacture Use Product (MUP)": {
+    "one": "Data to register a Manufacture Use Product (MUP) for indigenous manufacture or import (399th RC).",
+    "tags": ["MUP", "9(3)"],
+    "blocks": [
+      {"h": "Depends on the technical", "pts": [
+        ["Technical not registered: full technical data in all disciplines, with sample and standards", 135],
+        ["Technical and source registered: only MUP data, plus a rationale in every folder", 135]
+      ]},
+      {"h": "Import documents", "pts": [["Proof the manufacturer is the actual producer, authorised dealer certificate, GLP report", 136]]},
+      {"h": "Packaging", "pts": [["Container compatibility, pilfer- and leak-proof closures, transport worthiness, storage performance", 137]]}
+    ]
+  },
+  "3.16 TI - New Source vs FIM-WRT / FI-WRT / TI": {
+    "one": "Importing a technical from a new source when the molecule is already registered (as TI, FI-WRT or FIM-WRT) (470th RC, 2026).",
+    "tags": ["TI - New Source", "9(3)", "Latest: 470th RC"],
+    "nums": [["4 years", "apply within this of the import permit to use it for data", 140]],
+    "blocks": [
+      {"h": "Source proof", "pts": [
+        ["Office and factory address of the manufacturer with geotagging", 138],
+        ["Registration certificate in the exporting country (or proof of registered composition)", 138],
+        ["Detailed chemical equation, raw materials, flow sheet, effluent treatment", 139]
+      ]},
+      {"h": "Bio-efficacy", "pts": [
+        ["Bio-effectiveness and phytotoxicity on all registered formulations and crops", 140],
+        ["Residues on a representative crop of each group", 140]
+      ]},
+      {"h": "Toxicity", "pts": [
+        ["Acute, sub-acute (28 and 90 days), mutagenicity, birds, earthworm, fish, bees", 141],
+        ["Not needed: neurotoxicity, reproduction, carcinogenicity, metabolism", 141]
+      ]}
+    ],
+    "watch": [["No exemption on bio-efficacy for the new source, in any condition", 140]]
+  }
+}

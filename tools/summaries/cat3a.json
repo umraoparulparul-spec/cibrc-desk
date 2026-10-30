@@ -1,0 +1,160 @@
+{
+  "Category 3 - Chemical Pesticides (Agriculture)": {
+    "one": "Data requirements for chemical pesticides for agriculture: the master table (3.1) and special cases (3.2–3.16).",
+    "tags": ["Chemical pesticides", "9(3B) · 9(3) · 9(4)"],
+    "blocks": [
+      {"h": "Start here", "pts": [
+        ["3.1 has the R / NR table for every category: Legal, Chemistry, Bio-efficacy, Toxicology, Packaging", 74],
+        ["The Checklist wizard turns that table into a tickable list for your exact case", 74]
+      ]},
+      {"h": "Special cases", "pts": [
+        ["Combinations: 3.4 herbicides, 3.5 others, 3.6 / 3.8 insecticide + fungicide, 3.11 / 3.12 three a.i.", 99],
+        ["Seed treatment 3.7–3.9 · Post-harvest (Ethephon) 3.2 · Spray oil 3.3 · MUP 3.15", 91],
+        ["TIM / FIM / TI source cases: 3.10, 3.13, 3.14, 3.16", 116]
+      ]}
+    ]
+  },
+  "3.1 Division-wise data requirements 9(3B), 9(3), 9(4)": {
+    "one": "The master table: which data each division needs (R / NR) for TI, TIM, FI and FIM under 9(3B), 9(3) and 9(4).",
+    "tags": ["All chemical registrations", "Legal · Chemistry · Bio-efficacy · Toxicology · Packaging"],
+    "nums": [["30 months", "real-time storage data due if shelf life was granted on accelerated data", 78], ["2 years", "certificate validity when based on accelerated storage data", 78], ["5 batches", "GLP analysis for 9(3) TI", 78], ["3 years", "products manufactured list for 9(4)", 74]],
+    "blocks": [
+      {"h": "Legal (all categories)", "pts": [
+        ["Form-I, BOD resolution / affidavit, composition affidavit on NJSP, licence, PAN, incorporation, site ownership", 74],
+        ["Technical must be registered (deemed registration not accepted) before or with the formulation", 74],
+        ["9(4) TI / FI: embassy-authenticated consent letter and geotagged site photos", 74]
+      ]},
+      {"h": "Chemistry", "pts": [
+        ["Composition and shelf-life claim needed in every category", 76],
+        ["Sample with CRM and impurities to CIL Faridabad for pre-registration verification", 77],
+        ["Chemical equivalence: not for the first registration, required after it", 78],
+        ["Seed treatment: Adhesion to Seed Test always required", 78]
+      ]},
+      {"h": "Bio-efficacy", "pts": [
+        ["9(3) FI / FIM: 2 seasons, at least 3 agro-climatic conditions (R**)", 80],
+        ["Residues: 1 season, at least 4 locations (R#), with herbicide and soil-applied exceptions", 80],
+        ["9(4): no bio-efficacy data; claims as per the approved 9(3) product", 79],
+        ["Benchmarks: fungicide 60-70% control, insecticide 70% reduction, herbicide 70% WCE", 82]
+      ]},
+      {"h": "Toxicology", "pts": [
+        ["9(3) TI / TIM new molecule: all 35 studies", 86],
+        ["TI new source: items 1-11, 21, 26, 27, 29-34", 86],
+        ["9(4) TIM: Ames test only · 9(4) TI / FI / FIM: none", 87]
+      ]},
+      {"h": "Packaging", "pts": [
+        ["Labels, packaging specification, storage performance and transport tests for 9(3B) / 9(3)", 89],
+        ["9(3B): storage and transport tests needed before commercialisation (R*)", 89]
+      ]}
+    ],
+    "watch": [["Shelf life on accelerated data: no real-time data within 2½ years and the certificate becomes invalid", 78]]
+  },
+  "3.2 Post-harvest treatment (Ethephon)": {
+    "one": "Extra data for pesticides used on harvested produce (fumigants, Ethephon ripening agent), for technical, MUP and formulation.",
+    "tags": ["Post-harvest", "Ethephon ripening", "9(3)"],
+    "blocks": [
+      {"h": "Technical", "pts": [
+        ["Fate and behaviour in treated produce, air (gases), water and soil", 91],
+        ["Also used in the field or household? Then full TIM / TI 9(3) data too", 91]
+      ]},
+      {"h": "MUP and formulation", "pts": [
+        ["MUP: registration status abroad; full technical data if the technical is not registered", 91],
+        ["Formulation: technical / MUP must be registered, else submit full technical data too", 92]
+      ]},
+      {"h": "Ethephon as ripening agent (447th RC)", "pts": [
+        ["Chemistry incl. rate of release, shelf life, process, sample for verification", 93],
+        ["Residue at intervals from 0 hours until BDL, 3 repeated trials", 94],
+        ["Label claims as per the latest Government Gazette notification", 94]
+      ]}
+    ]
+  },
+  "3.3 Petroleum derived spray oil (PDSO)": {
+    "one": "Data requirements for petroleum-derived spray oils (mineral oil products) under 9(3B) and 9(3) (326th RC, 2012).",
+    "tags": ["Spray oil / PDSO", "9(3B) · 9(3)"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Full chemistry for both: source, composition, identity, specification, ATR, impurities, process", 96],
+        ["Shelf-life data needed for 9(3) only", 96]
+      ]},
+      {"h": "Bio-efficacy", "pts": [
+        ["Multilocation trials by ICAR / CSIR / SAU: 3 locations for 9(3), 2 for 9(3B), two seasons", 98],
+        ["Residues, parasites and predators, compatibility, foreign tolerance limits", 97]
+      ]},
+      {"h": "Toxicity", "pts": [
+        ["Acute studies, birds, fish, bees, medical data: both categories", 97],
+        ["Neurotoxicity, teratogenicity, reproduction, carcinogenicity, metabolism, mutagenicity: 9(3) only", 97]
+      ]}
+    ]
+  },
+  "3.4 Combination of two registered herbicides": {
+    "one": "Data for a combination product of two herbicides that are each already registered (291st RC, 2008).",
+    "tags": ["Herbicide combination", "9(3)"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [["Composition, identity, properties, specification, method, ATR, shelf life, process", 99]]},
+      {"h": "Bio-efficacy", "pts": [
+        ["Bio-effectiveness and phytotoxicity always", 99],
+        ["Persistence and residues only if either a.i. is higher than already registered combinations", 99]
+      ]},
+      {"h": "Toxicity (on the combination)", "pts": [
+        ["Six acute studies, birds, fish, bees, earthworm, medical data, worker health records", 100],
+        ["Unregistered component: full technical data for that component", 100]
+      ]}
+    ]
+  },
+  "3.5 Combination pesticides (not herbicides) - indigenous 9(3)": {
+    "one": "Data for indigenous manufacture of combination products other than herbicides (211th RC, revised 296th RC).",
+    "tags": ["Combination", "Indigenous manufacture", "9(3)"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Source, composition, identity, specification, ATR, shelf-life claim and data, process", 101],
+        ["Sample with standards for chemical verification", 102]
+      ]},
+      {"h": "Bio-efficacy", "pts": [
+        ["Two seasons, at least 3 agro-climatic conditions; cost-benefit ratio", 103],
+        ["Higher a.i. than registered formulations: persistence and residue data too", 103],
+        ["Fungicides: no parasite / predator data", 103]
+      ]},
+      {"h": "Toxicity", "pts": [["Each technical must be registered u/s 9(3), else full data for it", 103]]}
+    ]
+  },
+  "3.6 Insecticide + Fungicide combination - foliar spray": {
+    "one": "Data for a foliar-spray combination of one registered insecticide and one registered fungicide (284th RC, 2007).",
+    "tags": ["Insecticide + fungicide", "Foliar spray", "9(3)"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [["Composition, identity, properties, specification, method, ATR, shelf life, process", 106]]},
+      {"h": "Bio-efficacy", "pts": [
+        ["Insecticide alone, fungicide alone and the combination, against label pests and diseases", 106],
+        ["Persistence and residues if a.i. is higher than already registered", 106]
+      ]},
+      {"h": "Toxicity", "pts": [["Six acute studies, birds, fish, bees, earthworm, medical data, worker health records", 107]]}
+    ]
+  },
+  "3.7 New formulation for seed treatment 9(3)": {
+    "one": "Data for a new seed-treatment formulation (296th RC, 2008).",
+    "tags": ["Seed treatment", "9(3)"],
+    "nums": [["2 seasons", "multilocation bio-efficacy", 108], ["4 locations", "residues, one season", 109]],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Source, composition, properties, specification, ATR, shelf life, process", 108],
+        ["Sample with reference standard; residue method in BIS format", 108]
+      ]},
+      {"h": "Bio-efficacy", "pts": [
+        ["Against label pests and diseases across agro-climatic zones", 108],
+        ["Fungicides: no parasite data, but data on beneficial soil flora and fauna", 108],
+        ["Mixing with other seed dressings or bio-fertilisers: compatibility data", 109]
+      ]},
+      {"h": "Toxicity", "pts": [["Six acute studies, birds, fish, bees, earthworm, medical data, worker health records", 109]]}
+    ]
+  },
+  "3.8 Insecticide + Fungicide combination - seed treatment": {
+    "one": "Data for a seed-treatment combination of one registered insecticide and one registered fungicide (296th RC, 2008).",
+    "tags": ["Seed treatment", "Insecticide + fungicide", "9(3)"],
+    "blocks": [
+      {"h": "Bio-efficacy", "pts": [
+        ["Each component alone and in combination, two seasons", 112],
+        ["Persistence and residues only if a.i. is higher than registered formulations", 112]
+      ]},
+      {"h": "Toxicity", "pts": [["Six acute studies, birds, fish, bees, earthworm, medical data, worker health records", 113]]}
+    ],
+    "watch": [["All chemistry, bio-efficacy, toxicology and packaging data are needed for each component and for the combination", 113]]
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "Introduction": {
+    "one": "How the guidelines are organised, and the basic rules that apply to every registration.",
+    "tags": ["All applicants", "Insecticides Act 1968 & Rules 1971"],
+    "blocks": [
+      {"h": "Basic rules", "pts": [
+        ["Only registered pesticides may be used, and only as per the label claim", 5],
+        ["Data must follow test guidelines and GLP; submit complete study reports", 5],
+        ["Technical must be registered before, or together with, any FI / FIM registration", 5],
+        ["9(3B) data need not be resubmitted for 9(3) by the same applicant if composition and claims are unchanged", 6]
+      ]},
+      {"h": "What decides your data requirement", "pts": [
+        ["Type: chemical, microbial, botanical or pheromone", 5],
+        ["Material: technical, formulation or MUP; and formulation type (solid, liquid, vapour)", 5],
+        ["Category: 9(3B) provisional, 9(3) regular or 9(4) me-too", 5],
+        ["Purpose: domestic use, export, or both; and the label claims", 5]
+      ]},
+      {"h": "The five categories of guidelines", "pts": [
+        ["1 General · 2 Export & import · 3 Chemical pesticides (agriculture)", 6],
+        ["4 Biopesticides · 5 Household, public health, aircraft, ectoparasites", 6]
+      ]}
+    ]
+  },
+  "1.1 KYC on CROP portal": {
+    "one": "The Know-Your-Company form every registrant fills on the CROP portal; once active, common legal documents need not be resubmitted with each application.",
+    "tags": ["All registrants", "CROP portal", "Site-wise"],
+    "nums": [["30 Sept", "KYC to be updated every year (or earlier, after audit approval)", 10]],
+    "blocks": [
+      {"h": "The form covers 8 headings", "pts": [
+        ["Policy & practices · Plant & machinery · QC equipment · Land & buildings", 10],
+        ["Financial · Compliance (licences, PCB, fire NOC, insurance) · Registrations · Production", 10]
+      ]},
+      {"h": "How to fill it", "pts": [
+        ["Give information manufacturing-site-wise; leave no question blank", 10],
+        ["Reply Y / N; number every attached document as shown in the format", 10],
+        ["Write the company site name on each page", 10]
+      ]},
+      {"h": "Benefit once KYC is active", "pts": [
+        ["No need to resubmit BOD resolution, licence, PAN, incorporation certificate, site ownership proof, 3-year product list", 75]
+      ]}
+    ],
+    "watch": [["Misleading or fake information is liable for prosecution", 10]]
+  },
+  "1.2 Inclusion of pesticide in the Insecticide Schedule": {
+    "one": "What to submit to get a new pesticide added to the Schedule of the Insecticides Act (CIB, 22nd meeting, 1992).",
+    "tags": ["New molecules", "CIB"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Common name and chemical name of the pesticide", 41],
+        ["Literature support on chemistry, bio-efficacy and toxicity", 41],
+        ["Registration status in other countries", 41]
+      ]}
+    ]
+  },
+  "1.2 Infrastructure - botanical biopesticides (Pyrethrum, Azadirachtin, Cymbopogon)": {
+    "one": "Minimum manpower, rooms and equipment a botanical biopesticide manufacturer must have (297th RC, 2009).",
+    "tags": ["Botanical manufacturers", "Pyrethrum · Neem · Cymbopogon"],
+    "blocks": [
+      {"h": "Manpower", "pts": [["A Quality Control Biologist, plus staff for production, maintenance and stores", 42]]},
+      {"h": "Rooms and safety", "pts": [
+        ["Extraction, production, formulation, packing & storage rooms and a QC lab", 42],
+        ["Protective clothing, respiratory devices, first aid, waste disposal as per pollution norms", 42]
+      ]},
+      {"h": "Key equipment", "pts": [
+        ["Plant: separation vessels, decanter, mixers, centrifuge, Soxhlet, filling and sealing machines", 42],
+        ["Lab: HPLC, pH meter, spectrophotometer, microscope, autoclave, flash-point apparatus, TLC", 43]
+      ]}
+    ],
+    "watch": [["These are minimums; more may be needed for specific products and production volume", 44]]
+  },
+  "1.3 Infrastructure - Baculoviruses (NPV, GV)": {
+    "one": "Minimum manpower, rooms and equipment for manufacturers of NPV and GV baculovirus products (297th RC, 2009).",
+    "tags": ["NPV / GV manufacturers"],
+    "blocks": [
+      {"h": "Manpower", "pts": [["A Quality Control Biologist, plus supervisory staff", 45]]},
+      {"h": "Rooms", "pts": [
+        ["Culture, moth oviposition and production rooms with temperature and humidity control", 45],
+        ["Diet preparation room, virus processing lab, QC lab, formulation unit, cold storage", 45]
+      ]},
+      {"h": "Key equipment", "pts": [
+        ["Diet mixer and dispenser, BOD incubator, centrifuges, haemocytometer", 45],
+        ["Research and zoom microscopes, autoclave, humidifiers, oviposition cages", 46]
+      ]}
+    ],
+    "watch": [["Minimums only; scale up for specific products and production volume", 46]]
+  },
+  "1.4 Infrastructure - microbial biopesticides": {
+    "one": "Minimum manpower, rooms and equipment for manufacturers of microbial biopesticides: antagonistic and entomopathogenic fungi and bacteria (297th RC, 2009).",
+    "tags": ["Microbial manufacturers", "Fungi · Bacteria"],
+    "blocks": [
+      {"h": "Manpower", "pts": [["A Quality Control Biologist, plus supervisory staff", 47]]},
+      {"h": "Rooms", "pts": [
+        ["Fungi: production, mixing & drying room and formulation unit", 47],
+        ["Bacteria: inoculation, fermentor & sterilisation room and formulation unit", 47],
+        ["Packaging & storage room and a QC lab", 47]
+      ]},
+      {"h": "Key equipment", "pts": [
+        ["Plant: fermentor / bioreactor, steam boiler, chilling plant, RO plant, sealing machines", 47],
+        ["Lab: autoclave, laminar flow, BOD incubator, deep freezer, microscope, colony counter", 48]
+      ]}
+    ],
+    "watch": [["Minimums only; scale up for specific products and production volume", 49]]
+  },
+  "1.5 Infrastructure - pesticide manufacturers (State licence)": {
+    "one": "Minimum infrastructure a chemical pesticide manufacturer needs before the State Licensing Authority issues a manufacturing licence (261st RC, 2006).",
+    "tags": ["Chemical manufacturers", "State licence"],
+    "blocks": [
+      {"h": "Plant", "pts": [
+        ["Technical plant: reactors, centrifuge, drier, phase separator, extractor, tanks, colour-coded pipelines", 51],
+        ["Formulation plant: equipment differs for solids (DP, WG, SP) and liquids (EC, EW, SL)", 51]
+      ]},
+      {"h": "QC laboratory", "pts": [
+        ["Analytical balance, pH meter, spectrophotometer, GLC / HPLC as per the product specification", 51],
+        ["Fume hood, flash-point and melting-point apparatus, BIS specification of the product", 52]
+      ]},
+      {"h": "Packaging", "pts": [["Filling, weighing, bagging, sealing and labelling machines", 52]]}
+    ],
+    "watch": [["Also required under the Rules: medical facilities, protective clothing, respiratory devices, safety training and safe disposal", 50]]
+  },
+  "1.6 Endorsement of additional manufacturing site": {
+    "one": "Conditions for adding a second manufacturing site (abroad) to an existing registration; toll manufacturing is a separate matter (325th RC, 2012).",
+    "tags": ["Importers", "Existing registrants"],
+    "nums": [["5 + 5", "batches analysed: original site and new site", 53], ["6 months", "minimum validity of samples and reference standards", 53]],
+    "blocks": [
+      {"h": "Who qualifies", "pts": [
+        ["The new site must belong to the same registrant; no third-party premises", 53],
+        ["The registrant must hold registration for the same product in that country", 53],
+        ["All operations at the new site must be run by the same registrant (undertaking certified by that country's DNA)", 53]
+      ]},
+      {"h": "Submit", "pts": [
+        ["Consent letters from the approved source and the new site, certified by the DNA", 53],
+        ["Declaration that same technical, raw materials and process are used", 53],
+        ["5-batch analysis reports from both sites, plus samples and reference standards for CIL testing", 53],
+        ["DNA-certified documents supporting the new site (e.g. ICAMA for China)", 54],
+        ["Justification for the additional site", 54]
+      ]},
+      {"h": "After approval", "pts": [["Inform CIB of every consignment from the new site: port of entry and expected arrival date", 54]]}
+    ],
+    "watch": [["Failing any condition lets the RC reject the application, or cancel the endorsement if already granted", 54]]
+  },
+  "1.7 Enhancement of shelf life u/s 9(4)": {
+    "one": "How a 9(4) registrant can get the longer shelf life already granted to another registrant of the identical product (284th RC, 2007).",
+    "tags": ["9(4) registrants", "Shelf life"],
+    "blocks": [
+      {"h": "Prove these four things", "pts": [
+        ["Your registration details, with notarized supporting documents", 55],
+        ["That shelf life was already enhanced for another registrant's product (give its registration status)", 55],
+        ["Chemical composition identical to that product (side-by-side comparison)", 55],
+        ["Primary packaging identical to that product's approved packaging", 55]
+      ]},
+      {"h": "How to apply", "pts": [["Use the application proforma with verification, signed and sealed", 56]]}
+    ],
+    "watch": [["If any information is found incorrect, the enhancement can be withdrawn without notice", 56]]
+  }
+}

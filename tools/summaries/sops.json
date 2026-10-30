@@ -1,0 +1,66 @@
+{
+  "SOP - Drone application of pesticides": {
+    "one": "Standard procedure for spraying pesticides by drone in agriculture, forestry and non-cropped areas (434th RC, 2021).",
+    "tags": ["Drones", "Insecticides Rule 43", "DGCA"],
+    "nums": [["24 hours", "advance written notice to Gram Panchayat and Agriculture Officer", 285], ["100 m", "minimum distance from water sources", 287], ["7 days", "submit the spray monitoring form after spraying", 291], ["> 100 µm", "droplet size to aim for", 288]],
+    "blocks": [
+      {"h": "Who and what is allowed", "pts": [
+        ["Only DGCA-certified drones and DGCA-certified pilots", 289],
+        ["Pilots must also complete the NIPHM pesticide-handling training module", 290],
+        ["Only CIB&RC-approved pesticides, at approved concentration and height", 285]
+      ]},
+      {"h": "Before spraying", "pts": [
+        ["Calibrate nozzles, check for leaks, mark field boundary and obstacles", 287],
+        ["Set a buffer zone from non-target crops; keep people and animals out", 287],
+        ["No flying over crowds, government / military sites, or near airports without permission", 287]
+      ]},
+      {"h": "During and after", "pts": [
+        ["Wear PPE; test with plain water first; do not spray when bees are foraging", 288],
+        ["Use anti-drift nozzles; control height, speed and droplet size", 290],
+        ["Triple-rinse empty containers; never burn, bury or leave them in the field", 288]
+      ]}
+    ],
+    "watch": [["Registration for drone use is a separate application to CIB&RC; drone users may use only approved products", 291]]
+  },
+  "SOP - Aerial spraying for Desert Locust": {
+    "one": "Standard procedure for aircraft, helicopter and drone spraying against desert locust, based on FAO guidelines (434th RC, 2021).",
+    "tags": ["Desert locust", "Aerial ULV", "Rule 43"],
+    "nums": [["5,000+ ha", "where aircraft are best (minimum 100 ha)", 298], ["1–10 m/s", "spray only within this wind speed", 300], ["45°", "wind shift that means stop and re-plan", 300]],
+    "blocks": [
+      {"h": "Before", "pts": [
+        ["Train pilots, incl. clinical effects of insecticides, by locust officer and medical toxicologist", 298],
+        ["Service aircraft; GPS track guidance; calibrate the spray system", 299],
+        ["Notify the public 24 hours ahead; residents move livestock and beehives", 299]
+      ]},
+      {"h": "During", "pts": [
+        ["Full protective clothing for all handlers", 299],
+        ["Start at the downwind edge, spray crosswind, move upwind; one extra upwind pass", 300],
+        ["Stop if it rains or is likely to rain", 300]
+      ]},
+      {"h": "Drones", "pts": [["Useful for spot spraying: tall trees, sand dunes, plantations vehicles can't reach", 298]]}
+    ]
+  },
+  "Coronavirus safety tips": {
+    "one": "General COVID-19 safety advice included in the compilation.",
+    "tags": ["General"],
+    "blocks": [
+      {"h": "Tips", "pts": [
+        ["Install Aarogya Setu; avoid non-essential travel and gatherings", 307],
+        ["Keep 6 feet apart; wash hands 20 seconds or use 60% alcohol sanitiser", 307],
+        ["Disinfect high-touch surfaces daily; cover coughs and sneezes", 307]
+      ]}
+    ]
+  },
+  "Scrutiny Templates / Proformas": {
+    "one": "Blank templates the CIB&RC Secretariat uses to scrutinise applications, by discipline. Open the original pages to fill or check them.",
+    "tags": ["Templates", "Chemistry · Bio-efficacy · Toxicology · Packaging"],
+    "blocks": [
+      {"h": "What is here", "pts": [
+        ["Chemistry dossier templates (technical, formulation, biopesticides)", 311],
+        ["Bio-efficacy scrutiny formats: TI new source, TI / TIM, formulation, PGR, endorsement", 366],
+        ["Toxicology templates for every category: 9(3B), 9(3), 9(4), botanicals, pheromones, export", 428],
+        ["Packaging templates: TI, FI, TIM, FIM, biopesticides, new pack material and size", 700]
+      ]}
+    ]
+  }
+}

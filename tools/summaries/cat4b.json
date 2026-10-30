@@ -1,0 +1,96 @@
+{
+  "4.2.1 Eucalyptus based products (Eucalyptol)": {
+    "one": "Data for indigenous manufacture of eucalyptus-based extracts and formulations containing eucalyptol (293rd RC, 2008).",
+    "tags": ["Eucalyptol", "Indigenous manufacture", "9(3B) · 9(3)"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Plant part used, extraction process, formulation process", 192],
+        ["Eucalyptol content in extract / formulation; name and quantity of any other insecticidal a.i.", 192]
+      ]},
+      {"h": "Bio-efficacy", "pts": [["Bio-effectiveness, phytotoxicity, dosage, crop and pest stage, waiting period, equipment", 193]]},
+      {"h": "Toxicity and packaging", "pts": [
+        ["As for chemical pesticides: acute studies, birds, fish, bees, medical data", 193],
+        ["Container-content compatibility from an independent laboratory", 194]
+      ]}
+    ]
+  },
+  "4.2.2 Rotenone for pisciculture": {
+    "one": "Data for rotenone formulations used to remove weed and predatory fish from fish ponds (280th RC, 2007).",
+    "tags": ["Rotenone", "Fish ponds", "9(3B) · 9(3)"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Plant part, formulation process, rotenone content, BIS-format specification", 195],
+        ["Undertaking: only plant extract, no other chemical; ATR from independent lab and CIL", 195],
+        ["Shelf-life data for 9(3) only", 195]
+      ]},
+      {"h": "Bio-efficacy", "pts": [["On weed fish (Puntius) and predatory fish (Murrel / Channa)", 195]]},
+      {"h": "Toxicity", "pts": [["Full set for both 9(3B) and 9(3), incl. carcinogenicity, mutagenicity, livestock and applicator health monitoring", 196]]}
+    ]
+  },
+  "4.2.3 Cymbopogon based plant extract": {
+    "one": "Data for formulations of Cymbopogon (lemongrass family) plant extract, with geraniol as a major active (202nd RC, 2000).",
+    "tags": ["Cymbopogon / geraniol", "9(3B) · 9(3)"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Plant part, formulation process, minimum geraniol content", 197],
+        ["Composition, properties, BIS-format specification, geraniol method of analysis, ATR", 197],
+        ["Undertaking that only plant extract is used", 197]
+      ]},
+      {"h": "Packaging", "pts": [["Labels, packaging specifications, storage, disposal and material balance of waste", 198]]}
+    ]
+  },
+  "4.2.4 Import of concentrated Pyrethrum extract": {
+    "one": "Simplified data for importing higher-concentration pyrethrum extract from the already approved source (Pyrethrum Board, Nakuru, Kenya) (148th RC, 1994).",
+    "tags": ["Pyrethrum", "Import", "Approved source"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Composition, properties, specification and method with quality undertaking", 199],
+        ["ATR from the principal; quantify pyrethrins 1 & 2, cinerins 1 & 2, jasmolins 1 & 2", 199],
+        ["Shelf-life data as per guidelines", 199]
+      ]}
+    ]
+  },
+  "4.2.5 Herbal / botanical plant growth regulators": {
+    "one": "Data for herbal or botanical plant growth regulators u/s 9(3) (161st RC, 1996).",
+    "tags": ["Botanical PGR", "9(3)"],
+    "nums": [["2 seasons", "multilocation bio-effectiveness and phytotoxicity", 201], ["1 season", "persistence in soil and plants", 201]],
+    "blocks": [
+      {"h": "Chemistry", "pts": [["Source, composition, identity, extraction process, specification, chemical method, shelf life, test report", 201]]},
+      {"h": "Bio-efficacy", "pts": [
+        ["Compatibility data if mixed with other chemicals", 201],
+        ["Registration status abroad; label claims as per RC guidelines", 201]
+      ]}
+    ]
+  },
+  "4.2.6 Neem (Azadirachtin) household insecticides": {
+    "one": "Data for neem-based household insecticides containing azadirachtin (186th RC).",
+    "tags": ["Neem / Azadirachtin", "Household", "9(3B) · 9(3)"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Common name on the label must show the minimum azadirachtin content", 203],
+        ["Source and purity of neem extract; full composition and ingredient properties", 203]
+      ]},
+      {"h": "Bio-efficacy", "pts": [
+        ["Tested at National Laboratories: 2 labs for 9(3B), 3 for 9(3)", 204],
+        ["Residual toxicity on different surfaces", 204]
+      ]},
+      {"h": "Packaging", "pts": [["Pilfer-proof, leak-proof, easily disposable containers; IS / eco-friendly packaging details", 205]]}
+    ],
+    "watch": [["Label and leaflet must say: 'Not to be used on any food crops'", 204]]
+  },
+  "4.3 Pheromones / Semiochemicals": {
+    "one": "Data for pheromones and other semiochemicals that change insect behaviour, plus trap specifications.",
+    "tags": ["Pheromones", "Lures / dispensers", "9(3B) · 9(3) · 9(4)"],
+    "nums": [["≥ 50%", "attractancy in the wind-tunnel test (technical and lure)", 207], ["2 seasons", "field trials: 1 agro-climatic zone for 9(3B), 2 for 9(3)", 208]],
+    "blocks": [
+      {"h": "Bio-efficacy", "pts": [
+        ["Wind-tunnel lab test, then two-season field trials (published or authentic report)", 208],
+        ["Give mode of action, target pests, crops, application rate, frequency and limits of use", 207],
+        ["Compatibility data only if recommended with other agrochemicals", 207],
+        ["9(4): no bio-efficacy data; claim as per the 9(3) approval", 208]
+      ]},
+      {"h": "Traps", "pts": [["Specifications for funnel traps (Helicoverpa, Spodoptera) and sticky traps (pink bollworm)", 209]]}
+    ],
+    "watch": [["Pheromones used only for monitoring and mass trapping are outside the Insecticides Act (248th RC)", 207]]
+  }
+}

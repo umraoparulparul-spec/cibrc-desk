@@ -1,0 +1,203 @@
+{
+  "Requirement for the endorsement of change of name of source of import of chemicals due to disinvestment": {
+    "one": "Checklist when the foreign source of import changes name because it was sold (disinvestment).",
+    "tags": ["Source of import", "Disinvestment"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items, copy of the certificate, affidavit on earlier endorsements", 259],
+        ["Formal request letter from the dis-investor, with disinvestment proof", 259],
+        ["Buyer's undertaking: same quality, specification and manufacturing process", 259],
+        ["ATR from the buyer: purity and impurity profile of batch samples", 259],
+        ["Consent letter to supply the product to India", 259]
+      ]}
+    ]
+  },
+  "Requirement for the change of name of source of import": {
+    "one": "Checklist when the approved foreign source of import changes its name or manufacturing premises.",
+    "tags": ["Source of import", "Name change"],
+    "blocks": [
+      {"h": "Legal", "pts": [
+        ["Standard file items, copy of the certificate, affidavit on earlier endorsements", 260],
+        ["Proof of the name or premises change, authenticated by the Indian Embassy / Consulate", 260]
+      ]},
+      {"h": "Chemistry", "pts": [
+        ["Reason: merger, takeover, internal re-arrangement or shifting", 260],
+        ["ATRs from old and newly named source, with quality and process undertaking", 260],
+        ["Supporting document from the Designated National Authority", 260],
+        ["Consent letter legalised by the Indian Embassy in the source country", 260]
+      ]}
+    ]
+  },
+  "Requirement for the endorsement for inclusion of already approved additional source of import": {
+    "one": "Checklist to add, on your certificate, an additional source of import that the RC has already approved.",
+    "tags": ["Source of import", "Additional source"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items and affidavit on earlier endorsements", 261],
+        ["Consent letter legalised by the Indian Embassy in the source country", 261],
+        ["RC meeting reference that approved the additional source", 261],
+        ["Copy of the certificate with label / leaflet", 261]
+      ]}
+    ]
+  },
+  "Requirement for the endorsement of enhancement of shelf life of pesticides u/s 9(4) of the insecticides act": {
+    "one": "Checklist for a 9(4) registrant to get the longer shelf life already approved for the 9(3) registrant (see 1.7).",
+    "tags": ["9(4)", "Shelf life"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items; notarized BOD resolution and manufacturing licence", 262],
+        ["Affidavit on earlier endorsements", 262],
+        ["Shelf-life enhancement proforma (from 1.7)", 262],
+        ["Name of the 9(3) registrant and the CIB meeting that approved its enhancement", 262]
+      ]}
+    ]
+  },
+  "Requirement For Free Sale Certificate": {
+    "one": "Checklist to get a Free Sale Certificate (FSC), usually asked by importing countries (315th RC, 2011).",
+    "tags": ["Export", "FSC"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items and notarized authorisation of the signatory", 263],
+        ["Notarized certificate(s) with all endorsements: transfer, name change, address change", 263],
+        ["Notarized valid manufacturing licence", 263],
+        ["Justification for needing the FSC", 263]
+      ]}
+    ],
+    "watch": [["Regular registrants may apply separately for export only, or for use in India plus export", 263]]
+  },
+  "Requirement for the endorsement of change in office address with respect to certificates o": {
+    "one": "Checklist to change the registered office address on certificates.",
+    "tags": ["Office address", "Endorsement"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items and affidavit on earlier endorsements", 264],
+        ["Copies of the certificates with labels / leaflets", 264],
+        ["Company: notarized Registrar of Companies proof of the new address", 264],
+        ["Proprietor / firm: notarized affidavit with old address and reason for change", 264],
+        ["Affidavit of no court case, with product list", 264]
+      ]}
+    ]
+  },
+  "Requirement for the submission of application for attestation of copy of already issued ce": {
+    "one": "Checklist to get copies of your certificates attested by CIB&RC, usually for an importing country.",
+    "tags": ["Export", "Attestation"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items and notarized BOD resolution", 265],
+        ["Notarized certificate copies with labels / leaflets, in duplicate, indexed", 265],
+        ["Affidavit in the 314th RC format: copies used only for export of these products", 266]
+      ]}
+    ],
+    "watch": [["Original certificates must be shown to the designated officer for verification", 265]]
+  },
+  "Requirement for the endorsement of name of supplier of already approved source of import": {
+    "one": "Checklist to add the name of a supplier for a source of import that is already approved.",
+    "tags": ["Supplier name", "Source of import"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items and affidavit on earlier endorsements", 267],
+        ["Consent letter from the approved source, legalised by the Indian Embassy", 267],
+        ["RC meeting reference and copy of the certificate with label / leaflet", 267]
+      ]}
+    ]
+  },
+  "Requirement for the submission of application for small quantity import of pesticides for": {
+    "one": "Checklist for an RTT (research, test and trial) import application (320th and 329th RC).",
+    "tags": ["RTT import", "Form C"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items, notarized BOD resolution, signed Form C", 268],
+        ["Justification for quantity; technical bulletin; chemistry, toxicity, bio-efficacy information", 268],
+        ["Registration certificate from the source country; supplier authorisation if not the manufacturer", 268],
+        ["Microbials: notarized GMO-free affidavit + manufacturer's document", 268],
+        ["Coded / unregistered pesticides: document from the inventor", 268]
+      ]}
+    ]
+  },
+  "Requirement for the issue of duplicate registration certificate": {
+    "one": "Checklist for a duplicate certificate when the original is lost (320th RC, 2011).",
+    "tags": ["Duplicate certificate"],
+    "nums": [["15 days", "wait after the newspaper advertisement before applying", 269]],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items, fee, affidavit on earlier endorsements with certificate details", 269],
+        ["Copy of the FIR for the lost certificate", 269],
+        ["Cutting of the newspaper advertisement about the loss", 269],
+        ["Copy of the letter informing the State Licensing Authority", 269],
+        ["Notarized photocopy of the lost certificate and labels, if available", 269]
+      ]}
+    ],
+    "watch": [["Affidavit: if the original is found, it must be returned at once and not misused", 269]]
+  },
+  "Requirement for extension of shelf life of pesticides u/s 9(3b)/ 9(3) for data generated in": {
+    "one": "Checklist to extend shelf life using continued storage-stability data (9(3B) / 9(3)).",
+    "tags": ["Shelf life", "9(3B) · 9(3)"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items, notarized BOD resolution, certificate with labels", 270],
+        ["Copy of the Form-I submitted originally", 270],
+        ["New shelf-life claim, with shelf-life data and meteorological data", 270]
+      ]}
+    ],
+    "watch": [["One data location must be CIL Faridabad: as one of two locations for biopesticides, as an additional location for chemicals (333rd RC)", 270]]
+  },
+  "Requirement for the endorsement of extension of validity/ revalidation of registration cer": {
+    "one": "Checklist to revalidate or extend validity of 9(4) certificates, plus the 9(3) list from the 442nd RC.",
+    "tags": ["Revalidation", "9(4) technical"],
+    "blocks": [
+      {"h": "9(4) certificates", "pts": [
+        ["Standard file items, BOD resolution, industry category certificate, licence for other pesticides", 271],
+        ["Certificates with labels; affidavit on earlier endorsements", 271],
+        ["Notarized justification, with evidence, for not taking a manufacturing licence", 271],
+        ["Pollution Control Board NOC, if taken", 271]
+      ]},
+      {"h": "9(3) (442nd RC)", "pts": [["Covering letter, endorsement affidavit, source / ICAMA certificate with original, legalised consent, PCB NOC", 271]]}
+    ],
+    "watch": [["Not applicable to 9(4) formulation certificates (333rd RC)", 271]]
+  },
+  "Requirements for the change of name of already approved source of import for office addres": {
+    "one": "Checklist when the approved foreign source changes only its office name / address.",
+    "tags": ["Source of import", "Office address"],
+    "blocks": [
+      {"h": "Legal", "pts": [["Standard file items, certificate copy, affidavit, embassy-authenticated proof of the change", 272]]},
+      {"h": "Chemistry", "pts": [
+        ["Reason for the change; ATR from the newly named source with undertaking", 272],
+        ["DNA document and embassy-legalised consent letter", 272]
+      ]}
+    ]
+  },
+  "Requirements for the change of address of manufacturing premises of import in the country": {
+    "one": "Checklist when the foreign manufacturer closes the old unit and moves production to a new address.",
+    "tags": ["Source of import", "New premises"],
+    "nums": [["5 batches", "analysis report from the changed source", 273]],
+    "blocks": [
+      {"h": "Legal", "pts": [["Standard file items, certificate copy, affidavit, embassy-authenticated proof of the new address", 273]]},
+      {"h": "Chemistry", "pts": [
+        ["Reason for the change; 5-batch analysis with quality and process undertaking", 273],
+        ["DNA document and embassy-legalised consent letter", 273]
+      ]}
+    ]
+  },
+  "Requirements for the change of name of source of import or change of manufacturing premise": {
+    "one": "Combined checklist for a change of the source's name or of its manufacturing premises abroad.",
+    "tags": ["Source of import"],
+    "blocks": [
+      {"h": "Legal", "pts": [["Standard file items, certificate with label, affidavit, embassy-authenticated proof of the change", 274]]},
+      {"h": "Chemistry", "pts": [
+        ["Reason: merger, takeover, re-arrangement or shifting", 274],
+        ["ATR from the new premises with undertaking; DNA document; legalised consent letter", 274]
+      ]}
+    ]
+  },
+  "No-MRL agricultural chemicals list (FSSAI)": {
+    "one": "FSSAI list of agricultural chemicals for which no Maximum Residue Limit (MRL) applies, each with its condition of use (464th RC).",
+    "tags": ["MRL", "FSSAI"],
+    "blocks": [
+      {"h": "How to use it", "pts": [
+        ["Each entry applies only under its stated condition (e.g. chlorine dioxide ≤ 10 ppm on fruit and vegetables)", 276],
+        ["Examples: chitosan, hydrogen peroxide, geraniol on grapevines, gibberellic acid < 200 g a.i./ha/year", 277]
+      ]},
+      {"h": "RC position", "pts": [["RC also seeks MRL relaxation for seed-treatment products, spray oils and nursery-stage pesticides", 275]]}
+    ]
+  }
+}

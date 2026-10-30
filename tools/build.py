@@ -180,9 +180,20 @@ TABLE_PAGES = json.loads(TP.read_text())
 sys.path.insert(0, str(Path(__file__).parent))
 from outline import outline_page
 OUTLINE = [outline_page(pages[k], (k + 1) in TABLE_PAGES) for k in range(N)]
+# hand-written section summaries (tools/summaries/*.json), keyed by the start of the contents title
+SUMS = {}
+for f in sorted((Path(__file__).parent / "summaries").glob("*.json")):
+    SUMS.update(json.loads(f.read_text(encoding="utf-8")))
+def summary_for(title):
+    if title in SUMS:
+        return SUMS[title]
+    hits = [k for k in SUMS if title.startswith(k) or k.startswith(title)]
+    return SUMS[max(hits, key=len)] if hits else None
+SUM_LIST = [summary_for(t) for _, t, _ in fixed]
+print("summaries matched:", sum(1 for s in SUM_LIST if s), "of", len(fixed))
 def render(pdf_url, online, inline=False, mode="local"):
     # mode: "claude" (artifact with AI + database), "site" (free static website), "local" (offline file)
-    data = {"pdfUrl": pdf_url, "onlineUrl": online, "inlineViewer": inline, "mode": mode, "pages": pages, "sec": secmap, "tbl": TABLE_PAGES, "ol": OUTLINE,
+    data = {"pdfUrl": pdf_url, "onlineUrl": online, "inlineViewer": inline, "mode": mode, "pages": pages, "sec": secmap, "tbl": TABLE_PAGES, "ol": OUTLINE, "sum": SUM_LIST,
             "toc": [[lv, t, p] for lv, t, p in fixed]}
     return tpl.replace("/*__DATA__*/null", json.dumps(data, ensure_ascii=False).replace("</", "<\/"))
 def page(body):

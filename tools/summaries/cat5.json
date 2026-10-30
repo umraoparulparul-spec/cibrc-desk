@@ -1,0 +1,94 @@
+{
+  "Category 5 - Household, Public Health, Aircraft etc.": {
+    "one": "Registration of pesticides used outside agriculture: household, public health, aircraft disinsection, ectoparasites and biocides.",
+    "tags": ["Non-agricultural uses"],
+    "blocks": [
+      {"h": "Pick your section", "pts": [
+        ["Household insecticides 5.1 · Public health programmes 5.2 · Aircraft 5.3", 214],
+        ["Mites, ticks, bedbugs and other ectoparasites 5.4 · Biocides incl. paints 5.5", 224]
+      ]}
+    ]
+  },
+  "5.1 Household insecticides": {
+    "one": "Data for indoor-use insecticides against ants, cockroaches, flies, mosquitoes, bedbugs, termites etc. (211th and 266th RC).",
+    "tags": ["Household", "9(3B) · 9(3)"],
+    "nums": [["2 a.i.", "maximum in a household combination (more only with a valid method)", 214], ["2 labs", "national laboratories, 2 repeated trials, for 9(3B)", 216]],
+    "blocks": [
+      {"h": "General rules", "pts": [
+        ["Only from technical registered under the Act; judged together with the technical data", 214],
+        ["Label name format: 'household pesticide containing x% w/w …'", 214]
+      ]},
+      {"h": "Chemistry", "pts": [
+        ["Technical source and purity; full composition and ingredient properties", 214],
+        ["ATR from an independent national / international lab; shelf-life data", 214],
+        ["Process, effluent treatment, sample with standards, BIS residue method", 215]
+      ]},
+      {"h": "Label and leaflet", "pts": [
+        ["Brief directions on the label; detailed uses, insects, dosage and places in the leaflet", 215],
+        ["Restricted-use products: say 'For … use only' in capitals", 215]
+      ]}
+    ],
+    "watch": [["Label and leaflet must say: 'Not to be used on any food crop'", 215]]
+  },
+  "5.2 Public Health Programme": {
+    "one": "Data for insecticides used in government vector-control (public health) programmes u/s 9(3).",
+    "tags": ["Public health / vector control", "9(3)", "ICMR protocol 2023"],
+    "nums": [["3 years", "multi-centric bio-efficacy by ICMR / MoHFW institutes", 220]],
+    "blocks": [
+      {"h": "Requirements", "pts": [
+        ["Bio-efficacy as per ICMR Common Protocol for Public Health Pesticides (2023)", 220],
+        ["WHOPES-recommended insecticides: Phase I data exempted (449th RC)", 220],
+        ["Recommendation from the National Vector Borne Disease Control Programme", 220],
+        ["Toxicity: six acute studies, birds and fish", 220]
+      ]},
+      {"h": "Long-lasting insecticidal nets (LLIN)", "pts": [["Six acute studies on the premix, plus health monitoring of users with the final product", 220]]}
+    ]
+  },
+  "5.3 Aircraft disinfection": {
+    "one": "Data for insecticides used to disinsect aircraft (280th RC, 2007).",
+    "tags": ["Aircraft disinsection", "9(3)"],
+    "nums": [["3 labs", "national / NABL labs, at least 2 trials each", 222], ["2 a.i.", "maximum in a combination", 221]],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Only from registered technical; sample analysed at CIL Faridabad", 221],
+        ["ATR from an independent lab; shelf-life data; BIS method where available", 221]
+      ]},
+      {"h": "Bio-efficacy", "pts": [["Persistence on aircraft surfaces and concentration in air, in 3 labs", 222]]},
+      {"h": "Toxicity", "pts": [["Six acute studies plus health monitoring of spray crew and/or volunteers on board", 222]]}
+    ],
+    "watch": [["Label: 'Not to be used on any food as well as crops'", 222]]
+  },
+  "5.4 Ectoparasites (mites, bedbugs, ticks)": {
+    "one": "Data for insecticides against ectoparasites such as mites, ticks and bedbugs, for technical and formulation (301st RC, 2009).",
+    "tags": ["Ectoparasites", "9(3B) · 9(3)"],
+    "blocks": [
+      {"h": "Chemistry", "pts": [
+        ["Full chemistry for technical and formulation; shelf-life data except 9(3B) technical", 224],
+        ["Supplier authorisation, GLP / ISO report with first consignment, sample with standards", 225]
+      ]},
+      {"h": "Bio-efficacy and residues", "pts": [
+        ["Formulation: persistence on treated surfaces; residues in bird organs, edible products and excreta", 226],
+        ["Bird studies include blood profile, enzymology and 15-day egg production records", 226]
+      ]},
+      {"h": "Packaging", "pts": [["Transport packaging specification must include the UN number", 228]]}
+    ],
+    "watch": [["Formulation import without registered technical: submit the full technical data too", 228]]
+  },
+  "5.5 Biocides & Biocide products (MUP); paints": {
+    "one": "Registration of biocides and biocide products, incl. preservatives used in paints (389th RC, 2018).",
+    "tags": ["Biocides", "Paint industry", "MUP"],
+    "nums": [["0.5% w/w", "maximum diuron in final paint", 230], ["0.1–0.5%", "carbendazim range in paint", 230], ["> 0.1%", "carbendazim: toxic labels; sale to professionals only", 230]],
+    "blocks": [
+      {"h": "Does a paint need registration?", "pts": [
+        ["No, if the biocide only protects the paint itself and no anti-microbial / insect claims are made", 229],
+        ["Yes for the biocide itself (technical or product) used as in-can or dry-film preservative", 229]
+      ]},
+      {"h": "Rules", "pts": [
+        ["Only CIB&RC-registered biocide technicals may be used", 229],
+        ["Product without registered technical: declare source and give full technical data", 229],
+        ["All toxicology GLP-compliant; efficacy per ASTM 5589 / 5590 or CIB&RC protocols", 230]
+      ]}
+    ],
+    "watch": [["Carbendazim above 1000 ppm needs skull-and-crossbones and dead-fish/tree labels, 'Mutagen Cat 2', 'Reprotox Cat 2'", 230]]
+  }
+}

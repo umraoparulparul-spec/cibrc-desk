@@ -1,0 +1,195 @@
+{
+  "Additional Information - Requirements & Endorsements": {
+    "one": "Document checklists for filing applications and for every change (endorsement) to an existing certificate.",
+    "tags": ["Checklists", "Endorsements"],
+    "blocks": [
+      {"h": "Standard file items (almost every checklist)", "pts": [
+        ["Index, page numbering, every page authenticated by the authorised signatory", 241],
+        ["Authorisation for the signatory: notarized BOD resolution / affidavit / partnership deed", 245],
+        ["Notarized affidavit listing endorsements made earlier on the certificate (specimen given)", 252]
+      ]},
+      {"h": "Find your checklist", "pts": [
+        ["New application: five folders 241 (chemical) / 243 (bio) · 9(3B) extension 245", 241],
+        ["Company / factory / office changes 256, 257, 264 · Transfer 258", 256],
+        ["Source of import changes 259–261, 267, 272–274 · Packaging 255 · Shelf life 262, 270", 259],
+        ["Free Sale Certificate 263 · Duplicate certificate 269 · Revalidation 271", 263]
+      ]}
+    ]
+  },
+  "Requirements for the submission of application in five folders for registration of pesticides u/s 9(3)/ 9(3b)": {
+    "one": "How to split a 9(3) / 9(3B) chemical pesticide application into five folders (266th RC, 2006).",
+    "tags": ["9(3) · 9(3B)", "Chemical pesticides", "Filing format"],
+    "blocks": [
+      {"h": "A · Legal", "pts": [["Index, numbering, authentication, Form-I, fee DD, stamped envelopes, BOD resolution, 9(3B) certificate if any", 241]]},
+      {"h": "B · Chemistry", "pts": [["Form-I copy, chemistry data, labels, RTT permit, MRL proforma", 241]]},
+      {"h": "C · Bio-efficacy", "pts": [["Form-I copy, bio-efficacy data, composition, MRL proforma", 241]]},
+      {"h": "D · Toxicity", "pts": [["Form-I copy, toxicity data, composition, specification, adjuvant details, MRL proforma, labels", 242]]},
+      {"h": "E · Packaging", "pts": [["Form-I copy, packaging and labelling data", 242]]}
+    ],
+    "watch": [["Each folder is marked Complete / Deficient at receipt; a deficient file is not accepted for scrutiny", 242]]
+  },
+  "Requirements for submission of application in five folders for registration of biopesticides u/s 9(3)/ 9(3b)": {
+    "one": "The five-folder format for a 9(3) / 9(3B) biopesticide application.",
+    "tags": ["Biopesticides", "9(3) · 9(3B)", "Filing format"],
+    "blocks": [
+      {"h": "A · Legal (originals)", "pts": [
+        ["Form-I, fee DD, envelopes, notarized BOD resolution", 243],
+        ["Notarized affidavits on NJSP: composition, GMO-free, free from chemical / botanical pesticides", 243],
+        ["Proof of strain deposit in the National Repository (reference code)", 243]
+      ]},
+      {"h": "B–E · Technical folders", "pts": [
+        ["Chemistry: biological characteristics + copies of the legal affidavits", 243],
+        ["Bio-efficacy: data + summary in duplicate · Toxicity: data, specification, adjuvants", 244],
+        ["Packaging: packaging and labelling data", 244]
+      ]}
+    ]
+  },
+  "Requirements for Extension of Provisional Registration Under Section 9(3b)": {
+    "one": "Checklist to extend a provisional 9(3B) registration, for chemical pesticides and biopesticides.",
+    "tags": ["9(3B) extension"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items, Form-I, fee DD, stamped envelopes", 245],
+        ["Justification for the extension", 245],
+        ["Copies of all earlier certificates for the product", 245],
+        ["Details of data generated to meet the provisional conditions: chemistry, bio-efficacy, toxicity, packaging", 245]
+      ]}
+    ]
+  },
+  "Requirements for the registration of pesticide formulation “FIM vs FIT u/s 9(3)” for indigenous": {
+    "one": "Checklist for FIM vs FIT: making in India a formulation identical to an imported one already registered.",
+    "tags": ["FIM vs FIT", "9(3)"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items, Form-I, fee DD, envelopes", 246],
+        ["Notarized: BOD resolution, composition affidavit, licence, PAN, incorporation", 246],
+        ["Proof the technical source is registered (RC meeting reference)", 246],
+        ["FI registrant's name and the RC meeting that approved it", 246],
+        ["ATR from an independent lab, labels, and a sample for CIL", 246]
+      ]}
+    ],
+    "watch": [["Deemed registration of the technical is not accepted", 246]]
+  },
+  "Requirement for 9(4) Tim Cases Under Insecticides Act, 1968": {
+    "one": "Checklists for 9(4) me-too registration of technical (TIM) and formulation (FIM) made in India (256th RC, 2005).",
+    "tags": ["9(4) TIM", "9(4) FIM"],
+    "nums": [["7 copies", "label / leaflet as per IR 1971 (TIM)", 248], ["2 years", "products registered, licensed and manufactured (FIM)", 248]],
+    "blocks": [
+      {"h": "9(4) TIM", "pts": [
+        ["Legal: standard file items, fee DD, envelopes, Form-I", 247],
+        ["Chemistry: composition, specification, ATR from independent lab, impurities, chemical equivalence", 247],
+        ["Full process with equations, flow sheet, effluent treatment; in-process sample ATR from CIL", 247],
+        ["Toxicology: acute oral, dermal, skin and mucous membrane irritation", 247]
+      ]},
+      {"h": "9(4) FIM", "pts": [["Standard file items, Form-I, fee; notarized BOD, licence, PAN, incorporation, product list", 248]]}
+    ]
+  },
+  "Requirement under Section 9(4) Ti/Fi Category Of The Insecticides Act, 1968": {
+    "one": "Checklist for 9(4) me-too registration of an imported technical (TI) or formulation (FI).",
+    "tags": ["9(4) TI · FI"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items, fee DD, envelopes, Form-I", 249],
+        ["Notarized: BOD resolution, licence, PAN, incorporation certificate", 249],
+        ["Consent letter legalised by the Indian Embassy / High Commission in the source country", 249],
+        ["Products registered, licensed and manufactured in the last 2 years", 249]
+      ]}
+    ]
+  },
+  "Requirement for the registration of pesticides for export under section 9(3)": {
+    "one": "Checklist for export-only registration, plus the checklist for label expansion u/s 9(3).",
+    "tags": ["Export", "Label expansion", "9(3)"],
+    "blocks": [
+      {"h": "Export: registered molecule", "pts": [
+        ["Chemexcil certificate, Form-I, composition, BIS no. or specification and method", 250],
+        ["7 copies of labels; source of import or process of manufacture as applicable", 250]
+      ]},
+      {"h": "Export: new molecule", "pts": [["Same chemistry plus acute toxicity; technical also reproduction, carcinogenicity, mutagenicity", 250]]},
+      {"h": "Label expansion u/s 9(3)", "pts": [
+        ["Registration certificate, signatory authorisation, affidavit on earlier expansions", 251],
+        ["Bio-effectiveness, phytotoxicity, residues, persistence, foreign MRLs, MRL proforma in duplicate", 251],
+        ["7 copies of revised labels in English and Hindi; field-data summary in duplicate", 251]
+      ]}
+    ]
+  },
+  "Requirement for the label expansion of insecticide for household use u/s 9(3)": {
+    "one": "Checklist to add new uses (label expansion) to a household insecticide.",
+    "tags": ["Household", "Label expansion", "9(3)"],
+    "nums": [["3 labs", "national labs, at least 2 repeated trials each", 253], ["7 copies", "labels / leaflets in Hindi and English", 253]],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items and affidavit on earlier label expansions", 253],
+        ["Bio-effectiveness from three national laboratories", 253],
+        ["Secondary pest outbreaks (ticks, mites) where residual pyrethroids are used", 253],
+        ["Persistence on surfaces from 3 labs; for coils / mats / vaporisers, concentration in air instead", 253]
+      ]}
+    ]
+  },
+  "Requirement for the endorsement of bio-efficacy claim on label/leaflet of registration cer": {
+    "one": "Checklist for a 9(4) registrant to add a bio-efficacy claim to the label / leaflet.",
+    "tags": ["9(4)", "Label claim endorsement"],
+    "nums": [["2 years", "certificate older than this: State proof that production has started", 254]],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items and notarized BOD resolution", 254],
+        ["Notarized certificate with the approved label / leaflet", 254],
+        ["Affidavit on earlier endorsements", 254]
+      ]}
+    ]
+  },
+  "Requirement for the endorsement of new/alternate packaging": {
+    "one": "Checklist to change, or add, packaging on an existing certificate.",
+    "tags": ["Packaging endorsement"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items, justification for the change, copy of the certificate", 255],
+        ["Primary, secondary and transport packaging details", 255],
+        ["Content–container compatibility data", 255]
+      ]},
+      {"h": "Extra tests", "pts": [
+        ["New packaging material: storage-stability performance of the container", 255],
+        ["New material, or a pack size not in BIS: transport worthiness test", 255]
+      ]}
+    ]
+  },
+  "Requirement for the endorsement of change of name of the company/firm": {
+    "one": "Checklist to change the company or firm name on registration certificates.",
+    "tags": ["Name change", "Endorsement"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items and affidavit on earlier endorsements", 256],
+        ["Copy of the certificate of registration", 256],
+        ["Company: MoA & AoA and fresh incorporation certificate from the Registrar of Companies", 256],
+        ["Firm: partnership deed", 256],
+        ["Affidavit that no court case is pending under the Insecticides Act", 256]
+      ]},
+      {"h": "If premises also move", "pts": [["Factory: NOC from State Director of Agriculture · Office: full head and branch office address", 256]]}
+    ]
+  },
+  "Requirement for the endorsement of factory address for the first time/shifting of factory": {
+    "one": "Checklist to add a factory address for the first time, shift the factory, or add a second factory.",
+    "tags": ["Factory address", "Endorsement"],
+    "blocks": [
+      {"h": "First time", "pts": [
+        ["Standard file items, affidavit on earlier endorsements, copy of the certificate", 257],
+        ["Approved labels / leaflets, or 7 copies if not approved earlier", 257]
+      ]},
+      {"h": "Shifting or second factory", "pts": [["All of the above + NOC from the State Director of Agriculture", 257]]}
+    ]
+  },
+  "Requirement for the transfer of certificate of registration of one person/ undertaking in": {
+    "one": "Checklist to transfer a registration certificate from one person or company to another.",
+    "tags": ["Transfer of certificate"],
+    "blocks": [
+      {"h": "Submit", "pts": [
+        ["Standard file items and affidavit on earlier endorsements", 258],
+        ["Joint notarized application on NJSP by both parties, for each certificate", 258],
+        ["…with commissioning date, factory address and last year's production", 258],
+        ["Attested manufacturing licence listing the products", 258],
+        ["Incorporation certificate with MoA & AoA; partnership / dissolution deed", 258],
+        ["Registered sale deed, gift or inheritance document", 258]
+      ]}
+    ],
+    "watch": [["If a court case under the Act is pending, an NOC from the court is needed for the transfer", 258]]
+  }
+}

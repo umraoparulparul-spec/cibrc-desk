@@ -177,9 +177,12 @@ TP = Path(__file__).with_name("tablepages.json")
 if "--tables" in sys.argv or not TP.exists():
     TP.write_text(json.dumps([i + 1 for i in range(N) if any(t.row_count >= 3 and t.col_count >= 2 for t in d[i].find_tables().tables)]))
 TABLE_PAGES = json.loads(TP.read_text())
+sys.path.insert(0, str(Path(__file__).parent))
+from outline import outline_page
+OUTLINE = [outline_page(pages[k], (k + 1) in TABLE_PAGES) for k in range(N)]
 def render(pdf_url, online, inline=False, mode="local"):
     # mode: "claude" (artifact with AI + database), "site" (free static website), "local" (offline file)
-    data = {"pdfUrl": pdf_url, "onlineUrl": online, "inlineViewer": inline, "mode": mode, "pages": pages, "sec": secmap, "tbl": TABLE_PAGES,
+    data = {"pdfUrl": pdf_url, "onlineUrl": online, "inlineViewer": inline, "mode": mode, "pages": pages, "sec": secmap, "tbl": TABLE_PAGES, "ol": OUTLINE,
             "toc": [[lv, t, p] for lv, t, p in fixed]}
     return tpl.replace("/*__DATA__*/null", json.dumps(data, ensure_ascii=False).replace("</", "<\/"))
 def page(body):

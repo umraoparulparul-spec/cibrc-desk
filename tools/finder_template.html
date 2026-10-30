@@ -213,6 +213,26 @@ p.kp-src::after{content:"Key point " attr(data-kpn);display:block;font:600 10.5p
 .hl-num{background:var(--mark);border-radius:3px;padding:0 2px;font-weight:600}
 .hl-ref{color:var(--accent);font-weight:600;border-bottom:1px dotted var(--accent)}
 .sw{display:inline-block;width:12px;height:12px;border-radius:3px}
+/* Outline view */
+.rbar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.rbar .seg button{font-size:12.5px;padding:4px 12px}
+.ol{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:6px 18px 14px;max-width:86ch}
+.ol-pg{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px;margin-top:10px;font-variant-numeric:tabular-nums}
+.ol-pg:first-child{border-top:0;margin-top:4px}
+.ol-links{display:flex;gap:12px;white-space:nowrap}
+.ol-links a{color:var(--accent);font-weight:600;text-decoration:none}
+.ol-links a:hover{text-decoration:underline}
+.ol-i{overflow-wrap:anywhere;line-height:1.45}
+.ol-i.l1{font:600 17px/1.35 var(--f-display);margin:8px 0 4px;text-wrap:balance}
+.ol-i.l2{font-weight:600;font-size:15px;margin:6px 0 2px;padding-left:10px}
+.ol-i.l3{font-size:14px;padding-left:26px;margin:2px 0;position:relative}
+.ol-i.l3::before{content:"";position:absolute;left:14px;top:.65em;width:5px;height:5px;border-radius:50%;background:var(--muted);opacity:.6}
+.ol-i.l4{font-size:14px;padding-left:26px;margin:3px 0}
+.ol-i.key{background:var(--accent-soft);border-radius:6px;padding-top:2px;padding-bottom:2px}
+.ol-i.l2.key{padding-left:10px}
+.ol-i.m{color:var(--muted);font-style:italic}
+.ol-i.m::before{display:none}
+.ol-i.m a{color:var(--muted)}
 /* Page images in the reader */
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
 .seg button{all:unset;cursor:pointer;font:600 11.5px var(--f-body);padding:2px 9px;color:var(--muted)}
@@ -734,47 +754,83 @@ function sectionText(a, b, cap){
   }
   return {text: out, cut};
 }
+let RD = null;   // the section on screen: {i, a, b, full: rendered?}
 function openSection(i){
   curSec = i; drawToc($("#tocFilter").value);
   const title = DATA.toc[i][1];
   const [a, b] = secRange(i);
-  const n = b - a + 1, MAXP = 60, shown = Math.min(n, MAXP);
+  const n = b - a + 1;
   const prev = i > 0 ? i - 1 : -1, next = i < DATA.toc.length - 1 ? i + 1 : -1;
   const parent = (DATA.sec[a-1] || "").split(" › ").filter(x => x !== title).join(" › ");
-  let html = `<div class="rhead">
+  RD = {i, a, b, full: false}; KPS = null;
+  const pane = $("#readPane");
+  pane.innerHTML = `<div class="rhead">
     <div class="eyebrow">${esc(parent || "Section")} · ${n > 1 ? `pages ${a}–${b} (${n} pages)` : `page ${a}`}</div>
     <h2>${esc(title)}</h2>
     <div class="btns">
       <button class="btn" id="rBack">← Back</button>
       <button class="btn primary" id="rKey"${sample ? "" : " hidden"}>Key points by Claude</button>
       <a class="btn" href="${pdfLink(a)}" target="_blank" rel="noopener">Original PDF page ${a}</a>
-      ${prev >= 0 ? `<button class="btn" data-go="${prev}">‹ Previous section</button>` : ""}
-      ${next >= 0 ? `<button class="btn" data-go="${next}">Next section ›</button>` : ""}
+      ${prev >= 0 ? `<button class="btn" data-go="${prev}">‹ Previous</button>` : ""}
+      ${next >= 0 ? `<button class="btn" data-go="${next}">Next ›</button>` : ""}
     </div>
-    <div class="legend">
-      <span><i class="sw hl-must"></i>must / shall / not allowed</span>
-      <span><i class="sw hl-num"></i>numbers, time limits, fees</span>
-      <span><b class="hl-ref">9(3)</b>Act sections, forms, annexures</span>
-    </div>
+    <div class="rbar"><span class="seg" role="group" aria-label="Reading view"><button data-v="ol" aria-pressed="true">Outline</button><button data-v="full" aria-pressed="false">Full text</button></span>
+      <span class="legend"><span><i class="sw hl-must"></i>must / shall</span><span><i class="sw hl-num"></i>numbers, time limits</span><span><b class="hl-ref">9(3)</b>Act sections, forms</span></span></div>
   </div>
-  <div class="kp" id="kp" hidden></div>`;
-  for (let p = a; p < a + shown; p++){
-    const img = IMG_OK && TBL.has(p);
-    html += `<article class="rpage" data-p="${p}" data-mode="${img ? "img" : "text"}"><div class="rpg"><span>Page ${p}${TBL.has(p) ? '<span class="tagt">table / form</span>' : ""}</span>
-      <span class="seg" role="group" aria-label="Show page ${p} as"><button data-m="text" aria-pressed="${!img}">Text</button><button data-m="img" aria-pressed="${img}">Page image</button></span></div>
-      <div class="rtext"${img ? " hidden" : ""}>${formatPage(p)}</div><div class="rimg"${img ? "" : " hidden"}></div></article>`;
-  }
-  if (n > MAXP) html += `<div class="meta">This section has ${n} pages; the first ${MAXP} are shown. Pick a smaller part from the contents, or open page ${a + MAXP} in the PDF.</div>`;
-  const pane = $("#readPane");
-  pane.innerHTML = html;
+  <div class="kp" id="kp" hidden></div>
+  <div id="rOutline">${outlineHtml(a, b)}</div>
+  <div id="rFull" hidden></div>`;
   $("#askPane").hidden = $("#searchPane").hidden = $("#updPane").hidden = $("#wizPane").hidden = $("#homePane").hidden = true;
   pane.hidden = false;
   window.scrollTo({top: 0});
   $("#rBack").onclick = () => show(curTab);
   pane.querySelectorAll("[data-go]").forEach(btn => btn.onclick = () => openSection(+btn.dataset.go));
-  pane.querySelectorAll(".rpage .seg button").forEach(btn => btn.onclick = () => setPageMode(btn.closest(".rpage"), btn.dataset.m));
-  watchImages(pane);
+  pane.querySelectorAll(".rbar .seg button").forEach(btn => btn.onclick = () => setView(btn.dataset.v));
+  pane.querySelectorAll("[data-fullp]").forEach(btn => btn.onclick = () => { setView("full"); const art = document.querySelector(`#rFull .rpage[data-p="${btn.dataset.fullp}"]`); if (art) art.scrollIntoView({block: "start"}); });
   $("#rKey").onclick = () => keyPoints(i, a, b);
+}
+// the outline: main / sub / sub-sub headings and key lines, with a link to each original page
+function outlineHtml(a, b){
+  const MAXP = 150, last = Math.min(b, a + MAXP - 1);
+  let html = "", items = 0;
+  for (let p = a; p <= last; p++){
+    const ol = (DATA.ol && DATA.ol[p-1]) || [];
+    const form = TBL.has(p);
+    html += `<div class="ol-pg"><span>Page ${p}${form ? ' · <span class="tagt">table / form</span>' : ""}</span><span class="ol-links"><a href="${pdfLink(p)}">Open original ↗</a><button class="linkbtn" data-fullp="${p}">Full text</button></span></div>`;
+    if (!ol.length){ html += `<div class="ol-i l3 m">${form ? "Table or form: open the original page to read it." : "No headings on this page."}</div>`; continue; }
+    for (const [lv, t, k] of ol){
+      items++;
+      html += k === "m" ? `<div class="ol-i l3 m"><a href="${pdfLink(p)}">${esc(t)}</a></div>`
+        : `<div class="ol-i l${lv}${k === "k" ? " key" : ""}">${markImportant(esc(t))}</div>`;
+    }
+  }
+  if (b > last) html += `<div class="meta">This section has ${b - a + 1} pages; the outline shows the first ${MAXP}. Pick a smaller part from the contents.</div>`;
+  return `<div class="ol">${html}</div>`;
+}
+function setView(v){
+  if (!RD) return;
+  document.querySelectorAll(".rbar .seg button").forEach(btn => btn.setAttribute("aria-pressed", btn.dataset.v === v));
+  $("#rOutline").hidden = v !== "ol";
+  $("#rFull").hidden = v !== "full";
+  if (v === "full") ensureFull();
+}
+function ensureFull(){
+  if (!RD || RD.full) return;
+  RD.full = true;
+  const {a, b} = RD, MAXP = 60, last = Math.min(b, a + MAXP - 1);
+  let html = "";
+  for (let p = a; p <= last; p++){
+    const img = IMG_OK && TBL.has(p);
+    html += `<article class="rpage" data-p="${p}" data-mode="${img ? "img" : "text"}"><div class="rpg"><span>Page ${p}${TBL.has(p) ? '<span class="tagt">table / form</span>' : ""}</span>
+      <span class="seg" role="group" aria-label="Show page ${p} as"><button data-m="text" aria-pressed="${!img}">Text</button><button data-m="img" aria-pressed="${img}">Page image</button></span></div>
+      <div class="rtext"${img ? " hidden" : ""}>${formatPage(p)}</div><div class="rimg"${img ? "" : " hidden"}></div></article>`;
+  }
+  if (b > last) html += `<div class="meta">The full text shows the first ${MAXP} pages. Open page ${last + 1} in the PDF for the rest.</div>`;
+  const box = $("#rFull");
+  box.innerHTML = html;
+  box.querySelectorAll(".rpage .seg button").forEach(btn => btn.onclick = () => setPageMode(btn.closest(".rpage"), btn.dataset.m));
+  watchImages(box);
+  if (KPS) markKp();
 }
 async function keyPoints(i, a, b){
   if (!sample) return;
@@ -845,6 +901,12 @@ function findPara(pt){
   for (const p of paras){ const t = normTxt(p.textContent); const n = words.filter(w => t.includes(w)).length; if (n > bestN){ best = p; bestN = n; } }
   return best || art;
 }
+let KPS = null;   // key points on screen and the paragraphs they came from
+function markKp(){
+  document.querySelectorAll("#readPane p.kp-src").forEach(p => { p.classList.remove("kp-src", "kp-src-must"); p.removeAttribute("data-kpn"); });
+  KPS.targets = KPS.all.map(findPara);
+  KPS.targets.forEach((el, k) => { if (el && el.tagName === "P"){ el.classList.add("kp-src"); if (KPS.all[k].must) el.classList.add("kp-src-must"); el.dataset.kpn = (el.dataset.kpn ? el.dataset.kpn + "," : "") + (k + 1); } });
+}
 function renderKp(kp, i, a, b){
   const box = $("#kp");
   const all = [...kp.mustKnow.map(p => ({...p, must: true})), ...kp.groups.flatMap(g => g.points)];
@@ -863,15 +925,14 @@ function renderKp(kp, i, a, b){
     ${kp.numbers.length ? `<div class="kp-h">Key numbers</div><div class="kp-nums">${kp.numbers.map(x => `<a class="kp-num" href="${pdfLink(x.page)}"><b>${esc(x.value)}</b><span>${esc(x.label)}</span><small>p.${x.page}</small></a>`).join("")}</div>` : ""}
     ${kp.tables.map(t => `<div class="kp-tw"><table class="kp-table">${t.title ? `<caption>${esc(t.title)}</caption>` : ""}<thead><tr>${t.cols.map(c => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${t.rows.map(r => `<tr>${r.map(cellHtml).join("")}</tr>`).join("")}</tbody></table><div class="kp-tsrc">From <a class="pgl" href="${pdfLink(t.page)}">p.${t.page}</a></div></div>`).join("")}
     ${kp.groups.map(g => `<div class="kp-h">${esc(g.title)}</div><ul class="kp-list">${g.points.map(p => pointHtml(p, false)).join("")}</ul>`).join("")}
-    <div class="disclaim">Check the cited page before quoting formally. Highlighted paragraphs in the text below are where these points come from.</div>
+    <div class="disclaim">Check the cited page before quoting formally. "Show in text" opens the full text at the paragraph each point comes from.</div>
     <div class="note" id="kpMsg" aria-live="polite"></div>
   </div>`;
-  // mark the source paragraphs in the section text
-  document.querySelectorAll("#readPane p.kp-src").forEach(p => { p.classList.remove("kp-src"); p.removeAttribute("data-kpn"); });
-  const targets = all.map(findPara);
-  targets.forEach((el, k) => { if (el && el.tagName === "P"){ el.classList.add("kp-src"); if (all[k].must) el.classList.add("kp-src-must"); el.dataset.kpn = (el.dataset.kpn ? el.dataset.kpn + "," : "") + (k + 1); } });
+  KPS = {all, targets: []};
+  if (RD && RD.full) markKp();
   box.querySelectorAll(".kp-show").forEach(btn => btn.onclick = () => {
-    const el = targets[+btn.dataset.k];
+    setView("full");
+    const el = KPS.targets[+btn.dataset.k];
     if (!el) return;
     const art = el.closest(".rpage");
     if (art && art.dataset.mode !== "text") setPageMode(art, "text");

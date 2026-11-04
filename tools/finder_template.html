@@ -1041,7 +1041,7 @@ function drawUpdates(){
   pane.innerHTML = `<div class="rhead">
       <div class="eyebrow">From ppqs.gov.in · CIB&amp;RC News &amp; Update and Guidelines</div>
       <h2>Latest notices, RC minutes, Gazettes and guidelines</h2>
-      <div class="meta" style="margin:0">${st ? `Last checked ${esc(fmtWhen(st.checkedAt))}${st.ok === false ? ` · <span class="note">last check failed: ${esc(st.error || "site not reachable")}</span>` : ""} · ` : ""}checked daily at 9 AM and 5 PM; new items are emailed.</div>
+      <div class="meta" style="margin:0">${st ? `Last checked ${esc(fmtWhen(st.checkedAt))}${st.ok === false ? ` · <span class="note">last check failed: ${esc(st.error || "site not reachable")}</span>` : ""} · ` : ""}checked daily; new items are emailed once a week, CROP portal updates straight away.</div>
       <div class="chips" id="updChips">${KINDS.map(k => `<button class="chip"${k === UPD.filter ? ' style="border-color:var(--accent);color:var(--accent)"' : ""}>${k}</button>`).join("")}</div>
     </div>
     <div class="ulist">${list.length ? list.map(it => `<div class="uitem">

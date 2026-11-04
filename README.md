@@ -32,18 +32,8 @@ Website: `https://<your-github-username>.github.io/cibrc-desk/` (after the steps
 3. **Actions** tab kholein → **Update and publish site** → **Run workflow** dabayein.
 4. 1-2 minute baad website khulegi: `https://<username>.github.io/cibrc-desk/`
 
-### Step 5: Email alerts (optional, lekin recommended)
-1. Jis Gmail se alert bhejna hai, usmein **2-Step Verification** on karein: https://myaccount.google.com/security
-2. **App password** banayein: https://myaccount.google.com/apppasswords (naam: `cibrc desk`). 16 letter ka password copy karein.
-3. GitHub repository → **Settings → Secrets and variables → Actions → New repository secret**. Ye teen secrets banayein:
-
-   | Name | Value |
-   |---|---|
-   | `SMTP_USER` | alert bhejne wala Gmail, jaise `yourname@gmail.com` |
-   | `SMTP_PASS` | upar wala 16-letter App password |
-   | `NOTIFY_TO` | jinko alert chahiye, jaise `umraoparulparul@gmail.com` (kai log ho to comma se alag karein) |
-
-4. Bas. Ab roz **9 AM aur 5 PM** CIB&RC site check hogi; kuch naya aaya to email aayega aur website ki "Latest updates" list update hogi. Aapka laptop on hona zaruri nahi.
+### Updates aur email
+CIB&RC website GitHub ke servers ko block karti hai (HTTP 403), isliye check aapke computer se hota hai: Claude app ka scheduled task roz 9 AM par check karke `updates.json` yahan bhejta hai. Email hafte mein ek baar aata hai (Monday), CROP portal update par turant. Claude app band ho to check agli baar app kholne par chalta hai.
 
 ---
 
@@ -60,8 +50,8 @@ Website: `https://<your-github-username>.github.io/cibrc-desk/` (after the steps
 | `index.html` | Website |
 | `guidelines.pdf` | 472 RC guidelines (bookmarks ke saath) |
 | `updates.json` | Latest CIB&RC items (GitHub khud update karta hai) |
-| `scripts/update_site.py` | CIB&RC site check + email |
-| `.github/workflows/site.yml` | Roz 9 AM / 5 PM chalane aur website publish karne ka setup |
+| `scripts/update_site.py` | CIB&RC site check |
+| `.github/workflows/site.yml` | Files badalne par website publish karne ka setup |
 | `tools/` | Website dobara banane ke liye (`python tools/build.py`) |
 
 Page numbers are PDF page numbers (the number in your PDF viewer), not the printed footer numbers, which restart in places.

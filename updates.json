@@ -1,7 +1,29 @@
 {
- "checkedAt": "2026-11-04T11:44:36+05:30",
+ "checkedAt": "2026-11-13T10:47:02+05:30",
  "ok": true,
  "items": [
+  {
+   "id": "bcffdcaf306cce54",
+   "kind": "Public notice",
+   "title": "Public Notice dated 06.11.2026 regarding Report of the sub-committee constituted under the chairpersonship of Dr. Vandana Tripathi, Project Coordinator, AINP, IARI PUSA New Delhi by its 442nd meeting vide agenda item no. 3.1",
+   "date": "06/11/2026",
+   "url": "https://ppqs.gov.in/sites/default/files/public%20notice%20dated%2006.11.2026.pdf",
+   "source": "news",
+   "sortKey": "2026-11-06|2026-11-13T10:47:02+05:30",
+   "addedAt": "2026-11-13T10:47:02+05:30",
+   "fresh": true
+  },
+  {
+   "id": "28c3d918a0b2d60b",
+   "kind": "RC minutes",
+   "title": "Minutes of 477th Meeting of the Registration Committee.",
+   "date": "05/11/2026",
+   "url": "https://ppqs.gov.in/sites/default/files/477%20RC%20MOM.pdf",
+   "source": "news",
+   "sortKey": "2026-11-05|2026-11-13T10:47:02+05:30",
+   "addedAt": "2026-11-13T10:47:02+05:30",
+   "fresh": true
+  },
   {
    "id": "86fdb0a0fe1e37e4",
    "kind": "RC minutes",

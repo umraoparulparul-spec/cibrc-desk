@@ -1,7 +1,18 @@
 {
- "checkedAt": "2026-11-18T11:50:56+05:30",
+ "checkedAt": "2026-11-19T10:35:17+05:30",
  "ok": true,
  "items": [
+  {
+   "id": "2bc76521333b7253",
+   "kind": "Public notice",
+   "title": "Public notice dated 18.11.2026 regarding Disposal/Closure of Long-Pending Endorsement Applications and Other Pending Applications.",
+   "date": "18/11/2026",
+   "url": "https://ppqs.gov.in/sites/default/files/public%20notice%20dated%2018.11.2026.pdf",
+   "source": "news",
+   "sortKey": "2026-11-18|2026-11-19T10:35:17+05:30",
+   "addedAt": "2026-11-19T10:35:17+05:30",
+   "fresh": true
+  },
   {
    "id": "e03260904cb41fc2",
    "kind": "Public notice",

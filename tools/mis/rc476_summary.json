@@ -1,0 +1,29 @@
+{
+ "meeting": 476,
+ "date": "10.09.2026",
+ "published": "21.09.2026",
+ "chair": "Dr P.K. Singh, Agriculture Commissioner",
+ "headline": "CROP portal and process reforms (FIFO disposal, two-factor login, no legal-section step after KYC), a new biopesticide filing flow with NBAIM, firm TI-New Source rules, export-only supply permissions, and new committees on insecticide + herbicide combinations and bio-efficacy protocols.",
+ "changes": [
+  {"t": "Process reforms from the AS(PP) review", "d": "9(3) and 9(4) TIM applications of KYC-complete applicants no longer go to the legal section. Two-factor login becomes mandatory for applicants and experts. Experts must dispose of files first-in-first-out. Pending cases get a final public/newspaper notice, then cancellation. CGG to revamp the CROP portal.", "items": ["10.55"], "who": "All applicants"},
+  {"t": "Biopesticides: new filing flow with NBAIM", "d": "File the application on CROP first and pay the fee; then send a 500 g sample to ICAR-NBAIM (Mau) for 16S rDNA fingerprinting and a 500 g sample to CIL, each quoting the CROP application number, within 30 days. A public notice followed (14.10.2026).", "items": ["11.2"], "who": "Biopesticide applicants"},
+  {"t": "TI-New Source: revised guidelines apply to everyone", "d": "An RTT permit gives no right to the old guidelines. Meenakshi Agro's request to be judged under pre-10.10.2025 rules was rejected; the revised TI-New Source data requirements apply.", "items": ["10.8"], "who": "TI-New Source applicants"},
+  {"t": "Insecticide + herbicide combinations on hold", "d": "A committee under ADG (PP-B), ICAR will frame guidelines. Applicants may withdraw (fee kept for a future application) or keep the file in abeyance until then.", "items": ["10.35"], "who": "Combination applicants"},
+  {"t": "Bio-efficacy protocol under review", "d": "A committee under ADG (PP&BS) will review the 9(3) bio-efficacy protocol.", "items": ["10.51"], "who": "9(3) applicants"},
+  {"t": "Export-only: technical may be supplied within India", "d": "Superform may supply Asulam and Fenhexamid technical to UPL, and Deccan Fine Chemicals may supply Tiapyrachlor to Corteva, only to make export-only formulations; nothing may be sold in India.", "items": ["10.25", "10.26", "10.27"], "who": "Exporters"},
+  {"t": "Export representation: CropLife India called", "d": "Before changing the Export Only / Import for Export rules, CropLife India must present its proposal and safeguards against leakage into the Indian market. (Decided in the 477th meeting: new Category B-V.)", "items": ["3.1"], "who": "Exporters"},
+  {"t": "Lab data may be verified on site", "d": "A CIB&RC expert with an NGCMA officer (GLP labs), or two CIB&RC officers (NABL labs), may inspect labs to verify study data case by case.", "items": ["3.2"], "who": "All applicants"},
+  {"t": "KYC and GST", "d": "CIB&RC will report on the legal position of linking CROP KYC with the GST portal at the next meeting.", "items": ["10.56"], "who": "All applicants"},
+  {"t": "Two 9(4) TIM files permanently rejected", "d": "Tebuconazole (Kashma Agro) and Pyraclostrobin (S.D. Agro Chemicals) were rejected for the second time on unsatisfactory CIL reports; no further chance.", "items": ["7.36", "7.37"], "who": "9(4) TIM applicants"},
+  {"t": "Crop grouping and Indoxacarb committee", "d": "A meeting with FSSAI's SPPR and stakeholders will settle the crop grouping document. The Indoxacarb composition committee was reconstituted under Dr Poonam Jasrotia (report in 15 days; decided in the 477th meeting).", "items": ["10.34", "11.1"], "who": ""},
+  {"t": "Formetanate hydrochloride questioned", "d": "Saraswati Agrochemicals must justify a WHO class 1b (red triangle) molecule and address the NDMA impurity at the next meeting.", "items": ["10.3"], "who": ""}
+ ],
+ "actions": [
+  "Biopesticide applicants: file on CROP first, then send samples to NBAIM and CIL within 30 days, quoting the application number.",
+  "Complete KYC on CROP so files skip the legal section.",
+  "Set up two-factor login on CROP when it is switched on.",
+  "TI-New Source: prepare data to the revised guidelines, whatever the RTT date.",
+  "Insecticide + herbicide combination files: choose to withdraw or keep in abeyance."
+ ],
+ "fix": {"2.1": {"status": "Clarification sought"}, "10.15": {"status": "Report / action directed"}, "11.2": {"status": "Approved / decided"}}
+}

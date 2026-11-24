@@ -197,6 +197,8 @@ for f in sorted((Path(__file__).parent / "mis").glob("rc*_items.json"), key=lamb
     m = json.loads(f.read_text(encoding="utf-8"))
     sf = f.with_name(f.name.replace("_items", "_summary"))
     m["summary"] = json.loads(sf.read_text(encoding="utf-8")) if sf.exists() else None
+    for it in m["items"]:   # hand corrections kept in the summary file, so re-running the extractor keeps them
+        it.update(((m["summary"] or {}).get("fix") or {}).get(it["no"], {}))
     MIS.append(m)
 print("MIS meetings:", [m["meeting"] for m in MIS], "items:", sum(len(m["items"]) for m in MIS))
 def render(pdf_url, online, inline=False, mode="local"):

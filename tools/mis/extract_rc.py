@@ -17,7 +17,8 @@ lines = []
 for i in range(d.page_count):
     for ln in d[i].get_text().split("\n"):
         s = ln.strip()
-        if not s or re.match(r"\d+(st|nd|rd|th) Registration Committee meeting held on", s) or re.fullmatch(r"Page \d+ of \d+", s):
+        if (not s or re.match(r"(Minutes of )?\d+(st|nd|rd|th) Registration Committee meeting held on", s, re.I)
+                or re.fullmatch(r"Page \d+ of \d+", s) or re.fullmatch(r"\d{1,4}", s)):
             continue
         lines.append((i + 1, s))
     if any("Meeting ended" in s for p, s in lines[-40:] if p == i + 1):
@@ -67,7 +68,7 @@ for bl in blocks:
         GROUP[bl["major"]] = re.split(r"\s{2,}| NIL| The | RC ", txt)[0].strip()[:60]
         continue
     # title = text up to the RC's decision
-    m = re.search(r"\s(RC|The RC|The Registration Committee|The Committee|With the permission|Registration Committee)\s(deliberated|perused|noted|discussed|considered|granted|recalled|deliberate|Noted|after)\b", txt)
+    m = re.search(r"\s(RC|The RC|The Registration Committee|The Committee|With the permission|Registration Committee)\s(deliberated|perused|peruse|noted|discussed|considered|granted|recalled|deliberate|Noted|after|approved|confirms|decided|directed|accepted|agreed)\b", txt)
     m2 = re.search(r"\s(After detailed deliberations|After deliberations|Chlobentheram is not)\b", txt)
     if m2 and (not m or m2.start() < m.start()):
         m = m2
@@ -91,18 +92,19 @@ for bl in blocks:
     category = cat[0] if cat else ""
     pr = re.search(r"(?:registration (?:of|for)|for (?:Import|import) of|indigenous manufacture of|Endorsement[^.]*?(?:for|of)|label (?:extension|claim expansion) (?:of|on))\s+(?:Import of |import of |indigenous manufacture of |indigenous manufacturing of )?(.+?)(?=\s+(?:u/s|under\s+[Ss]ection|under\s+9|from M/s|for control|of M/s|registered u/s)|[.;]\s|$)", title)
     product = re.sub(r"^product\s+", "", product_of(title)) or (pr.group(1).strip(" ,.") if pr else "")
-    dl = decision.lower()
+    dl = (decision or txt).lower()
     if re.search(r"show cause", dl): status = "Show-cause"
     elif re.search(r"presentation in the next|for (making|a) (detailed )?presentation|make (a )?(detailed )?presentation", dl): status = "Presentation called"
     elif re.search(r"\bdefer", dl): status = "Deferred"
     elif re.search(r"\breject", dl): status = "Rejected"
-    elif re.search(r"re-?open", dl) and "approved" in dl: status = "Reopened"
+    elif re.search(r"re-?open", dl) and re.search(r"approved|decided|agreed", dl): status = "Reopened"
     elif re.search(r"\bclos(e|ure|ed)\b", dl): status = "Closed"
     elif re.search(r"presentation", dl): status = "Presentation called"
     elif re.search(r"clarification|ask(ed)? .{0,40}data|seek", dl): status = "Clarification sought"
-    elif re.search(r"approved|allowed|accepted|granted|decided as per|decided that|may be read as|decided to constitute|confirmed", dl): status = "Approved / decided"
+    elif re.search(r"approved|allowed|accept|granted|confirms|changed the heading|decided as per|decided that|may be read as|decided to constitute|confirmed", dl): status = "Approved / decided"
     elif re.search(r"noted|note of", dl): status = "Noted"
     elif "merged" in dl: status = "Merged"
+    elif re.search(r"direct(ed|s) .{0,80}(report|present|compile|look into)", dl): status = "Report / action directed"
     else: status = "Other"
     if re.match(r"(Closure|Applications for closure|Request for closure)", title) and status == "Approved / decided":
         status = "Closed"

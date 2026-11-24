@@ -1111,7 +1111,7 @@ if (window.claude && window.claude.use){
 const MIS = {m: 0, q: "", type: "All", status: "All", open: null};
 const misOrd = n => n + ((n % 100 >= 11 && n % 100 <= 13) ? "th" : ({1: "st", 2: "nd", 3: "rd"}[n % 10] || "th"));
 const misSt = s => s === "Other" ? "Decision recorded" : s;
-const MIS_CLS = {"Approved / decided": "ok", "Reopened": "ok", "Closed": "cl", "Rejected": "rj", "Show-cause": "rj", "Presentation called": "pr", "Clarification sought": "pr", "Deferred": "pr"};
+const MIS_CLS = {"Approved / decided": "ok", "Reopened": "ok", "Closed": "cl", "Rejected": "rj", "Show-cause": "rj", "Presentation called": "pr", "Clarification sought": "pr", "Deferred": "pr", "Report / action directed": "pr"};
 // the number tiles: label, colour, which types they cover
 const MIS_GROUPS = [
   ["New 9(3) registrations", "blue", t => t.startsWith("New registration")],

@@ -1,7 +1,18 @@
 {
- "checkedAt": "2026-11-23T10:22:48+05:30",
+ "checkedAt": "2026-11-24T10:42:19+05:30",
  "ok": true,
  "items": [
+  {
+   "id": "897a78d15e6b199c",
+   "kind": "Public notice",
+   "title": "Public notice dated 23.11.2026 regarding Presentation by the Representatives of CLI on Agenda Item No. 3.1 of the 476th RC Meeting and follow up action under Agenda No. 2.1 of 477th RC meeting thereof.",
+   "date": "23/11/2026",
+   "url": "https://ppqs.gov.in/sites/default/files/Public%20notice%20dated%2023.11.2026....pdf",
+   "source": "news",
+   "sortKey": "2026-11-23|2026-11-24T10:42:19+05:30",
+   "addedAt": "2026-11-24T10:42:19+05:30",
+   "fresh": true
+  },
   {
    "id": "2bc76521333b7253",
    "kind": "Public notice",

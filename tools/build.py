@@ -1,7 +1,7 @@
 import fitz, re, json, sys
 from pathlib import Path
 
-DIR = Path(r"C:\Users\Admin\Desktop\472 RC guideline")
+DIR = Path(__file__).resolve().parents[2]   # the "472 RC guideline" folder
 SRC = DIR / "472 RCguidelines.pdf"
 OUT_PDF = DIR / "472 RC guidelines (bookmarked).pdf"
 TEMPLATE = Path(__file__).with_name("finder_template.html")
@@ -191,10 +191,18 @@ def summary_for(title):
     return SUMS[max(hits, key=len)] if hits else None
 SUM_LIST = [summary_for(t) for _, t, _ in fixed]
 print("summaries matched:", sum(1 for s in SUM_LIST if s), "of", len(fixed))
+# RC MIS: one items file (tools/mis/extract_rc.py) + one hand-written summary per meeting, newest first
+MIS = []
+for f in sorted((Path(__file__).parent / "mis").glob("rc*_items.json"), key=lambda f: -int(re.sub(r"\D", "", f.name))):
+    m = json.loads(f.read_text(encoding="utf-8"))
+    sf = f.with_name(f.name.replace("_items", "_summary"))
+    m["summary"] = json.loads(sf.read_text(encoding="utf-8")) if sf.exists() else None
+    MIS.append(m)
+print("MIS meetings:", [m["meeting"] for m in MIS], "items:", sum(len(m["items"]) for m in MIS))
 def render(pdf_url, online, inline=False, mode="local"):
     # mode: "claude" (artifact with AI + database), "site" (free static website), "local" (offline file)
     data = {"pdfUrl": pdf_url, "onlineUrl": online, "inlineViewer": inline, "mode": mode, "pages": pages, "sec": secmap, "tbl": TABLE_PAGES, "ol": OUTLINE, "sum": SUM_LIST,
-            "toc": [[lv, t, p] for lv, t, p in fixed]}
+            "toc": [[lv, t, p] for lv, t, p in fixed], "mis": MIS}
     return tpl.replace("/*__DATA__*/null", json.dumps(data, ensure_ascii=False).replace("</", "<\/"))
 def page(body):
     return ('<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'

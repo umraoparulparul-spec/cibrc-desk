@@ -1,0 +1,28 @@
+{
+ "meeting": 477,
+ "date": "23.10.2026",
+ "published": "05.11.2026",
+ "chair": "Dr P.K. Singh, Agriculture Commissioner",
+ "headline": "Paraquat banned, a new import-for-export route, twin-pack guidelines, the Indoxacarb isomer rule, NJSP in place of judicial stamp paper, and a large clean-up of old files.",
+ "changes": [
+  {"t": "New export route (Category B-V)", "d": "Unregistered pesticides may be imported from any source only for export. Approval in about 3 months; certificate valid 1 year or until the product is registered in India. Registered molecules still need a confirmed order. Public comments invited by notice of 23.11.2026, within 30 days.", "items": ["2.1"], "who": "Exporters"},
+  {"t": "Paraquat dichloride banned", "d": "S.O. 5234(E) of 22.09.2026 prohibits it; registrations are cancelled. HPMA members covered by the Punjab & Haryana High Court order of 14.10.2026 are not to be called back for now. Pending Paraquat files are rejected or closed.", "items": ["3.1", "9.18", "10.39"], "who": "Paraquat registrants"},
+  {"t": "Twin-pack / multipack guidelines", "d": "Two or more registered products may be sold in one pack only where that combination formulation is itself registered. Surfactant-pack guidelines too. Draft open for public comments for 30 days.", "items": ["3.2"], "who": "Formulators"},
+  {"t": "Indoxacarb: isomer ratio on every product", "d": "Composition, specification and method of analysis must show total Indoxacarb, the active S-isomer, the inactive R-isomer and their ratio (e.g. 14.5% SC reads 19.43% total). Applies to new, pending and registered products; no separate endorsement needed. A public notice will follow.", "items": ["3.3"], "who": "Indoxacarb registrants"},
+  {"t": "9(4) certificates: KYC + original affidavit in 15 days", "d": "Approved 9(4) cases get their certificate only after KYC and the original affidavit (439th RC format) reach CIB&RC within 15 days of the minutes being uploaded.", "items": ["8.1"], "who": "9(4) applicants"},
+  {"t": "NJSP replaces judicial stamp paper", "d": "Undertakings must now be on NJSP e-stamp paper.", "items": ["10.17"], "who": "All applicants"},
+  {"t": "KYC: about 900 accounts still frozen", "d": "A D.O. letter will go from DA&FW to the states' Principal Secretaries to push the remaining applicants.", "items": ["10.40"], "who": "Applicants without KYC"},
+  {"t": "Old files closed", "d": "9(4) insecticide endorsements without a fixed MRL are closed; files with no reply, blank replies or delayed sampling are closed (31 in 9(4) TIM alone). A public notice (issued 18.11.2026) lists old pending files: reply within 30 days or the file closes.", "items": ["9.68", "10.26", "10.27", "10.30", "10.31", "10.32", "10.33", "10.36", "10.37", "11.1"], "who": "Anyone with old pending files"},
+  {"t": "No fresh application on the same grounds after a rejection", "d": "The RC called Indofil's second application on grounds already rejected 'concealment of facts' and called the company for a presentation.", "items": ["10.7"], "who": "All applicants"},
+  {"t": "Nano-formulations: committee formed", "d": "A committee under ADG (PP), ICAR will set the route for approving nano pesticides; stakeholders may present to it.", "items": ["10.10"], "who": "Nano products"},
+  {"t": "Household pest products without health monitoring", "d": "Syngenta's Thiamethoxam + Lambda-cyhalothrin ZC label expansion approved without health monitoring studies: only trained Pest Control Operators may use it, not in hospitals, schools, Anganwadis or food areas.", "items": ["10.41"], "who": "Household-pest registrants"},
+  {"t": "Fake certificate case", "d": "Yashnee Agrochemicals sent a forged Aluminium Phosphide certificate to Ecuador; show-cause notice with 2 weeks to reply.", "items": ["10.6"], "who": ""}
+ ],
+ "actions": [
+  "9(4) TI/TIM/FIM approval: send the original affidavit within 15 days and complete KYC.",
+  "Indoxacarb product: correct the composition and label when the public notice comes.",
+  "Old pending file: check the 18.11.2026 notice and reply within 30 days.",
+  "Undertakings: use NJSP from now on.",
+  "Export or twin-pack interest: send comments within 30 days of the notice."
+ ]
+}

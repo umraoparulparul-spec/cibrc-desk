@@ -296,6 +296,37 @@ p.kp-src::after{content:"Key point " attr(data-kpn);display:block;font:600 10.5p
 .vbody{flex:1;overflow:auto;padding:16px;display:flex;justify-content:center;align-items:flex-start}
 .vbody canvas{background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.18);max-width:none}
 .vmsg{color:var(--muted);padding:40px 0;text-align:center}
+/* RC MIS */
+main.wide{grid-template-columns:minmax(0,1fr)}
+main.wide aside{display:none}
+.mis-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.mis-top select{font:14px var(--f-body);padding:5px 8px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.mis-chg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.mis-chg .c{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--c-orange);border-radius:10px;padding:10px 12px}
+.mis-chg .c b{display:block;font:600 14.5px var(--f-body);margin-bottom:3px}
+.mis-chg .c p{margin:0 0 6px;font-size:13.5px;line-height:1.5}
+.mis-chg .c .refs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+.mis-act{margin:0;padding-left:20px;line-height:1.6;font-size:14px}
+.mis-nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:14px 0}
+.mis-nums button{all:unset;cursor:pointer;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--c, var(--c-green));border-radius:10px;padding:9px 12px}
+.mis-nums button[aria-pressed="true"]{outline:2px solid var(--c, var(--c-green))}
+.mis-nums b{display:block;font:600 22px var(--f-display);font-variant-numeric:tabular-nums}
+.mis-nums small{color:var(--muted);font-size:12.5px}
+.mis-filt{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.mis-filt input{flex:1 1 260px;font:14px var(--f-body);padding:7px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.mis-filt select{font:14px var(--f-body);padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.mis-t td:first-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.mis-t td:nth-child(2){min-width:118px;overflow-wrap:normal}
+.mis-t td:nth-child(3){min-width:120px}
+.mis-t tbody tr.r{cursor:pointer}
+.mis-t tbody tr.r:hover td{background:var(--accent-soft)}
+.mis-t .det td{background:var(--bg)!important;font-size:13px;line-height:1.55}
+.mis-t .det p{margin:0 0 6px}
+.st{display:inline-block;font:600 11.5px var(--f-body);border-radius:5px;padding:1px 7px;white-space:nowrap;background:var(--chip);color:var(--muted)}
+.st.ok{background:var(--accent-soft);color:var(--accent)}
+.st.cl{background:var(--chip);color:var(--ink)}
+.st.rj{background:var(--must);color:var(--ink)}
+.st.pr{background:var(--mark);color:var(--ink)}
 @media (max-width:820px){
   main{grid-template-columns:1fr}
   aside{position:static;max-height:340px;order:2}
@@ -320,6 +351,7 @@ p.kp-src::after{content:"Key point " attr(data-kpn);display:block;font:600 10.5p
     <button class="tab" id="tabWiz" role="tab" aria-selected="false">Checklist wizard</button>
     <button class="tab" id="tabSearch" role="tab" aria-selected="false">Search pages</button>
     <button class="tab" id="tabUpd" role="tab" aria-selected="false">Latest updates<span class="badge" id="updBadge" hidden></span></button>
+    <button class="tab" id="tabMis" role="tab" aria-selected="false">RC decisions (MIS)</button>
   </div>
   <div id="askBar">
     <div class="row">
@@ -347,6 +379,7 @@ p.kp-src::after{content:"Key point " attr(data-kpn);display:block;font:600 10.5p
     <div id="askPane" class="qa"></div>
     <div id="readPane" hidden></div>
     <div id="updPane" hidden></div>
+    <div id="misPane" hidden></div>
     <div id="wizPane" hidden></div>
     <div id="searchPane" hidden>
       <div class="meta" id="meta"></div>
@@ -509,6 +542,11 @@ function show(tab){
   $("#searchBar").hidden = $("#searchPane").hidden = !srch;
   $("#updPane").hidden = !upd;
   if (upd) drawUpdates();
+  const mis = tab === "mis";
+  $("#tabMis").setAttribute("aria-selected", mis);
+  $("#misPane").hidden = !mis;
+  document.querySelector("main").classList.toggle("wide", mis);
+  if (mis) drawMis();
   $("#readPane").hidden = true; curTab = tab;
   if (curSec !== -1){ curSec = -1; drawToc($("#tocFilter").value); }
   if (ask) $("#ask").focus(); else if (srch) $("#q").focus();
@@ -519,6 +557,7 @@ $("#tabAsk").onclick = () => show("ask");
 $("#tabSearch").onclick = () => show("search");
 $("#tabUpd").onclick = () => show("upd");
 $("#tabWiz").onclick = () => show("wiz");
+$("#tabMis").onclick = () => show("mis");
 
 let timer;
 $("#q").addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(runSearch, 150); });
@@ -1068,6 +1107,101 @@ if (window.claude && window.claude.use){
   });
 }
 
+// ---------- RC MIS: every agenda item of the RC meetings, searchable ----------
+const MIS = {m: 0, q: "", type: "All", status: "All", open: null};
+const misOrd = n => n + ((n % 100 >= 11 && n % 100 <= 13) ? "th" : ({1: "st", 2: "nd", 3: "rd"}[n % 10] || "th"));
+const misSt = s => s === "Other" ? "Decision recorded" : s;
+const MIS_CLS = {"Approved / decided": "ok", "Reopened": "ok", "Closed": "cl", "Rejected": "rj", "Show-cause": "rj", "Presentation called": "pr", "Clarification sought": "pr", "Deferred": "pr"};
+// the number tiles: label, colour, which types they cover
+const MIS_GROUPS = [
+  ["New 9(3) registrations", "blue", t => t.startsWith("New registration")],
+  ["9(4) TIM", "violet", t => t === "Me-too 9(4) TIM"],
+  ["9(4) TI / FI / FIM", "teal", t => t === "Me-too 9(4) TI/FI/FIM"],
+  ["Endorsements", "orange", t => t.startsWith("Endorsement")],
+  ["File closures / reopening", "rose", t => t === "File closure / reopening"],
+  ["Policy & other", "green", t => t === "Policy / other" || t === "Export"],
+];
+const misType = t => ({"New registration 9(3)": "New 9(3)", "New registration 9(3B)": "New 9(3B)", "Me-too 9(4) TIM": "9(4) TIM", "Me-too 9(4) TI/FI/FIM": "9(4) TI/FI",
+  "File closure / reopening": "Closure / reopen", "Policy / other": "Policy / other"})[t] || t.replace("Endorsement: ", "Endorsement · ");
+const misPdf = (m, p) => m.url ? m.url + "#page=" + p : "";
+function misRows(m){
+  const q = MIS.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const g = MIS_GROUPS.find(x => x[0] === MIS.type);
+  return m.items.filter(i => (!g || g[2](i.type)) && (MIS.status === "All" || misSt(i.status) === MIS.status)
+    && q.every(w => (i.no + " " + i.type + " " + i.title + " " + i.company + " " + i.product + " " + i.decision).toLowerCase().includes(w)));
+}
+function drawMisRows(){
+  const m = (DATA.mis || [])[MIS.m];
+  const box = $("#misRows");
+  if (!m || !box) return;
+  const rows = misRows(m);
+  $("#misCount").textContent = `${rows.length} of ${m.items.length} agenda items`;
+  box.innerHTML = rows.length ? rows.map(i => {
+    const subj = i.product || (i.title.length > 120 ? i.title.slice(0, 117) + "…" : i.title);
+    const open = MIS.open === i.no;
+    return `<tr class="r" data-no="${esc(i.no)}" aria-expanded="${open}">
+        <td>${esc(i.no)}</td><td>${esc(misType(i.type))}</td><td>${esc(i.company || "–")}</td>
+        <td>${esc(subj)}</td><td>${esc([i.section, i.category].filter(Boolean).join(" ") || "–")}</td>
+        <td><span class="st ${MIS_CLS[i.status] || ""}">${esc(misSt(i.status))}</span></td>
+        <td>${m.url ? `<a href="${esc(misPdf(m, i.page))}" target="_blank" rel="noopener">p.${i.page} ↗</a>` : "p." + i.page}</td></tr>`
+      + (open ? `<tr class="det"><td></td><td colspan="6"><p><b>Agenda:</b> ${esc(i.title)}</p><p><b>RC decision:</b> ${esc(i.decision || "–")}</p>${i.annex && i.annex.length ? `<p class="sec">The list is in Annexure ${i.annex.map(esc).join(", ")} of the minutes.</p>` : ""}</td></tr>` : "");
+  }).join("") : `<tr><td colspan="7" class="sec">No agenda item matches. Try fewer words or clear the filters.</td></tr>`;
+}
+function misCsv(m){
+  const cell = v => `"${String(v == null ? "" : v).replace(/"/g, '""')}"`;
+  const head = ["Meeting", "Item", "Type", "Company", "Product / subject", "Section", "Category", "Decision", "PDF page", "Agenda", "RC decision"];
+  const body = misRows(m).map(i => [m.meeting, i.no, i.type, i.company, i.product, i.section, i.category, misSt(i.status), i.page, i.title, i.decision].map(cell).join(","));
+  const blob = new Blob(["﻿" + [head.map(cell).join(","), ...body].join("\r\n")], {type: "text/csv"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `RC_${m.meeting}_decisions.csv`;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+function drawMis(){
+  const pane = $("#misPane");
+  if (!pane || pane.hidden) return;
+  const list = DATA.mis || [];
+  if (!list.length){ pane.innerHTML = `<div class="empty">No RC meeting has been added yet.</div>`; return; }
+  const m = list[MIS.m], S = m.summary || {}, byNo = Object.fromEntries(m.items.map(i => [i.no, i]));
+  const ref = no => { const i = byNo[no]; return i ? (m.url ? `<a href="${esc(misPdf(m, i.page))}" target="_blank" rel="noopener">Item ${esc(no)} · p.${i.page}</a>` : `Item ${esc(no)} · p.${i.page}`) : `Item ${esc(no)}`; };
+  const statuses = ["All", ...new Set(m.items.map(i => misSt(i.status)))];
+  pane.innerHTML = `<div class="rhead">
+      <div class="eyebrow">RC decisions · MIS</div>
+      <h2>${misOrd(m.meeting)} Registration Committee meeting${S.date ? ` · ${esc(S.date)}` : ""}</h2>
+      <div class="meta" style="margin:0">${S.published ? `Minutes published ${esc(S.published)}` : ""}${S.chair ? ` · Chaired by ${esc(S.chair)}` : ""} · ${m.items.length} agenda items</div>
+      <div class="mis-top">
+        ${list.length > 1 ? `<select id="misPick" aria-label="Meeting">${list.map((x, k) => `<option value="${k}"${k === MIS.m ? " selected" : ""}>${misOrd(x.meeting)} meeting${x.summary && x.summary.date ? " · " + esc(x.summary.date) : ""}</option>`).join("")}</select>` : ""}
+        ${m.url ? `<a class="btn" href="${esc(m.url)}" target="_blank" rel="noopener">Open the minutes PDF ↗</a>` : ""}
+        <button class="btn" id="misCsv">Download for Excel (CSV)</button>
+      </div>
+    </div>
+    ${S.changes ? `<section class="hcard" aria-label="What changed">
+      <div class="hhead"><b>What changed, in short</b></div>
+      ${S.headline ? `<p style="margin:0 0 10px">${esc(S.headline)}</p>` : ""}
+      <div class="mis-chg">${S.changes.map(c => `<div class="c"><b>${esc(c.t)}</b><p>${esc(c.d)}</p><div class="refs">${c.who ? `<span class="pill">${esc(c.who)}</span>` : ""}${(c.items || []).slice(0, 3).map(ref).join(" · ")}${(c.items || []).length > 3 ? ` · +${c.items.length - 3} more` : ""}</div></div>`).join("")}</div>
+    </section>` : ""}
+    ${S.actions ? `<section class="hcard" style="margin-top:12px" aria-label="What to do"><div class="hhead"><b>What to do now</b></div><ul class="mis-act">${S.actions.map(a => `<li>${esc(a)}</li>`).join("")}</ul></section>` : ""}
+    <div class="mis-nums">${MIS_GROUPS.map(([l, c, f]) => `<button style="--c:var(--c-${c})" data-grp="${esc(l)}" aria-pressed="${MIS.type === l}"><b>${m.items.filter(i => f(i.type)).length}</b><small>${esc(l)}</small></button>`).join("")}</div>
+    <div class="mis-filt">
+      <input id="misQ" type="search" placeholder="Search company, molecule or item, e.g.  Willowood   ·   Glyphosate   ·   9.68" value="${esc(MIS.q)}" aria-label="Search agenda items">
+      <select id="misSt" aria-label="Decision">${statuses.map(s => `<option${s === MIS.status ? " selected" : ""}>${esc(s)}</option>`).join("")}</select>
+      ${MIS.type !== "All" ? `<button class="btn" id="misAll">Show all types</button>` : ""}
+    </div>
+    <div class="meta" id="misCount"></div>
+    <div class="kp-tw"><table class="kp-table mis-t"><thead><tr><th>Item</th><th>Type</th><th>Company</th><th>Product / subject</th><th>Section</th><th>Decision</th><th>PDF</th></tr></thead><tbody id="misRows"></tbody></table></div>
+    <div class="meta" style="margin-top:8px">Read from the official minutes by a script and checked by hand; the minutes PDF is final. Lists inside annexures (export cases, biopesticide strains, closed files) count as one row each for now. Click a row for the full agenda and decision.</div>`;
+  drawMisRows();
+  const pick = $("#misPick"); if (pick) pick.onchange = () => { MIS.m = +pick.value; MIS.open = null; drawMis(); };
+  $("#misCsv").onclick = () => misCsv(m);
+  let t; $("#misQ").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { MIS.q = e.target.value; drawMisRows(); }, 120); });
+  $("#misSt").onchange = e => { MIS.status = e.target.value; drawMisRows(); };
+  const all = $("#misAll"); if (all) all.onclick = () => { MIS.type = "All"; drawMis(); };
+  pane.querySelectorAll("[data-grp]").forEach(b => b.onclick = () => { MIS.type = MIS.type === b.dataset.grp ? "All" : b.dataset.grp; drawMis(); });
+  $("#misRows").onclick = e => {
+    if (e.target.closest("a")) return;
+    const r = e.target.closest("tr.r"); if (!r) return;
+    MIS.open = MIS.open === r.dataset.no ? null : r.dataset.no; drawMisRows();
+  };
+}
+
 // ---------- checklist wizard ----------
 // Data requirements from Sub-category 3.1 (PDF pages 74-89), encoded exactly as the tables print them.
 // Category keys: registration type + category, e.g. "3B-TI", "3-FIM", "4-TIM".
@@ -1270,6 +1404,7 @@ const ICONS = {
   ship: '<path d="M3 17l2 4h14l2-4H3z"/><path d="M6 17V9h12v8"/><path d="M12 9V4"/><path d="M9 6h6"/>',
   edit: '<path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13 7l4 4"/>',
   check: '<path d="M5 12l4 4L19 6"/>',
+  table: '<rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M3.5 14.5h17M9.5 9.5v10"/>',
 };
 const icon = (n, s) => `<svg class="ico" width="${s || 22}" height="${s || 22}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]}</svg>`;
 
@@ -1550,13 +1685,13 @@ function drawHome(){
   const nNew = UPD.items.filter(isNew).length;
   const notices = UPD.items.filter(it => it.source !== "guidelines").slice(0, 3);
   const apps = (WZ.apps || []).slice(0, 3);
-  const COL = {ask: "blue", wiz: "violet", upd: "orange", read: "teal", search: "rose", crop: "green"};
+  const COL = {ask: "blue", wiz: "violet", upd: "orange", read: "teal", search: "rose", mis: "rose", crop: "green"};
   const tiles = [
     ["ask", "chat", "Ask a question", AI ? "Answers from the guidelines, with page numbers" : "Find the paragraphs that answer your question"],
     ["wiz", "check", "Checklist wizard", "Exact data and documents for 9(3B), 9(3), 9(4)"],
     ["upd", "bell", "Latest updates", "New notices, RC minutes and Gazettes"],
     ["read", "book", "Read the guidelines", "All categories and requirement lists, highlighted"],
-    ["search", "search", "Search pages", "Find any word across all 727 pages"],
+    ["mis", "table", "RC decisions (MIS)", (DATA.mis && DATA.mis.length) ? `Every agenda item of the ${misOrd(DATA.mis[0].meeting)} RC meeting, searchable` : "Every RC decision, searchable"],
     ["crop", "globe", "CROP portal", "Log in to file and track applications"],
   ];
   p.innerHTML = `

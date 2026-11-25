@@ -201,12 +201,19 @@ for f in sorted((Path(__file__).parent / "mis").glob("rc*_items.json"), key=lamb
         it.update(((m["summary"] or {}).get("fix") or {}).get(it["no"], {}))
     MIS.append(m)
 print("MIS meetings:", [m["meeting"] for m in MIS], "items:", sum(len(m["items"]) for m in MIS))
+# register of every CIB&RC notice / Gazette / guideline / RC minutes (tools/mis/build_register.py) + plain-English notes
+_md = Path(__file__).parent / "mis"
+REG = json.loads((_md / "register_items.json").read_text(encoding="utf-8")) if (_md / "register_items.json").exists() else []
+_notes = json.loads((_md / "register_notes.json").read_text(encoding="utf-8")) if (_md / "register_notes.json").exists() else {}
+REG = [{k: v for k, v in dict(it, **(_notes.get(it["id"]) or {})).items() if k not in ("source",) and v not in (None, "")} for it in REG]
+print("register:", len(REG), "items,", sum(1 for r in REG if r.get("s")), "with notes")
 def render(pdf_url, online, inline=False, mode="local"):
     # mode: "claude" (artifact with AI + database), "site" (free static website), "local" (offline file)
     # the website loads the MIS agenda items (most of the data) from mis.json only when the MIS tab opens
     mis = [dict(m, items=None, n=len(m["items"])) for m in MIS] if mode == "site" else MIS
     data = {"pdfUrl": pdf_url, "onlineUrl": online, "inlineViewer": inline, "mode": mode, "pages": pages, "sec": secmap, "tbl": TABLE_PAGES, "ol": OUTLINE, "sum": SUM_LIST,
-            "toc": [[lv, t, p] for lv, t, p in fixed], "mis": mis}
+            "toc": [[lv, t, p] for lv, t, p in fixed], "mis": mis,
+            "reg": None if mode == "site" else REG, "regN": len(REG)}
     return tpl.replace("/*__DATA__*/null", json.dumps(data, ensure_ascii=False).replace("</", "<\/"))
 def page(body):
     return ('<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
@@ -214,6 +221,6 @@ def page(body):
 from urllib.parse import quote
 OUT_HTML.write_text(page(render(quote(OUT_PDF.name), ONLINE, mode="local")), encoding="utf-8")
 (SITE / "index.html").write_text(page(render("guidelines.pdf", "", True, mode="site")), encoding="utf-8")
-(SITE / "mis.json").write_text(json.dumps({str(m["meeting"]): m["items"] for m in MIS}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+(SITE / "mis.json").write_text(json.dumps(dict({str(m["meeting"]): m["items"] for m in MIS}, _reg=REG), ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 Path(__file__).with_name("rc-guideline-finder.html").write_text(render(PDF_ONLINE, ONLINE, True, mode="claude"), encoding="utf-8")
 print("html MB:", round(OUT_HTML.stat().st_size / 1e6, 2))

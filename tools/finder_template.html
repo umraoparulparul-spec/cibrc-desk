@@ -1138,6 +1138,15 @@ function misView(){
   MIS._view = MIS.m === -1 ? {all: true, meeting: "all", items, summary: null, url: ""} : Object.assign({}, list[MIS.m], {items});
   return MIS._view;
 }
+// website: agenda items come from mis.json, fetched the first time the MIS tab opens
+let misLoading = null;
+function misLoad(){
+  if (!misLoading) misLoading = fetch("mis.json").then(r => r.ok ? r.json() : Promise.reject(new Error(r.status))).then(j => {
+    (DATA.mis || []).forEach(m => { m.items = j[String(m.meeting)] || []; });
+    MIS._view = null; MIS._key = null;
+  }).catch(e => { misLoading = null; throw e; });
+  return misLoading;
+}
 function misRows(m){
   const q = MIS.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const g = MIS_GROUPS.find(x => x[0] === MIS.type);
@@ -1175,6 +1184,11 @@ function drawMis(){
   if (!pane || pane.hidden) return;
   const list = DATA.mis || [];
   if (!list.length){ pane.innerHTML = `<div class="empty">No RC meeting has been added yet.</div>`; return; }
+  if (list.some(x => !x.items)){
+    pane.innerHTML = `<div class="empty">Loading ${list.reduce((s, x) => s + (x.n || 0), 0).toLocaleString("en-IN")} RC decisions…</div>`;
+    misLoad().then(drawMis, () => { pane.innerHTML = `<div class="empty">Could not load the RC decisions. Check the connection and open this tab again.</div>`; });
+    return;
+  }
   const m = misView(), S = m.summary || {}, byNo = Object.fromEntries(m.items.map(i => [i.no, i]));
   const ref = no => { const i = byNo[no]; return i ? (m.url ? `<a href="${esc(misPdf(m.url, i.page))}" target="_blank" rel="noopener">Item ${esc(no)} · p.${i.page}</a>` : `Item ${esc(no)} · p.${i.page}`) : `Item ${esc(no)}`; };
   const statuses = ["All", ...new Set(m.items.map(i => misSt(i.status)))];

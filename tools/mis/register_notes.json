@@ -1,27 +1,537 @@
 {
- "897a78d15e6b199c": {"s": "Import of unregistered pesticides only for export (new Category B-V, 477th RC item 2.1): approval in 3 months, valid 1 year or until registered in India; published toxicity data accepted. Comments invited.", "w": "Exporters", "a": "Send comments to cibsecy@nic.in within 30 days (by about 23.12.2026)."},
- "2bc76521333b7253": {"s": "List of long-pending endorsement and other applications (477th RC item 11.1). Files with no reply within 30 days will be closed.", "w": "Anyone with old pending files", "a": "Check the list (282 pages) and reply within 30 days."},
- "e03260904cb41fc2": {"s": "Details of expired stocks and stockpiles of POPs chemicals (Stockholm Convention Annexes A and B) are required in the attached format.", "w": "Manufacturers, importers, stockists", "a": "Email the format to uscibrc-dppqs@gov.in within 7 days."},
- "bcffdcaf306cce54": {"s": "Report of the sub-committee on 5-batch analysis (Dr Vandana Tripathi): batches must be made at the applicant's own R&D premises (location-specific) and records kept; stakeholders' comments considered.", "w": "TI / TIM applicants", "a": "Follow the revised 5-batch analysis modalities."},
- "5aaa7b04b2b78d47": {"s": "New biopesticide filing flow (476th RC item 11.2): apply on CROP first, then send 500 g samples to ICAR-NBAIM (DNA fingerprinting) and to CIL within 30 days, quoting the application number.", "w": "Biopesticide applicants", "a": "File on CROP first, then send both samples within 30 days."},
- "925f3b97d8f5b30a": {"s": "Crystal Crop Protection: change of office address of the import source of Gibberellic acid Technical approved (476th RC item 9.35).", "w": "", "a": ""},
- "f63c640bcb029d01": {"s": "31 9(4) TIM applications closed because in-process sample drawl was not completed (476th RC item 10.50).", "w": "9(4) TIM applicants", "a": "Check whether your file is in the list."},
- "e1989bec815d6c76": {"s": "Gazette S.O. 5234(E) of 22.09.2026 prohibits the manufacture, import, transport, distribution, sale and use of Paraquat dichloride.", "w": "Paraquat registrants, dealers", "a": "Stop all Paraquat activity; certificates are cancelled (subject to the High Court order for HPMA members)."},
- "32fd1b3e272c60c0": {"s": "BASF India: change of name of the Pendimethalin Technical import source to BASF Agricultural Solutions US LLC approved (475th RC item 9.20).", "w": "", "a": ""},
- "cead6d0920dad1db": {"s": "Comments invited for one month on raising the registered purity of Pyroxasulfone Technical to 98.7% under 9(4) on chemical equivalence (474th RC item 10.7).", "w": "Pyroxasulfone registrants", "a": "Send comments within one month."},
- "c2c4242c7a1891a4": {"s": "Applications approved in the 474th RC (items 9.66–9.83): source-of-import name and address changes for several registrants.", "w": "", "a": ""},
- "c933f8514315d249": {"s": "Gazette S.O. 3481(E) of 25.06.2026: exemption under Section 38(2) of the Insecticides Act (amends the sample-import exemption for laboratories, S.O. 4844(E)).", "w": "Laboratories importing samples", "a": "Check whether your laboratory is covered."},
- "dd5b3c6d7c94e832": {"s": "List of laboratories allowed to import sample quantities of insecticides, fungicides, herbicides and PGRs for 2026 (S.O. 4844(E) as amended by S.O. 3481(E)).", "w": "Laboratories", "a": "Import samples only if your laboratory is on the list."},
- "c43238229d005c2a": {"s": "Gazette GSR 597(E) of 08.07.2026 (Insecticides Third Amendment Rules): an import permit in the prescribed form is needed to import scheduled substances for non-insecticidal use.", "w": "Dual-use importers", "a": "Apply in the new form."},
- "afa74749ddd7f9a9": {"s": "The website list of import sources and indigenous manufacturers of technical-grade pesticides is being updated; missing names to be reported.", "w": "Technical registrants", "a": "Send details in the annexure to gurjar.kl@gov.in within 15 days."},
- "c2ade6d039fceca4": {"s": "Standard Health Monitoring Study protocol for household products (472nd RC item 10.51), so studies can start in parallel and finish sooner.", "w": "Household-pest registrants", "a": "Use this protocol for new studies."},
- "4023b3976fe1e080": {"s": "The compiled registration guidelines approved in the 472nd RC (the \"472 RC guidelines\") published for comments.", "w": "All applicants", "a": "Use the compiled guidelines; comments period was extended by 15 days in the 474th RC."},
- "4517f8340208516a": {"s": "Final scrutiny templates/proformas for every registration category (472nd RC item 3.2), revised after stakeholder meetings.", "w": "All applicants", "a": "Prepare dossiers to match the templates."},
- "04c3c5c4d9e924c5": {"s": "Customs to accept BIS tolerance limits on declared a.i. in formulations: below 1% ±10%; 1–9% +10/−5%; above 9% to below 50% ±5%; 50% and above +5/−3%.", "w": "Importers of formulations", "a": "Quote these tolerances to Customs."},
- "0911e7c2ad352fad": {"s": "Reminder: production data of technicals and formulations must be uploaded on CROP under each registrant's login (module live since 16.04.2026).", "w": "Manufacturers, importers, exporters", "a": "Upload production data on CROP now."},
- "8a7431ba8a091c68": {"s": "Mandatory compliance for duplicate CROP accounts and pending KYC documents (scanned notice).", "w": "All CROP users", "a": "Merge duplicate accounts and complete KYC."},
- "58a868c403eec95f": {"s": "List of endorsement applications shown as \"Completed\" on the old CROP portal but never taken to the RC (471st RC item 11.1); comments invited.", "w": "Registrants with old endorsements", "a": "Check the list and send comments."},
- "76337a2ef59bfaf2": {"s": "No CIB&RC permission/NOC is needed to import Certified Reference Materials used only for lab testing and R&D (scanned notice).", "w": "Laboratories", "a": "Import CRMs without an NOC."},
- "d6000fe46cddfbf0": {"s": "A State verification letter from the Directorate of Agriculture is required to unfreeze CROP accounts (471st RC item 10.26); firms without any certificate were later exempted (472nd RC item 10.3).", "w": "Frozen CROP accounts", "a": "Get the State verification letter."},
- "987809d7584b8bd5": {"s": "New CROP module: upload production data of pesticides under each registrant's login (scanned notice).", "w": "Manufacturers, importers", "a": "Upload production data on CROP."}
+ "897a78d15e6b199c": {
+  "s": "Import of unregistered pesticides only for export (new Category B-V, 477th RC item 2.1): approval in 3 months, valid 1 year or until registered in India; published toxicity data accepted. Comments invited.",
+  "w": "Exporters",
+  "a": "Send comments to cibsecy@nic.in within 30 days (by about 23.12.2026)."
+ },
+ "2bc76521333b7253": {
+  "s": "List of long-pending endorsement and other applications (477th RC item 11.1). Files with no reply within 30 days will be closed.",
+  "w": "Anyone with old pending files",
+  "a": "Check the list (282 pages) and reply within 30 days."
+ },
+ "e03260904cb41fc2": {
+  "s": "Details of expired stocks and stockpiles of POPs chemicals (Stockholm Convention Annexes A and B) are required in the attached format.",
+  "w": "Manufacturers, importers, stockists",
+  "a": "Email the format to uscibrc-dppqs@gov.in within 7 days."
+ },
+ "bcffdcaf306cce54": {
+  "s": "Report of the sub-committee on 5-batch analysis (Dr Vandana Tripathi): batches must be made at the applicant's own R&D premises (location-specific) and records kept; stakeholders' comments considered.",
+  "w": "TI / TIM applicants",
+  "a": "Follow the revised 5-batch analysis modalities."
+ },
+ "5aaa7b04b2b78d47": {
+  "s": "New biopesticide filing flow (476th RC item 11.2): apply on CROP first, then send 500 g samples to ICAR-NBAIM (DNA fingerprinting) and to CIL within 30 days, quoting the application number.",
+  "w": "Biopesticide applicants",
+  "a": "File on CROP first, then send both samples within 30 days."
+ },
+ "925f3b97d8f5b30a": {
+  "s": "Crystal Crop Protection: change of office address of the import source of Gibberellic acid Technical approved (476th RC item 9.35).",
+  "w": "",
+  "a": ""
+ },
+ "f63c640bcb029d01": {
+  "s": "31 9(4) TIM applications closed because in-process sample drawl was not completed (476th RC item 10.50).",
+  "w": "9(4) TIM applicants",
+  "a": "Check whether your file is in the list."
+ },
+ "e1989bec815d6c76": {
+  "s": "Gazette S.O. 5234(E) of 22.09.2026 prohibits the manufacture, import, transport, distribution, sale and use of Paraquat dichloride.",
+  "w": "Paraquat registrants, dealers",
+  "a": "Stop all Paraquat activity; certificates are cancelled (subject to the High Court order for HPMA members)."
+ },
+ "32fd1b3e272c60c0": {
+  "s": "BASF India: change of name of the Pendimethalin Technical import source to BASF Agricultural Solutions US LLC approved (475th RC item 9.20).",
+  "w": "",
+  "a": ""
+ },
+ "cead6d0920dad1db": {
+  "s": "Comments invited for one month on raising the registered purity of Pyroxasulfone Technical to 98.7% under 9(4) on chemical equivalence (474th RC item 10.7).",
+  "w": "Pyroxasulfone registrants",
+  "a": "Send comments within one month."
+ },
+ "c2c4242c7a1891a4": {
+  "s": "Applications approved in the 474th RC (items 9.66–9.83): source-of-import name and address changes for several registrants.",
+  "w": "",
+  "a": ""
+ },
+ "c933f8514315d249": {
+  "s": "Gazette S.O. 3481(E) of 25.06.2026: exemption under Section 38(2) of the Insecticides Act (amends the sample-import exemption for laboratories, S.O. 4844(E)).",
+  "w": "Laboratories importing samples",
+  "a": "Check whether your laboratory is covered."
+ },
+ "dd5b3c6d7c94e832": {
+  "s": "List of laboratories allowed to import sample quantities of insecticides, fungicides, herbicides and PGRs for 2026 (S.O. 4844(E) as amended by S.O. 3481(E)).",
+  "w": "Laboratories",
+  "a": "Import samples only if your laboratory is on the list."
+ },
+ "c43238229d005c2a": {
+  "s": "Gazette GSR 597(E) of 08.07.2026 (Insecticides Third Amendment Rules): an import permit in the prescribed form is needed to import scheduled substances for non-insecticidal use.",
+  "w": "Dual-use importers",
+  "a": "Apply in the new form."
+ },
+ "afa74749ddd7f9a9": {
+  "s": "The website list of import sources and indigenous manufacturers of technical-grade pesticides is being updated; missing names to be reported.",
+  "w": "Technical registrants",
+  "a": "Send details in the annexure to gurjar.kl@gov.in within 15 days."
+ },
+ "c2ade6d039fceca4": {
+  "s": "Standard Health Monitoring Study protocol for household products (472nd RC item 10.51), so studies can start in parallel and finish sooner.",
+  "w": "Household-pest registrants",
+  "a": "Use this protocol for new studies."
+ },
+ "4023b3976fe1e080": {
+  "s": "The compiled registration guidelines approved in the 472nd RC (the \"472 RC guidelines\") published for comments.",
+  "w": "All applicants",
+  "a": "Use the compiled guidelines; comments period was extended by 15 days in the 474th RC."
+ },
+ "4517f8340208516a": {
+  "s": "Final scrutiny templates/proformas for every registration category (472nd RC item 3.2), revised after stakeholder meetings.",
+  "w": "All applicants",
+  "a": "Prepare dossiers to match the templates."
+ },
+ "04c3c5c4d9e924c5": {
+  "s": "Customs to accept BIS tolerance limits on declared a.i. in formulations: below 1% ±10%; 1–9% +10/−5%; above 9% to below 50% ±5%; 50% and above +5/−3%.",
+  "w": "Importers of formulations",
+  "a": "Quote these tolerances to Customs."
+ },
+ "0911e7c2ad352fad": {
+  "s": "Reminder: production data of technicals and formulations must be uploaded on CROP under each registrant's login (module live since 16.04.2026).",
+  "w": "Manufacturers, importers, exporters",
+  "a": "Upload production data on CROP now."
+ },
+ "8a7431ba8a091c68": {
+  "s": "Mandatory compliance for duplicate CROP accounts and pending KYC documents (scanned notice).",
+  "w": "All CROP users",
+  "a": "Merge duplicate accounts and complete KYC."
+ },
+ "58a868c403eec95f": {
+  "s": "List of endorsement applications shown as \"Completed\" on the old CROP portal but never taken to the RC (471st RC item 11.1); comments invited.",
+  "w": "Registrants with old endorsements",
+  "a": "Check the list and send comments."
+ },
+ "76337a2ef59bfaf2": {
+  "s": "No CIB&RC permission/NOC is needed to import Certified Reference Materials used only for lab testing and R&D (scanned notice).",
+  "w": "Laboratories",
+  "a": "Import CRMs without an NOC."
+ },
+ "d6000fe46cddfbf0": {
+  "s": "A State verification letter from the Directorate of Agriculture is required to unfreeze CROP accounts (471st RC item 10.26); firms without any certificate were later exempted (472nd RC item 10.3).",
+  "w": "Frozen CROP accounts",
+  "a": "Get the State verification letter."
+ },
+ "987809d7584b8bd5": {
+  "s": "New CROP module: upload production data of pesticides under each registrant's login (scanned notice).",
+  "w": "Manufacturers, importers",
+  "a": "Upload production data on CROP."
+ },
+ "77a655a9d033f630": {
+  "s": "Chad has banned import, distribution and use of Methyl Bromide (470th RC item 10.39).",
+  "w": "Methyl Bromide registrants and exporters",
+  "a": "Do not export Methyl Bromide to Chad."
+ },
+ "6b1324ecd3c181a3": {
+  "s": "A committee will inspect laboratories whose residue studies showed non-compliance and data-integrity issues raised by FSSAI's SPPR (468th RC item 10.4): infrastructure, instruments, methods and report preparation.",
+  "w": "Residue study laboratories",
+  "a": "Keep raw data and instrument records ready for inspection."
+ },
+ "a79c6bdc427bb529": {
+  "s": "Compliance requirements for import sources and registration of agro-chemicals (scanned notice; follows the 469th RC decision on geo-tagged, government-issued proof of import sources).",
+  "w": "Importers (TI / FI)",
+  "a": "Read the notice and submit source documents."
+ },
+ "89b7c57e49cbfbd0": {
+  "s": "DA&FW is monitoring the effect of the Gulf crisis on pesticide supply; data on manufacture, import and export of major insecticides, fungicides, herbicides and PGRs requested urgently.",
+  "w": "Manufacturers, importers, associations",
+  "a": "Submit the data in the enclosed format."
+ },
+ "9826f403af06f015": {
+  "s": "FSSAI's SPPR recommendations on crop grouping (468th RC item 10.81) shared for comments from industry and stakeholders.",
+  "w": "Registrants",
+  "a": "Send comments on the crop grouping document."
+ },
+ "0cea377185cd3bd6": {
+  "s": "Implementation of the 469th RC decision (item 10.25) on applications with no reply under the 400th RC rule; list of affected files (scanned, 55 pages).",
+  "w": "Applicants with pending replies",
+  "a": "Check the list for your files."
+ },
+ "5a802c458a38078d": {
+  "s": "A new module has been implemented on the CROP portal (scanned notice).",
+  "w": "CROP users",
+  "a": "Read the notice for the new module."
+ },
+ "82ac407f0a31d164": {
+  "s": "Revised public notice on the 458th RC decision (item 10.29) on label instructions for water pH (scanned notice).",
+  "w": "Registrants",
+  "a": ""
+ },
+ "833b2996ad627263": {
+  "s": "Draft scrutiny templates for every registration category (468th RC item 3.2) published for comments; finalised in the 472nd RC.",
+  "w": "All applicants",
+  "a": "Prepare dossiers to match the templates."
+ },
+ "ab23fb03f2f9577f": {
+  "s": "Letter to the States on merging duplicate CROP accounts into the KYC-verified account and reinstating suspended products (468th RC decision); follows the 16.10.2025 letter on cancelling manufacturing licences of frozen accounts.",
+  "w": "CROP users with duplicate accounts",
+  "a": "Request merger of accounts and complete KYC."
+ },
+ "b7156a1d9ca4a060": {
+  "s": "Same letter on merging duplicate CROP accounts, with the list of affected firms (62 pages).",
+  "w": "CROP users with duplicate accounts",
+  "a": "Check the list for your firm."
+ },
+ "f4a5236938257f34": {
+  "s": "Same letter on merging duplicate CROP accounts, with the list of affected firms (83 pages).",
+  "w": "CROP users with duplicate accounts",
+  "a": "Check the list for your firm."
+ },
+ "e795a9cfb4cf2a4a": {
+  "s": "Mandatory KYC on the CROP portal: summary of all earlier RC decisions and notices, with the list of non-compliant accounts (2,244 pages).",
+  "w": "All CROP users",
+  "a": "Complete KYC; check whether your account is listed."
+ },
+ "072476bb7b3a09fd": {
+  "s": "Import for Export (Fast Track) applications must state the chemical composition of the technical to be imported and of the formulation to be exported, with product names and quantities (468th RC item 10.36).",
+  "w": "Exporters",
+  "a": "Give both compositions and quantities in the application."
+ },
+ "526d2ffdd9bcaf89": {
+  "s": "467th RC items 9.70–9.71: KR Lifesciences' change of name of the import source for Validamycin technical approved.",
+  "w": "",
+  "a": ""
+ },
+ "9d7f9778961521e2": {
+  "s": "Aged toxicity data: applicants must submit GLP- and OECD-compliant studies done in GLP-accredited labs within the permitted period, and the data must represent the specific molecule (467th RC item 10.69).",
+  "w": "All applicants",
+  "a": "Check that old studies meet GLP/OECD and the permitted period."
+ },
+ "6e86a5bc5cfb2aa3": {
+  "s": "Scrutiny priority (467th RC item 10.68): 1 new molecules, 2 nematicides (TIM/TI), 3 seed treatment, 4 LLIN, then Make-in-India technicals; within each, files in order of receipt.",
+  "w": "All applicants",
+  "a": ""
+ },
+ "9ed4d99ce355b1ed": {
+  "s": "Lapsed CRs where no manufacturing licence was sought from the State will no longer be revalidated; pending requests are closed (467th RC item 2.1).",
+  "w": "Registrants with lapsed CRs",
+  "a": "Apply for the State manufacturing licence in time."
+ },
+ "fa84cd1dd5db3790": {
+  "s": "A limit for the N-nitroso-pendimethalin impurity is fixed for every batch of Pendimethalin technical (467th RC item 3.3), following the EU limit (N-nitroso compounds max 100 ppm, N-nitroso-pendimethalin under 45 ppm).",
+  "w": "Pendimethalin technical registrants",
+  "a": "Test each batch for N-nitroso-pendimethalin."
+ },
+ "ea79132939a8b388": {
+  "s": "Where a pesticide is sensitive to acidic or alkaline water, the label/leaflet must say what water pH to use (458th RC item 10.29).",
+  "w": "Registrants",
+  "a": "Add water-pH instructions to labels where relevant."
+ },
+ "d94f5506d5f702db": {
+  "s": "Lebanon has prohibited registration and import of pesticides containing Oxamyl (Resolution 516/1, 22.09.2025).",
+  "w": "Oxamyl exporters",
+  "a": "Do not export Oxamyl products to Lebanon."
+ },
+ "bc81a65c95c5526a": {
+  "s": "DA&FW clarification on GSR 367(E) of 03.06.2025: label/leaflet with QR-code-enabled packing for sale of household insecticides.",
+  "w": "Household-insecticide registrants",
+  "a": "Follow the QR-code packing clarification."
+ },
+ "2a6377f99f8ce81a": {
+  "s": "Status of KYC on CROP: States asked to cancel manufacturing licences of firms whose accounts are frozen for non-compliance (455th–457th RC decisions); list attached.",
+  "w": "Firms with frozen CROP accounts",
+  "a": "Complete KYC to avoid licence cancellation."
+ },
+ "88652337e2510a57": {
+  "s": "Same KYC status notice and licence-cancellation instruction (shorter copy).",
+  "w": "Firms with frozen CROP accounts",
+  "a": "Complete KYC."
+ },
+ "ddd5477d3f9af867": {
+  "s": "Endorsements of changes already approved by the RC (shelf life, packaging, import source, crops) will be issued by the Secretary within two working days, with ex-post-facto RC approval (467th RC item 10.62).",
+  "w": "9(4) registrants",
+  "a": "Apply on CROP for such endorsements."
+ },
+ "c127d0263a1521c5": {
+  "s": "DA&FW directions (15.09.2025) on commercialisation of insecticides under provisional registration u/s 9(3B); among other points, no extension beyond two years (later stayed by the Madras High Court).",
+  "w": "9(3B) registrants",
+  "a": "Read the DA&FW letter."
+ },
+ "811557d884c8ba1c": {
+  "s": "Libya has banned import of Methyl Bromide since 2014 (465th RC item 10.44, via MoEFCC Ozone Cell and UNEP).",
+  "w": "Methyl Bromide exporters",
+  "a": "Do not export Methyl Bromide to Libya."
+ },
+ "13a7810f9ee936c5": {
+  "s": "Applications pending since 2019 because of CIL-reported deficiencies get 15 days to remove the deficiency, or they will be closed (465th RC item 10.45).",
+  "w": "Applicants with CIL deficiencies",
+  "a": "Check Annexure 10.45.1 and reply within 15 days."
+ },
+ "3af1499a2a875c34": {
+  "s": "465th RC items 9.54–9.72: approved changes of name/address of import sources for several registrants (e.g. KR Life Sciences' Fenoxaprop-p-ethyl).",
+  "w": "",
+  "a": ""
+ },
+ "cad1482f1c27f516": {
+  "s": "Data from GLP- and NABL-accredited labs is accepted. CIB&RC no longer keeps its own lab list; accreditation is checked via links to the NABL and NGCMA (DST) websites (464th RC item 10.48).",
+  "w": "All applicants",
+  "a": "Use labs whose accreditation is current on NABL/NGCMA sites."
+ },
+ "1167edcf2e255c96": {
+  "s": "Current list of members of the Central Insecticides Board (CIB), chaired by the DGHS.",
+  "w": "",
+  "a": ""
+ },
+ "ee089a7f709c27cb": {
+  "s": "Current list of members of the Registration Committee, chaired by the Agriculture Commissioner.",
+  "w": "",
+  "a": ""
+ },
+ "2ac2ea15d86bf459": {
+  "s": "462nd RC items 9.79, 9.107, 9.118, 9.119: approved changes in registration certificates (e.g. source name/address for KR Life Science's Acetamiprid technical).",
+  "w": "",
+  "a": ""
+ },
+ "39f087373e41bf98": {
+  "s": "Mepiquat chloride TK 50% is to be treated as a technical product; no new 9(4) FIM CRs, and those already issued are recalled for cancellation (460th RC item 10.43).",
+  "w": "Mepiquat chloride registrants",
+  "a": "Holders of 9(4) FIM CRs: expect cancellation."
+ },
+ "fe3b5943772f4892": {
+  "s": "Standard operating procedure for handling, storage, manipulation and use of insecticides (scanned guideline).",
+  "w": "Manufacturers, dealers, users",
+  "a": "Follow the SOP."
+ },
+ "5dbb47b8450c8825": {
+  "s": "9(4) TIM applicants listed must submit PRV samples at CIL, Faridabad within 30 days (459th RC item 10.56).",
+  "w": "9(4) TIM applicants",
+  "a": "Submit samples to CIL within 30 days."
+ },
+ "35859e750587db70": {
+  "s": "Crop grouping per CODEX principles: the ADG (PP) sub-committee's report was accepted for review and implementation (458th RC item 10.52).",
+  "w": "Registrants",
+  "a": ""
+ },
+ "f9bb9371705fa00c": {
+  "s": "Corteva: change of name of the import source of Cyhalofop-butyl technical to Corteva Agriscience LLC approved (458th RC item 9.131).",
+  "w": "",
+  "a": ""
+ },
+ "7d35adb7a6b021f0": {
+  "s": "457th RC: approved changes of name/address and extension of validity of import sources for several registrants (e.g. UPL).",
+  "w": "",
+  "a": ""
+ },
+ "6046dbd64b8b162a": {
+  "s": "Guidance on minor changes in a registered formulation (scanned notice).",
+  "w": "Formulators",
+  "a": "Read the notice before changing a formulation."
+ },
+ "c6f426a78a0e0788": {
+  "s": "KYC: accounts of firms that never complied stand closed and their CRs affected (456th RC item 10.46); list attached (285 pages).",
+  "w": "Firms without KYC",
+  "a": "Check whether your firm is listed."
+ },
+ "2f52c71163ba9b25": {
+  "s": "Draft updated list of import sources and indigenous manufacturers (as on 01.05.2024) for corrections within 15 days.",
+  "w": "Technical registrants",
+  "a": "Report errors with documents by email."
+ },
+ "acba426f830a6497": {
+  "s": "Biopesticide applications with unanswered deficiencies get 15 days to reply or will be closed (455th RC item 10.8).",
+  "w": "Biopesticide applicants",
+  "a": "Reply to deficiencies within 15 days."
+ },
+ "fd281b2f3eaf73a5": {
+  "s": "Export of small quantities of pesticide samples for research, trial and testing allowed with a prescribed format; quantities to be recorded digitally (455th RC item 10.53 A).",
+  "w": "Exporters of samples",
+  "a": "Use the prescribed format."
+ },
+ "3205e8c04d845ccf": {
+  "s": "455th RC: approved changes of name/address and extension of validity of import sources (e.g. Mahamaya Life Sciences).",
+  "w": "",
+  "a": ""
+ },
+ "f8ca691d3eb597a6": {
+  "s": "Draft definition of a new molecule for priority scrutiny: a dossier filed within five years of first registration abroad, or a molecule registered first in India (455th RC item 10.15); comments invited.",
+  "w": "New-molecule applicants",
+  "a": ""
+ },
+ "74c058e2160cc2ed": {
+  "s": "Interim approval for applying already-approved pesticide formulations by drone (scanned notice).",
+  "w": "Registrants, drone operators",
+  "a": "Follow the interim drone conditions."
+ },
+ "63dbfe6745a7db63": {
+  "s": "454th RC: approved changes of name/address and extension of validity of import sources (e.g. Willowood Chemicals).",
+  "w": "",
+  "a": ""
+ },
+ "fb58676aa8ca9959": {
+  "s": "Crop deletions under S.O. 4294(E) of 29.09.2023 (Carbofuran, Malathion, Quinalphos, Mancozeb, Oxyfluorfen, Dimethoate, Chlorpyriphos) must be applied for online on CROP, not on paper.",
+  "w": "Registrants of these 7 pesticides",
+  "a": "Apply for crop deletion on CROP."
+ },
+ "125ff08c1a850a3b": {
+  "s": "A Chinese Dimethoate technical source moved its manufacturing site without telling CIB&RC; a site change needs 5-batch samples from old and new sites tested at CIL (453rd RC item 10.3).",
+  "w": "TI importers",
+  "a": "Report any change of the source's manufacturing site."
+ },
+ "6ad299a5517052d3": {
+  "s": "Biopesticide applications with unanswered deficiencies will be closed (452nd RC item 10.13); list attached.",
+  "w": "Biopesticide applicants",
+  "a": "Check the list and reply."
+ },
+ "2a52c04bbb3c746f": {
+  "s": "9(3B)/9(3) endorsement applications with unanswered deficiencies will be closed (452nd RC item 10.12); list attached.",
+  "w": "Applicants with pending endorsements",
+  "a": "Check the list and reply."
+ },
+ "9553e868d54a8830": {
+  "s": "KYC progress: format approved for unfreezing and merging accounts on the 'one company, one account' principle (452nd RC item 10.30).",
+  "w": "CROP users",
+  "a": "Use the format to request unfreezing/merger."
+ },
+ "5335a64162c80c3e": {
+  "s": "Arysta LifeScience: change of name and address of the import source of Triflumizole 42.14% SC approved (452nd RC item 9.72).",
+  "w": "",
+  "a": ""
+ },
+ "37c4ccb319a602a0": {
+  "s": "Syngenta: change of office address of the import source of Fomesafen technical approved (451st RC item 9.52).",
+  "w": "",
+  "a": ""
+ },
+ "a93941722128de2a": {
+  "s": "Dhanuka Agritech: change of name of the import source of Ethofenprox technical approved (451st RC item 8.27).",
+  "w": "",
+  "a": ""
+ },
+ "9f299782b9a21c23": {
+  "s": "Guidelines for changing a product's name, e.g. Fluvalinate to tau-fluvalinate (448th and 451st RC); comments invited.",
+  "w": "Registrants",
+  "a": ""
+ },
+ "5e8904bde13c1961": {
+  "s": "Solinos Agro Sciences: change of name of the import source of Broflanilide 20% SC approved (450th RC item 9.51).",
+  "w": "",
+  "a": ""
+ },
+ "0488d7a0ff860768": {
+  "s": "Arysta LifeScience: change of name of the import source of Propargite technical approved (scanned notice).",
+  "w": "",
+  "a": ""
+ },
+ "f9278da3bd4f8ffc": {
+  "s": "Corteva: change of name of the import source of Copper hydroxide 46.1% WG approved (450th RC item 9.49).",
+  "w": "",
+  "a": ""
+ },
+ "0aba3f4037ea15d2": {
+  "s": "FMC: change of name of the import source of Chlorantraniliprole technical after disinvestment approved (449th RC item 9.55).",
+  "w": "",
+  "a": ""
+ },
+ "2d193b29b202ce1c": {
+  "s": "Checklist for extension of validity of a CR under Section 9(3) (442nd RC item 10.36).",
+  "w": "9(3) registrants",
+  "a": "Use the checklist when applying for extension."
+ },
+ "27bf30e718a518b0": {
+  "s": "Biopesticide 9(3) applications with unanswered deficiencies get 15 days or will be closed (448th RC item 10.12).",
+  "w": "Biopesticide applicants",
+  "a": ""
+ },
+ "5bf682e86d910481": {
+  "s": "Implementation of KYC on CROP: list of firms and status (scanned, 165 pages).",
+  "w": "CROP users",
+  "a": "Check the list for your firm."
+ },
+ "b138c25d361f2b36": {
+  "s": "Dow AgroSciences: change of name of the import source of Diclosulam 84% WDG approved (447th RC item 9.79).",
+  "w": "",
+  "a": ""
+ },
+ "99e3b20bf0d06c02": {
+  "s": "PI Industries: Metaldehyde technical import source changed from Lonza to Arxada AG (447th RC item 9.8).",
+  "w": "",
+  "a": ""
+ },
+ "ecb5be2881bf4cfc": {
+  "s": "Parijat Industries: change of name of the import source of Thiamethoxam technical approved (447th RC item 9.59).",
+  "w": "",
+  "a": ""
+ },
+ "e41af6257824f431": {
+  "s": "Corrigendum: comments invited on making water pH for spraying mandatory on labels and leaflets (Insecticides Rules Chapter V).",
+  "w": "Registrants",
+  "a": ""
+ },
+ "853ae60b970fdaef": {
+  "s": "Updated lists on the website as on 01.06.2023: Schedule, registered pesticides, 9(3) products, import sources and manufacturers, household products, banned pesticides.",
+  "w": "All",
+  "a": ""
+ },
+ "e6dcbb792960802d": {
+  "s": "Draft guidelines for a formulation registered together with its technical (first registration of a molecule) (445th RC item 10.36); comments invited.",
+  "w": "New-molecule applicants",
+  "a": ""
+ },
+ "7f305750d331e9c4": {
+  "s": "FMC: change of name of the import source of Cyantraniliprole technical after disinvestment approved (446th RC item 9.75).",
+  "w": "",
+  "a": ""
+ },
+ "9a227173ba9108cd": {
+  "s": "List of 9(3B)/9(3) FI, B/F and endorsement applications closed for unanswered deficiencies.",
+  "w": "Applicants",
+  "a": "Check the list."
+ },
+ "71ba78ef5d3ac261": {
+  "s": "Comments invited on making water pH for spraying mandatory on labels and leaflets (445th RC item 10.15).",
+  "w": "Registrants",
+  "a": ""
+ },
+ "6b34549a8e292287": {
+  "s": "Gazette GSR 140(E) of 24.02.2023: Insecticides (First Amendment) Rules, 2023.",
+  "w": "All registrants",
+  "a": "Read the amendment."
+ },
+ "c64f2bca3e40dc75": {
+  "s": "KYC module on CROP: accounts not submitting KYC in time stand frozen (443rd/445th RC); process for reactivation.",
+  "w": "CROP users",
+  "a": "Complete KYC to unfreeze."
+ },
+ "a94510e6c3686b24": {
+  "s": "Modalities for pre-registration verification (PRV) samples of technical-grade pesticides for analysis at CIL in TIM cases under 9(3) and 9(4) (442nd RC item 3.2).",
+  "w": "TIM applicants",
+  "a": "Follow the PRV sampling modalities."
+ },
+ "faa4131404a854c9": {
+  "s": "Weekly meetings between CIB&RC and pesticide industry associations resumed from 20.01.2023.",
+  "w": "Associations",
+  "a": ""
+ },
+ "8fd1e3177bf409a5": {
+  "s": "Endorsement files with unanswered deficiencies get 15 days or will be closed (442nd RC item 10.60).",
+  "w": "Applicants",
+  "a": ""
+ },
+ "819009ec16633939": {
+  "s": "Export applications with no reply under the 400th RC rule get a last one-week chance to submit data (442nd RC item 10.63).",
+  "w": "Exporters",
+  "a": ""
+ },
+ "9aab155ac8708f34": {
+  "s": "Toxicity triangle of Thiamethoxam 12.6% + Lambda-cyhalothrin 9.5% ZC under 9(4) corrected from red to yellow; eligible registrants may apply (442nd RC item 8.9).",
+  "w": "Registrants of this product",
+  "a": "Apply to correct the triangle colour."
+ },
+ "def98d985fcf8ad4": {
+  "s": "KYC module on CROP, with the 443rd RC minutes and list (667 pages).",
+  "w": "CROP users",
+  "a": ""
+ },
+ "faa1ed5e2be521f8": {
+  "s": "Data requirements for registration under 9(3B), 9(3) and 9(4) by category, including formulation registered with its technical (first registration of a molecule) (99 pages).",
+  "w": "All applicants",
+  "a": "Superseded by the compiled 472 RC guidelines."
+ }
 }

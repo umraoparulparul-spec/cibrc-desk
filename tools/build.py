@@ -205,6 +205,10 @@ print("MIS meetings:", [m["meeting"] for m in MIS], "items:", sum(len(m["items"]
 _md = Path(__file__).parent / "mis"
 REG = json.loads((_md / "register_items.json").read_text(encoding="utf-8")) if (_md / "register_items.json").exists() else []
 _notes = json.loads((_md / "register_notes.json").read_text(encoding="utf-8")) if (_md / "register_notes.json").exists() else {}
+_heads = {m["meeting"]: (m.get("summary") or {}).get("headline") for m in MIS}
+for it in REG:   # RC minutes of meetings already in the MIS: reuse that meeting's headline as the note
+    if it.get("meeting") in _heads and _heads[it["meeting"]] and it["id"] not in _notes:
+        _notes[it["id"]] = {"s": _heads[it["meeting"]], "w": "All applicants", "a": "Open the meeting in MIS for every decision."}
 REG = [{k: v for k, v in dict(it, **(_notes.get(it["id"]) or {})).items() if k not in ("source",) and v not in (None, "")} for it in REG]
 print("register:", len(REG), "items,", sum(1 for r in REG if r.get("s")), "with notes")
 def render(pdf_url, online, inline=False, mode="local"):

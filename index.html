@@ -320,6 +320,10 @@ main.wide aside{display:none}
 .mis-t td:first-child{white-space:nowrap;font-variant-numeric:tabular-nums}
 .mis-t td:nth-child(2){min-width:118px;overflow-wrap:normal}
 .mis-t td:nth-child(3){min-width:120px}
+.mis-t.all tr.r td:nth-child(2){min-width:0;white-space:nowrap}
+.mis-t.all tr.r td:nth-child(3){min-width:118px}
+.mis-t.all tr.r td:nth-child(4){min-width:120px}
+.mis-t .det td{min-width:0!important;white-space:normal!important}
 .mis-t tbody tr.r{cursor:pointer}
 .mis-t tbody tr.r:hover td{background:var(--accent-soft)}
 .mis-t .det td{background:var(--bg)!important;font-size:13px;line-height:1.55}
@@ -1125,7 +1129,17 @@ const MIS_GROUPS = [
 ];
 const misType = t => ({"New registration 9(3)": "New 9(3)", "New registration 9(3B)": "New 9(3B)", "Me-too 9(4) TIM": "9(4) TIM", "Me-too 9(4) TI/FI/FIM": "9(4) TI/FI",
   "File closure / reopening": "Closure / reopen", "Policy / other": "Policy / other"})[t] || t.replace("Endorsement: ", "Endorsement · ");
-const misPdf = (m, p) => m.url ? m.url + "#page=" + p : "";
+const misPdf = (url, p) => url ? url + "#page=" + p : "";
+// the current view: one meeting (MIS.m = its index) or all meetings together (MIS.m = -1)
+function misView(){
+  const list = DATA.mis || [];
+  if (MIS._key === MIS.m && MIS._view) return MIS._view;
+  const pick = MIS.m === -1 ? list : [list[MIS.m]];
+  const items = pick.flatMap(x => x.items.map(i => Object.assign({}, i, {mt: x.meeting, url: x.url, key: x.meeting + ":" + i.no})));
+  MIS._key = MIS.m;
+  MIS._view = MIS.m === -1 ? {all: true, meeting: "all", items, summary: null, url: ""} : Object.assign({}, list[MIS.m], {items});
+  return MIS._view;
+}
 function misRows(m){
   const q = MIS.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const g = MIS_GROUPS.find(x => x[0] === MIS.type);
@@ -1133,26 +1147,27 @@ function misRows(m){
     && q.every(w => (i.no + " " + i.type + " " + i.title + " " + i.company + " " + i.product + " " + i.decision).toLowerCase().includes(w)));
 }
 function drawMisRows(){
-  const m = (DATA.mis || [])[MIS.m];
   const box = $("#misRows");
-  if (!m || !box) return;
+  if (!(DATA.mis || []).length || !box) return;
+  const m = misView();
   const rows = misRows(m);
-  $("#misCount").textContent = `${rows.length} of ${m.items.length} agenda items`;
-  box.innerHTML = rows.length ? rows.map(i => {
+  const shown = rows.slice(0, 400);
+  $("#misCount").textContent = `${rows.length} of ${m.items.length} agenda items${m.all ? ` in ${DATA.mis.length} meetings` : ""}${rows.length > shown.length ? ` · showing the first ${shown.length}; type a word to narrow down` : ""}`;
+  box.innerHTML = rows.length ? shown.map(i => {
     const subj = i.product || (i.title.length > 120 ? i.title.slice(0, 117) + "…" : i.title);
-    const open = MIS.open === i.no;
-    return `<tr class="r" data-no="${esc(i.no)}" aria-expanded="${open}">
-        <td>${esc(i.no)}</td><td>${esc(misType(i.type))}</td><td>${esc(i.company || "–")}</td>
+    const open = MIS.open === i.key;
+    return `<tr class="r" data-no="${esc(i.key)}" aria-expanded="${open}">
+        ${m.all ? `<td>${misOrd(i.mt)}</td>` : ""}<td>${esc(i.no)}</td><td>${esc(misType(i.type))}</td><td>${esc(i.company || "–")}</td>
         <td>${esc(subj)}</td><td>${esc([i.section, i.category].filter(Boolean).join(" ") || "–")}</td>
         <td><span class="st ${MIS_CLS[i.status] || ""}">${esc(misSt(i.status))}</span></td>
-        <td>${m.url ? `<a href="${esc(misPdf(m, i.page))}" target="_blank" rel="noopener">p.${i.page} ↗</a>` : "p." + i.page}</td></tr>`
-      + (open ? `<tr class="det"><td></td><td colspan="6"><p><b>Agenda:</b> ${esc(i.title)}</p><p><b>RC decision:</b> ${esc(i.decision || "–")}</p>${i.annex && i.annex.length ? `<p class="sec">The list is in Annexure ${i.annex.map(esc).join(", ")} of the minutes.</p>` : ""}</td></tr>` : "");
-  }).join("") : `<tr><td colspan="7" class="sec">No agenda item matches. Try fewer words or clear the filters.</td></tr>`;
+        <td>${i.url ? `<a href="${esc(misPdf(i.url, i.page))}" target="_blank" rel="noopener">p.${i.page} ↗</a>` : "p." + i.page}</td></tr>`
+      + (open ? `<tr class="det"><td></td><td colspan="${m.all ? 7 : 6}"><p><b>Agenda:</b> ${esc(i.title)}</p><p><b>RC decision:</b> ${esc(i.decision || "–")}</p>${i.annex && i.annex.length ? `<p class="sec">The list is in Annexure ${i.annex.map(esc).join(", ")} of the minutes.</p>` : ""}</td></tr>` : "");
+  }).join("") : `<tr><td colspan="${m.all ? 8 : 7}" class="sec">No agenda item matches. Try fewer words or clear the filters.</td></tr>`;
 }
 function misCsv(m){
   const cell = v => `"${String(v == null ? "" : v).replace(/"/g, '""')}"`;
   const head = ["Meeting", "Item", "Type", "Company", "Product / subject", "Section", "Category", "Decision", "PDF page", "Agenda", "RC decision"];
-  const body = misRows(m).map(i => [m.meeting, i.no, i.type, i.company, i.product, i.section, i.category, misSt(i.status), i.page, i.title, i.decision].map(cell).join(","));
+  const body = misRows(m).map(i => [i.mt, i.no, i.type, i.company, i.product, i.section, i.category, misSt(i.status), i.page, i.title, i.decision].map(cell).join(","));
   const blob = new Blob(["﻿" + [head.map(cell).join(","), ...body].join("\r\n")], {type: "text/csv"});
   const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `RC_${m.meeting}_decisions.csv`;
   document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
@@ -1162,15 +1177,17 @@ function drawMis(){
   if (!pane || pane.hidden) return;
   const list = DATA.mis || [];
   if (!list.length){ pane.innerHTML = `<div class="empty">No RC meeting has been added yet.</div>`; return; }
-  const m = list[MIS.m], S = m.summary || {}, byNo = Object.fromEntries(m.items.map(i => [i.no, i]));
-  const ref = no => { const i = byNo[no]; return i ? (m.url ? `<a href="${esc(misPdf(m, i.page))}" target="_blank" rel="noopener">Item ${esc(no)} · p.${i.page}</a>` : `Item ${esc(no)} · p.${i.page}`) : `Item ${esc(no)}`; };
+  const m = misView(), S = m.summary || {}, byNo = Object.fromEntries(m.items.map(i => [i.no, i]));
+  const ref = no => { const i = byNo[no]; return i ? (m.url ? `<a href="${esc(misPdf(m.url, i.page))}" target="_blank" rel="noopener">Item ${esc(no)} · p.${i.page}</a>` : `Item ${esc(no)} · p.${i.page}`) : `Item ${esc(no)}`; };
   const statuses = ["All", ...new Set(m.items.map(i => misSt(i.status)))];
+  const span = `${misOrd(list[list.length - 1].meeting)}–${misOrd(list[0].meeting)}`;
   pane.innerHTML = `<div class="rhead">
       <div class="eyebrow">RC decisions · MIS</div>
-      <h2>${misOrd(m.meeting)} Registration Committee meeting${S.date ? ` · ${esc(S.date)}` : ""}</h2>
-      <div class="meta" style="margin:0">${S.published ? `Minutes published ${esc(S.published)}` : ""}${S.chair ? ` · Chaired by ${esc(S.chair)}` : ""} · ${m.items.length} agenda items</div>
+      <h2>${m.all ? `All RC meetings in the MIS · ${span}` : `${misOrd(m.meeting)} Registration Committee meeting${S.date ? ` · ${esc(S.date)}` : ""}`}</h2>
+      <div class="meta" style="margin:0">${m.all ? `${list.length} meetings · search a company or molecule to see its history across them` : `${S.published ? `Minutes published ${esc(S.published)}` : ""}${S.chair ? ` · Chaired by ${esc(S.chair)}` : ""}`} · ${m.items.length} agenda items</div>
       <div class="mis-top">
-        ${list.length > 1 ? `<select id="misPick" aria-label="Meeting">${list.map((x, k) => `<option value="${k}"${k === MIS.m ? " selected" : ""}>${misOrd(x.meeting)} meeting${x.summary && x.summary.date ? " · " + esc(x.summary.date) : ""}</option>`).join("")}</select>` : ""}
+        ${list.length > 1 ? `<select id="misPick" aria-label="Meeting"><option value="-1"${MIS.m === -1 ? " selected" : ""}>All meetings (${span})</option>${list.map((x, k) => `<option value="${k}"${k === MIS.m ? " selected" : ""}>${misOrd(x.meeting)} meeting${x.summary && x.summary.date ? " · " + esc(x.summary.date) : ""}</option>`).join("")}</select>` : ""}
+        ${list.length > 1 && !m.all ? `<button class="btn" id="misAllM">Search all meetings</button>` : ""}
         ${m.url ? `<a class="btn" href="${esc(m.url)}" target="_blank" rel="noopener">Open the minutes PDF ↗</a>` : ""}
         <button class="btn" id="misCsv">Download for Excel (CSV)</button>
       </div>
@@ -1188,10 +1205,11 @@ function drawMis(){
       ${MIS.type !== "All" ? `<button class="btn" id="misAll">Show all types</button>` : ""}
     </div>
     <div class="meta" id="misCount"></div>
-    <div class="kp-tw"><table class="kp-table mis-t"><thead><tr><th>Item</th><th>Type</th><th>Company</th><th>Product / subject</th><th>Section</th><th>Decision</th><th>PDF</th></tr></thead><tbody id="misRows"></tbody></table></div>
+    <div class="kp-tw"><table class="kp-table mis-t${m.all ? " all" : ""}"><thead><tr>${m.all ? "<th>Meeting</th>" : ""}<th>Item</th><th>Type</th><th>Company</th><th>Product / subject</th><th>Section</th><th>Decision</th><th>PDF</th></tr></thead><tbody id="misRows"></tbody></table></div>
     <div class="meta" style="margin-top:8px">Read from the official minutes by a script and checked by hand; the minutes PDF is final. Lists inside annexures (export cases, biopesticide strains, closed files) count as one row each for now. Click a row for the full agenda and decision.</div>`;
   drawMisRows();
   const pick = $("#misPick"); if (pick) pick.onchange = () => { MIS.m = +pick.value; MIS.open = null; drawMis(); };
+  const allM = $("#misAllM"); if (allM) allM.onclick = () => { MIS.m = -1; MIS.open = null; drawMis(); $("#misQ").focus(); };
   $("#misCsv").onclick = () => misCsv(m);
   let t; $("#misQ").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { MIS.q = e.target.value; drawMisRows(); }, 120); });
   $("#misSt").onchange = e => { MIS.status = e.target.value; drawMisRows(); };
@@ -1693,7 +1711,7 @@ function drawHome(){
     ["wiz", "check", "Checklist wizard", "Exact data and documents for 9(3B), 9(3), 9(4)"],
     ["upd", "bell", "Latest updates", "New notices, RC minutes and Gazettes"],
     ["read", "book", "Read the guidelines", "All categories and requirement lists, highlighted"],
-    ["mis", "table", "RC decisions (MIS)", (DATA.mis && DATA.mis.length) ? `Every agenda item of the ${misOrd(DATA.mis[0].meeting)} RC meeting, searchable` : "Every RC decision, searchable"],
+    ["mis", "table", "RC decisions (MIS)", (DATA.mis && DATA.mis.length) ? `Every agenda item of ${DATA.mis.length > 1 ? `${DATA.mis.length} RC meetings (${misOrd(DATA.mis[DATA.mis.length - 1].meeting)}–${misOrd(DATA.mis[0].meeting)})` : `the ${misOrd(DATA.mis[0].meeting)} RC meeting`}, searchable` : "Every RC decision, searchable"],
     ["crop", "globe", "CROP portal", "Log in to file and track applications"],
   ];
   p.innerHTML = `

@@ -29,12 +29,18 @@ lines = lines[start:]
 
 # 2. split into numbered blocks; keep only numbers that follow the agenda order
 NUM = re.compile(r"(\d{1,2})\.(\d{1,3})\.?")
+nums = [(k, tuple(map(int, NUM.fullmatch(s).groups()))) for k, (p, s) in enumerate(lines) if NUM.fullmatch(s)]
+def next_num(k):
+    return next((v for j, v in nums if j > k), None)
 blocks, cur, last, seen0 = [], None, (0, 0), False
-for p, s in lines:
+for k, (p, s) in enumerate(lines):
     m = NUM.fullmatch(s)
     if m:
         a, b = int(m.group(1)), int(m.group(2))
-        ok = (a == last[0] and last[1] < b <= last[1] + 6) or (a > last[0] and a <= last[0] + 3 and (b == 0 or (b == 1 and not seen0)))
+        # a new section normally starts with its "X.0" heading; when the heading is missing, accept "X.1"
+        # unless the next number continues the current section (then this "X.1" is a reference in the text)
+        jump1 = b == 1 and a == last[0] + 1 and next_num(k) not in [(last[0], last[1] + i) for i in range(1, 4)]
+        ok = (a == last[0] and last[1] < b <= last[1] + 6) or (a > last[0] and a <= last[0] + 3 and (b == 0 or (b == 1 and not seen0) or jump1))
         if ok and b == 0:
             seen0 = True
         if ok:
@@ -65,7 +71,7 @@ items = []
 for bl in blocks:
     txt = re.sub(r"\s+", " ", " ".join(bl["text"])).strip()
     if bl["no"].endswith(".0"):
-        GROUP[bl["major"]] = re.split(r"\s{2,}| NIL| The | RC ", txt)[0].strip()[:60]
+        GROUP[bl["major"]] = re.split(r"\s{2,}| NIL| The | RC | Minutes of \d| On being", txt)[0].strip()[:60]
         continue
     # title = text up to the RC's decision
     m = re.search(r"\s(RC|The RC|The Registration Committee|The Committee|With the permission|Registration Committee)\s(deliberated|perused|peruse|noted|discussed|considered|granted|recalled|deliberate|Noted|after|approved|confirms|decided|directed|accepted|agreed)\b", txt)

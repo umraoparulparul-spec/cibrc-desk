@@ -1,0 +1,21 @@
+{
+ "meeting": 471,
+ "date": "16.04.2026",
+ "published": "23.04.2026",
+ "chair": "Dr P.K. Singh, Agriculture Commissioner",
+ "headline": "TI-New Source guidelines kept unchanged; parked CROP applications revived once (as fresh files); CROP automation plan (auto-issue of 9(4) CRs, drone endorsement category, geo-tagging); Diquat import rejected.",
+ "changes": [
+  {"t": "TI-New Source guidelines stay", "d": "After the Drosera appeal order, the RC found no reason to amend the TI-New Source requirements; they are scientifically justified and must be followed.", "items": ["10.2"], "who": "TI-New Source applicants"},
+  {"t": "Parked applications revived, one time only", "d": "About 353 parked Import Permit, Form-I and endorsement applications were revived (public notice 30.03.2026). They become fresh files with a new number and date; no further requests will be accepted.", "items": ["10.18"], "who": "Applicants with parked files"},
+  {"t": "CROP portal automation", "d": "Plan: CRs of already-registered biopesticide strains issued from the strain data bank; 9(4) TIM/TI CRs issued automatically as mirror images of 9(3); address changes update accounts automatically; a separate drone endorsement category; corrigenda attached to CRs; geo-tagging of premises. Old 'completed' endorsements listed for comments.", "items": ["11.1"], "who": "All applicants"},
+  {"t": "Diquat import rejected", "d": "Sharda's Diquat 200 g/L FI rejected for unacceptable data, its banned/restricted status abroad and high toxicity.", "items": ["10.16"], "who": ""},
+  {"t": "Household use needs a household application", "d": "Syngenta's label expansions for household pests were rejected; such products must be filed under the household category with full data.", "items": ["10.22"], "who": "Household-pest registrants"},
+  {"t": "Label expansion under FIM vs FI", "d": "No separate bio-efficacy data; the revised label/leaflet is issued as per the endorsement on the FIM certificate.", "items": ["10.9"], "who": "FIM vs FI registrants"},
+  {"t": "9(3B) extensions and the Madras High Court", "d": "After the Division Bench judgment of 23.03.2026, extensions already granted continue, subject to the writ petitions' outcome.", "items": ["10.3"], "who": "9(3B) registrants"},
+  {"t": "FCI warehouse insecticides", "d": "FCI asked for bio-efficacy and residue reports on alternative insecticides for grain storage.", "items": ["10.21"], "who": ""}
+ ],
+ "actions": [
+  "Revived parked files: check the new file number and date on CROP.",
+  "Household uses: file under the household category, not as a label expansion."
+ ]
+}

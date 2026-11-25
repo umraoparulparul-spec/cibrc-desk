@@ -1,0 +1,22 @@
+{
+ "meeting": 475,
+ "date": "14.08.2026",
+ "published": "20.08.2026",
+ "chair": "Dr P.K. Singh, Agriculture Commissioner",
+ "headline": "TI-New Source: exporter's declaration of chemical composition replaces the full CR composition; expert group on twin packs and GLP shelf-life studies; old 9(4) files closed; several TI applications rejected.",
+ "changes": [
+  {"t": "TI-New Source: exporter declares the chemical composition", "d": "Some countries do not print the full composition on the CR (confidential business information). The exporter must now give the registered chemical composition on its letterhead, apostilled, with the applicant's undertaking; any deviation cancels the Indian CR and the source. This replaces the 470th RC requirement.", "items": ["10.20"], "who": "TI-New Source applicants"},
+  {"t": "Twin pack / multipack and GLP shelf-life: expert group", "d": "An in-house expert group under the Secretary will consult stakeholders on twin/multipack guidelines (up to 3 a.i.) and on accepting US EPA OPPTS 830.6317 storage-stability studies. (Guidelines approved in the 477th meeting.)", "items": ["10.5", "10.4"], "who": "Formulators"},
+  {"t": "Very old 9(4) FIM, TI and FI files closed", "d": "Long-pending applications listed in Annexures 11.5.1–11.5.3 are closed; the list goes on the website.", "items": ["11.5"], "who": "9(4) applicants"},
+  {"t": "TI applications rejected", "d": "Fosetyl-Al Technical (CIL report off-spec) and Sharda's Bentazone Technical (RTT permit for a different source; studies without a valid RTT not accepted) were rejected.", "items": ["10.7", "10.12"], "who": "TI applicants"},
+  {"t": "No toxicity data waiver on old studies", "d": "Representations against rejection of Carbosulfan and Epoxiconazole TI-New Source (toxicity) were not accepted. Crystal Crop's request to skip mutagenicity data for Bensulfuron-methyl TIM goes to a presentation.", "items": ["11.2", "11.1"], "who": "TI / TIM applicants"},
+  {"t": "Wrongly listed approval withdrawn", "d": "Hydrogen Cyanamide 50% SL (Elanta Agro) was mentioned as approved in the 473rd minutes by mistake; it is not approved and the application is rejected.", "items": ["11.4"], "who": ""},
+  {"t": "Godrej vs Best Crop Science (revision order)", "d": "On remand, the RC re-examined Best Crop Science's TIM chemistry dossier against the registered source Godrej Agrovet.", "items": ["10.2"], "who": ""},
+  {"t": "Free Sale Certificate for a 9(4) technical import deferred", "d": "Mahamaya must explain why a Free Sale Certificate is needed for a technical registered only for import under 9(4).", "items": ["10.19"], "who": ""}
+ ],
+ "actions": [
+  "TI-New Source: get the exporter's apostilled declaration of chemical composition.",
+  "Check the closed-file lists (Annexures 11.5.1–11.5.3) on the website.",
+  "Make sure the RTT permit names the same source as Form 1 before starting studies."
+ ]
+}

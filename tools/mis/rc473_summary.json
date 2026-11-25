@@ -1,0 +1,20 @@
+{
+ "meeting": 473,
+ "date": "29.06.2026",
+ "published": "03.07.2026",
+ "chair": "Dr P.K. Singh, Agriculture Commissioner",
+ "headline": "Expert review of Paraquat and Carbosulfan sent to the Government (Paraquat was later banned); Certified Reference Materials need no import permit; Crystal's Halosulfuron registrations quashed by the Delhi High Court; insecticidal paints handled as household products for now.",
+ "changes": [
+  {"t": "Paraquat and Carbosulfan: expert review to Government", "d": "The RC considered the Dr Debasisa Mohanty committee's report (section 27(2) consultation) and sent its recommendations to the Government of India; the RC will implement its final decision. (Paraquat was banned by S.O. 5234(E) on 22.09.2026.)", "items": ["3.1"], "who": "Paraquat / Carbosulfan registrants"},
+  {"t": "Certified Reference Materials: no import permit", "d": "CRMs, including banned or restricted pesticides, used only in small quantities for lab testing, calibration, method validation and R&D are exempt from CIB&RC import permission. (Public notice 10.09.2026.)", "items": ["10.9"], "who": "Laboratories"},
+  {"t": "Halosulfuron registrations of Crystal Crop quashed", "d": "The Delhi High Court (LPA 215/2023, Dhanuka v Union of India) set aside the 430th/431st RC approvals; Crystal was asked to surrender the CRs and the States were informed. (Supreme Court later stayed the judgment; see 474th.)", "items": ["10.4"], "who": ""},
+  {"t": "Insecticidal paints under the household category", "d": "Biocide guidelines are stayed by the Delhi High Court, so Indigo Paints' Permethrin paint may be considered as a household product if it gives ecotoxicity and other data like earlier applicants.", "items": ["10.24"], "who": "Paint / biocide applicants"},
+  {"t": "Maleic Hydrazide technical for export formulations", "d": "UPL may import Maleic Hydrazide technical only to make export formulations; DA&FW asked to notify this in the Gazette.", "items": ["10.10"], "who": "Exporters"},
+  {"t": "Non-insecticidal imports", "d": "Import of Thiourea (PI Industries) and one past consignment of DMDS (BPCL) approved.", "items": ["10.6", "10.7"], "who": "Dual-use importers"},
+  {"t": "Revision orders on Agrow Allied (Godrej Agrovet)", "d": "Remanded case re-examined for manufacturing process, impurity profile and toxicology.", "items": ["10.2"], "who": ""}
+ ],
+ "actions": [
+  "Labs importing reference standards: no CIB&RC import permit needed.",
+  "Insecticidal paint applicants: prepare ecotoxicity and exposure data."
+ ]
+}

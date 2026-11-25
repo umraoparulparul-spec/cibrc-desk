@@ -1,0 +1,24 @@
+{
+ "meeting": 468,
+ "date": "12.01.2026",
+ "published": "23.01.2026",
+ "chair": "Dr P.K. Singh, Agriculture Commissioner",
+ "headline": "A very large meeting (about 700 items): 9(4) endorsements already approved for others issued within two working days; last chance to merge duplicate CROP accounts and complete KYC; strict action on fake lab reports; scrutiny templates sent for comments.",
+ "changes": [
+  {"t": "Fast endorsements for already-approved changes", "d": "9(4) endorsements of changes already approved by the RC (shelf life, packaging, import source, crops, etc.) go straight to the Secretary and are issued within two working days, with ex-post-facto RC approval. CGG to build the CROP module.", "items": ["11.2"], "who": "9(4) registrants"},
+  {"t": "9(3) and 9(4) registrants treated alike after registration", "d": "Once registered, the same endorsement guidelines apply to all registrants, whatever their registration category.", "items": ["10.78"], "who": "All registrants"},
+  {"t": "Duplicate CROP accounts and KYC: last chance", "d": "Holders of duplicate or deficient accounts get one last chance, within 30 days of the minutes, to say which account stays and to complete KYC; requests to merge accounts and revive frozen ones to be made in 30 days.", "items": ["10.46", "10.58"], "who": "All applicants"},
+  {"t": "Fake lab reports: legal action", "d": "Fake or fabricated institute/lab reports will be verified and lead to strong legal action. Show-cause notices to Meghmani (forged Sulphur CR) and Sunshine Fine Chemsol (fake test report); illegal Methyl Bromide trade complaint taken up.", "items": ["3.1", "10.2", "10.6", "10.72"], "who": "All applicants"},
+  {"t": "Scrutiny templates sent for comments", "d": "Draft templates for scrutinising each category were approved for stakeholder comments (finalised in the 472nd).", "items": ["3.2"], "who": "All applicants"},
+  {"t": "Residue labs to be inspected", "d": "After FSSAI's SPPR raised data-integrity concerns, a committee will inspect certain residue-study laboratories.", "items": ["10.4"], "who": "Residue study labs"},
+  {"t": "Fast Track export certificates show quantities and compositions", "d": "Import-for-export CRs and labels now state the product and quantity to be imported and exported and the chemical compositions of both.", "items": ["10.36"], "who": "Exporters"},
+  {"t": "Export permits for dual-use products", "d": "The Secretariat to draft guidelines and a form for export permits, like import permits (approved in the 472nd).", "items": ["10.93"], "who": "Exporters"},
+  {"t": "Old labels during the new packaging rule", "d": "Existing label stock may be used during the transition to GSR 368(E) of 03.06.2025.", "items": ["10.59"], "who": "Registrants"},
+  {"t": "Other notable decisions", "d": "Glyphosate 41% SL on tea: PHI cut from 21 to 7 days. Renofluthrin 5% MUP may be used for coil, incense stick and vaporiser formulations. Lebanon has banned Oxamyl. 9(3B) extensions approved subject to data-generation progress.", "items": ["10.3", "10.42", "10.37", "10.86"], "who": ""}
+ ],
+ "actions": [
+  "CROP: merge duplicate accounts and complete KYC within 30 days of the minutes.",
+  "Endorsements of already-approved changes: apply on CROP; expect the letter in two working days.",
+  "Keep original lab reports ready for verification."
+ ]
+}

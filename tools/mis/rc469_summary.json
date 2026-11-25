@@ -1,0 +1,21 @@
+{
+ "meeting": 469,
+ "date": "10.02.2026",
+ "published": "",
+ "chair": "Dr P.K. Singh, Agriculture Commissioner",
+ "headline": "\"One chemical composition, one CR\": geo-tagged, government-issued proof of every import source; no 9(4) TI source endorsement where the composition differs; Indoxacarb composition committee formed; botanicals get the same shelf-life rules as chemicals.",
+ "changes": [
+  {"t": "Import sources: geo-tagged government proof", "d": "On HPMA's 'Make in India' representation, all registered import sources must give manufacturing and office addresses with geo-tagging, backed by government-issued documents of the source country (e.g. manufacturing licence). New applicants must submit this with the application; it becomes part of the guidelines.", "items": ["3.1"], "who": "Importers (TI / FI)"},
+  {"t": "One chemical composition, one CR", "d": "A 9(4) TI endorsement of an additional source is not allowed if its chemical composition differs from the granted CR; a fresh 9(4) TI CR is needed. Validity extension, address or purity endorsements are refused for sources whose composition does not match the 9(3) registrant.", "items": ["3.1"], "who": "9(4) TI registrants"},
+  {"t": "Indoxacarb composition committee", "d": "A committee was set up to correct the chemical composition of Indoxacarb products (isomer issue). Its rule came in the 477th meeting.", "items": ["3.2"], "who": "Indoxacarb registrants"},
+  {"t": "Severe eye irritants not registered", "d": "Atul's Indoxacarb + Emamectin EC was rejected: end-use products that cause irreversible eye damage (Category 1) are not registered (398th RC rule).", "items": ["6.76"], "who": "Formulators"},
+  {"t": "Botanicals: shelf-life rules as for chemicals", "d": "Neem/Azadirachtin and other botanical products follow the same shelf-life extension guidelines as chemical pesticides.", "items": ["10.36"], "who": "Botanical registrants"},
+  {"t": "Paraquat TI from a new source approved", "d": "Tropical Agrosystem's Paraquat dichloride technical 45% was approved from a new source (before the later ban).", "items": ["10.37"], "who": ""},
+  {"t": "Tetflupyrolimet purity questioned", "d": "FMC's dossier was generated with 96–99% material while 97% is sought; purity must follow the in-house rule based on US EPA registration.", "items": ["10.39"], "who": ""},
+  {"t": "Name-change conditions put on hold", "d": "Nasham Crop Care objected to the affidavit-on-NJSP and partner NOC conditions; the endorsement letter is issued without insisting on them until the applicant is heard.", "items": ["10.1"], "who": ""}
+ ],
+ "actions": [
+  "Importers: collect geo-tagged, government-issued address proof of each source.",
+  "9(4) TI: check that the new source's composition matches before seeking an endorsement."
+ ]
+}

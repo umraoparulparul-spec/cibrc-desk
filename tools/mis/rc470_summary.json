@@ -1,0 +1,23 @@
+{
+ "meeting": 470,
+ "date": "23.03.2026",
+ "published": "",
+ "chair": "Dr P.K. Singh, Agriculture Commissioner",
+ "headline": "TI-New Source guidelines confirmed with corrections; certificates issued for MRL-fixed crops first; no new 9(3B) extensions while the Madras High Court status quo holds; biopesticide fast-track for registered strains; Methyl Bromide ban in Chad.",
+ "changes": [
+  {"t": "TI-New Source guidelines confirmed", "d": "The appeal against the 467th RC guidelines was found not maintainable. The RC kept the requirements (livestock metabolism already waived in the 468th) with some scientific corrections, and ACFI's request to go back to the 449th RC requirements was not accepted.", "items": ["3.1"], "who": "TI-New Source applicants"},
+  {"t": "Certificates for crops with fixed MRLs", "d": "A CR is issued for the crops whose MRL FSSAI has fixed; the remaining crops are added by corrigendum/addendum on CROP once their MRLs are fixed.", "items": ["10.30", "10.20", "10.22"], "who": "9(3) applicants"},
+  {"t": "9(3B) extensions frozen", "d": "Because of the Madras High Court's status quo order of 02.03.2026, extensions already granted continue but no new 9(3B) extensions are given until the writ appeals are decided.", "items": ["10.11", "10.5"], "who": "9(3B) registrants"},
+  {"t": "Biopesticides: registered strains need no fresh data", "d": "For a strain already registered, only molecular identity from ICAR-NBAIM and quality testing at CIL are needed; steps to cut the NBAIM DNA backlog, including asking ICAR-NBAIR about extra capacity.", "items": ["10.50", "10.35"], "who": "Biopesticide applicants"},
+  {"t": "Methyl Bromide: Chad ban", "d": "Chad has banned import and use of Methyl Bromide; a public notice will ask registrants to comply.", "items": ["10.39"], "who": "Methyl Bromide exporters"},
+  {"t": "Open House decisions", "d": "Decisions on the 12th Open House Meeting with associations (16.01.2026) are in Annexure 3.2.1.", "items": ["3.2"], "who": "All applicants"},
+  {"t": "Pendency and manpower", "d": "155 files pending over 18 months for want of 1–3 experts; manpower shortage noted as the main bottleneck.", "items": ["10.1", "10.2"], "who": ""},
+  {"t": "Marketing and technical-sale questions sent to the law officer", "d": "\"Marketed by\" arrangements and selling technical in other States were sent for legal examination (decided in the 472nd).", "items": ["10.15", "10.16"], "who": ""},
+  {"t": "Fake test report: Sunshine Fine Chemsol", "d": "Reply to the show-cause notice on a forged report was considered.", "items": ["10.41"], "who": ""}
+ ],
+ "actions": [
+  "9(3) applicants: expect the CR first for MRL-fixed crops, then addenda.",
+  "9(3B) registrants: no new extensions for now.",
+  "Methyl Bromide exporters: do not ship to Chad."
+ ]
+}

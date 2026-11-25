@@ -1,0 +1,24 @@
+{
+ "meeting": 472,
+ "date": "26.05.2026",
+ "published": "15.06.2026",
+ "chair": "Dr P.K. Singh, Agriculture Commissioner",
+ "headline": "The compiled \"472 RC\" registration guidelines approved (the document this Desk is built on); scrutiny templates finalised; health-monitoring protocol for household products; States may endorse \"Marketed by\"; export-permit guidelines for dual-use products.",
+ "changes": [
+  {"t": "Compiled registration guidelines approved", "d": "The sub-committee's compilation of all RC guidelines with specific conditions was approved. Data for biopesticides and botanicals will be accepted from NABL-approved labs. This is the \"472 RC guidelines\" document used in this Desk.", "items": ["3.1"], "who": "All applicants"},
+  {"t": "Scrutiny templates finalised", "d": "Templates/proformas for scrutiny of each registration category, revised after stakeholder meetings on 06.03.2026 and 08.05.2026, were approved.", "items": ["3.2"], "who": "All applicants"},
+  {"t": "Health monitoring protocol for household products", "d": "A standard Health Monitoring Study protocol (Annexure 10.51.1) is adopted so studies can start in parallel and finish sooner; a public notice will follow.", "items": ["10.51"], "who": "Household-pest registrants"},
+  {"t": "\"Marketed by\" on labels", "d": "State Governments may endorse marketing agencies under \"Marketed by\" on the label, following the prescribed procedure (461st RC decision reiterated).", "items": ["10.42"], "who": "Registrants and marketers"},
+  {"t": "Selling technical grade across States", "d": "Registration is valid all over India; a State manufacturing licence covers production, and dealer sale licences are separate.", "items": ["10.41"], "who": "Technical manufacturers"},
+  {"t": "Export permit for dual-use products", "d": "Guidelines, checklist and application form approved for export permits of multi-use / non-insecticidal products, with IUPAC name, CAS no., Schedule serial no. and geo-tagging of premises.", "items": ["10.24"], "who": "Exporters"},
+  {"t": "Unfreezing CROP accounts without any certificate", "d": "Firms that only created an account (no CR or permit) need not give a State verification letter; other documentary proof of the firm is enough.", "items": ["10.3"], "who": "New applicants"},
+  {"t": "Kala-azar spraying and tea", "d": "Interim approval for synthetic pyrethroids in IRS against sand flies extended one year. Ad-hoc approval of Dimethoate 30% EC on tea extended one year or until registration.", "items": ["10.38", "10.40"], "who": ""},
+  {"t": "Rejections on source and impurity", "d": "Chlorothalonil TI-New Source rejected (source not on ICAMA website); Moti Insecticides' Pendimethalin TIM rejected (higher impurity in CIL report).", "items": ["6.72", "7.25"], "who": ""},
+  {"t": "Fake certificate: Meghmani", "d": "Show-cause/presentation on a forged Sulphur 80% WDG certificate.", "items": ["2.3"], "who": ""}
+ ],
+ "actions": [
+  "Use the compiled 472 RC guidelines and the new scrutiny templates for every application.",
+  "Household products: use the new health monitoring protocol.",
+  "Marketers: get the \"Marketed by\" endorsement from the State."
+ ]
+}

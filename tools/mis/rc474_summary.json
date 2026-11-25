@@ -1,0 +1,23 @@
+{
+ "meeting": 474,
+ "date": "30.07.2026",
+ "published": "10.08.2026",
+ "chair": "Dr P.K. Singh, Agriculture Commissioner",
+ "headline": "Glyphosate to be used only through trained PCOs (recommended to DA&FW); new import-permit rules for non-insecticidal uses (GSR 597(E)); no new technical imports of the organophosphates once examined for a ban; Chloropicrin turned down.",
+ "changes": [
+  {"t": "Glyphosate: use only through trained PCOs", "d": "After the expert committee's report the RC decided Glyphosate use should be restricted to trained personnel / Pest Control Operators, and sent this to DA&FW for a final view.", "items": ["3.1"], "who": "Glyphosate registrants"},
+  {"t": "Import permit for non-insecticidal uses (GSR 597(E), 08.07.2026)", "d": "The Insecticides (Third Amendment) Rules 2026 require an import permit, in the new prescribed form, to import any scheduled substance for non-insecticidal use. Earlier RC decisions are superseded; pending permits follow the new rules.", "items": ["3.2", "10.19"], "who": "Dual-use importers"},
+  {"t": "No fresh technical imports of certain organophosphates", "d": "Organophosphates earlier examined for a ban will not be promoted under Technical Import (after China withdrew export VAT benefits).", "items": ["10.19"], "who": "OP importers"},
+  {"t": "Import for Export goes in the Fast Track category", "d": "Import-for-export files filed under the General export category were rejected; they must be filed under Fast Track. Files closed for missing Chemexcil certificates were reopened.", "items": ["10.23"], "who": "Exporters"},
+  {"t": "Chloropicrin: no presentation", "d": "Chloropicrin is a highly hazardous, volatile soil fumigant; the RC kept its earlier decision and declined a presentation.", "items": ["10.33"], "who": ""},
+  {"t": "In-process sample drawl at critical stages", "d": "Sampling teams should watch the critical recovery stages of manufacture (e.g. Spinosad 40–68 h, Gibberellic acid 39–46 h).", "items": ["10.11"], "who": "9(4) TIM applicants"},
+  {"t": "TI-New Source documents", "d": "Willowood's Bentazone and Haloxyfop files must give the detailed composition as in the source-country CR, apostilled, per the 470th and 472nd decisions.", "items": ["10.35", "10.39"], "who": "TI-New Source applicants"},
+  {"t": "Presentations heard", "d": "BASF Alphacypermethrin + Flufenoxuron (approved with PCO-only caution), Syngenta s-Metolachlor, Deccan Florpyrauxifen-benzyl, Crystal Carfentrazone and Picoxystrobin + COC, NCVBDC on Kala-azar spraying, HIL's LLIN stock (sent to DA&FW).", "items": ["2.4", "2.3", "2.6", "2.8", "2.9", "2.7", "2.1"], "who": ""},
+  {"t": "Comments on the compiled 472nd RC guidelines", "d": "CropLife India and ACFI got 15 more days to comment on the compiled guidelines.", "items": ["10.27"], "who": "All applicants"}
+ ],
+ "actions": [
+  "Dual-use imports: apply in the new form under GSR 597(E).",
+  "Import for Export: file under the Fast Track category.",
+  "Glyphosate: watch for DA&FW's final notification on PCO-only use."
+ ]
+}

@@ -100,9 +100,9 @@
   "a": "Upload production data on CROP now."
  },
  "8a7431ba8a091c68": {
-  "s": "Mandatory compliance for duplicate CROP accounts and pending KYC documents (scanned notice).",
-  "w": "All CROP users",
-  "a": "Merge duplicate accounts and complete KYC."
+  "s": "A KYC committee found 40 companies running duplicate CROP accounts (list annexed). Under the 468th RC decision (item 10.46) they must say which account stays and complete KYC, or face action.",
+  "w": "The 40 listed companies; all CROP users",
+  "a": "Check the list; merge accounts and complete KYC."
  },
  "58a868c403eec95f": {
   "s": "List of endorsement applications shown as \"Completed\" on the old CROP portal but never taken to the RC (471st RC item 11.1); comments invited.",
@@ -110,7 +110,7 @@
   "a": "Check the list and send comments."
  },
  "76337a2ef59bfaf2": {
-  "s": "No CIB&RC permission/NOC is needed to import Certified Reference Materials used only for lab testing and R&D (scanned notice).",
+  "s": "No permission or NOC is needed to import or export Certified Reference Materials of pesticides used by testing laboratories, e.g. for food-safety testing (470th RC item 10.29).",
   "w": "Laboratories",
   "a": "Import CRMs without an NOC."
  },
@@ -120,9 +120,9 @@
   "a": "Get the State verification letter."
  },
  "987809d7584b8bd5": {
-  "s": "New CROP module: upload production data of pesticides under each registrant's login (scanned notice).",
-  "w": "Manufacturers, importers",
-  "a": "Upload production data on CROP."
+  "s": "A CROP module ('Production Data', live from 16.04.2026) lets every KYC-valid registrant upload manufacture, import and export data of technicals and formulations.",
+  "w": "Manufacturers, importers, exporters",
+  "a": "Upload production data under your CROP login."
  },
  "77a655a9d033f630": {
   "s": "Chad has banned import, distribution and use of Methyl Bromide (470th RC item 10.39).",
@@ -135,9 +135,9 @@
   "a": "Keep raw data and instrument records ready for inspection."
  },
  "a79c6bdc427bb529": {
-  "s": "Compliance requirements for import sources and registration of agro-chemicals (scanned notice; follows the 469th RC decision on geo-tagged, government-issued proof of import sources).",
+  "s": "Directives from the 469th RC (item 3.1): give manufacturing and office addresses of every import source with geo-tagging and government-issued proof (e.g. manufacturing licence); one chemical composition, one CR.",
   "w": "Importers (TI / FI)",
-  "a": "Read the notice and submit source documents."
+  "a": "Submit geo-tagged, government-issued source documents."
  },
  "89b7c57e49cbfbd0": {
   "s": "DA&FW is monitoring the effect of the Gulf crisis on pesticide supply; data on manufacture, import and export of major insecticides, fungicides, herbicides and PGRs requested urgently.",
@@ -150,19 +150,19 @@
   "a": "Send comments on the crop grouping document."
  },
  "0cea377185cd3bd6": {
-  "s": "Implementation of the 469th RC decision (item 10.25) on applications with no reply under the 400th RC rule; list of affected files (scanned, 55 pages).",
-  "w": "Applicants with pending replies",
-  "a": "Check the list for your files."
+  "s": "469th RC (item 10.25): files are no longer moved to 'Park' when the deficiency reply is late under the 400th RC timelines; such applications are closed on CROP (list attached).",
+  "w": "Applicants with pending deficiencies",
+  "a": "Reply to deficiencies within the timeline."
  },
  "5a802c458a38078d": {
-  "s": "A new module has been implemented on the CROP portal (scanned notice).",
-  "w": "CROP users",
-  "a": "Read the notice for the new module."
+  "s": "New CROP module for parallel scrutiny of the MRL proforma by FSSAI's SPPR: upload the MRL proforma, method of analysis, chromatograms etc. with the application.",
+  "w": "9(3) applicants",
+  "a": "Upload MRL documents at the time of applying."
  },
  "82ac407f0a31d164": {
-  "s": "Revised public notice on the 458th RC decision (item 10.29) on label instructions for water pH (scanned notice).",
+  "s": "Correction: the water-pH label decision was taken in the 458th RC held on 14.08.2024 and 23.08.2024 (not 2025). Labels must say what water pH to use where a pesticide is pH-sensitive.",
   "w": "Registrants",
-  "a": ""
+  "a": "Add water-pH instructions to labels where relevant."
  },
  "833b2996ad627263": {
   "s": "Draft scrutiny templates for every registration category (468th RC item 3.2) published for comments; finalised in the 472nd RC.",
@@ -295,9 +295,9 @@
   "a": "Holders of 9(4) FIM CRs: expect cancellation."
  },
  "fe3b5943772f4892": {
-  "s": "Standard operating procedure for handling, storage, manipulation and use of insecticides (scanned guideline).",
-  "w": "Manufacturers, dealers, users",
-  "a": "Follow the SOP."
+  "s": "Flowchart and SOP for handling, storage, manipulation and use of insecticides for emergency responses, adopted by the CIB (66th meeting, 29.04.2024).",
+  "w": "Manufacturers, warehouses, users",
+  "a": "Follow the SOP for emergencies."
  },
  "5dbb47b8450c8825": {
   "s": "9(4) TIM applicants listed must submit PRV samples at CIL, Faridabad within 30 days (459th RC item 10.56).",
@@ -320,9 +320,9 @@
   "a": ""
  },
  "6046dbd64b8b162a": {
-  "s": "Guidance on minor changes in a registered formulation (scanned notice).",
+  "s": "Rules for minor changes in registered formulations to improve safety and efficacy, decided in the 456th RC (item 3.1).",
   "w": "Formulators",
-  "a": "Read the notice before changing a formulation."
+  "a": "Follow the 456th RC conditions before changing a formulation."
  },
  "c6f426a78a0e0788": {
   "s": "KYC: accounts of firms that never complied stand closed and their CRs affected (456th RC item 10.46); list attached (285 pages).",
@@ -355,7 +355,7 @@
   "a": ""
  },
  "74c058e2160cc2ed": {
-  "s": "Interim approval for applying already-approved pesticide formulations by drone (scanned notice).",
+  "s": "Interim approval for drone application of registered insecticides, fungicides and PGRs (including bio- and botanical pesticides) that may be sprayed by knapsack, extended by one year (April 2024).",
   "w": "Registrants, drone operators",
   "a": "Follow the interim drone conditions."
  },
@@ -415,7 +415,7 @@
   "a": ""
  },
  "0488d7a0ff860768": {
-  "s": "Arysta LifeScience: change of name of the import source of Propargite technical approved (scanned notice).",
+  "s": "Arysta LifeScience: Propargite technical import source renamed from Chemtura Italy to LANXESS Solution Italy (450th RC item 9.50).",
   "w": "",
   "a": ""
  },
@@ -440,9 +440,9 @@
   "a": ""
  },
  "5bf682e86d910481": {
-  "s": "Implementation of KYC on CROP: list of firms and status (scanned, 165 pages).",
-  "w": "CROP users",
-  "a": "Check the list for your firm."
+  "s": "KYC on CROP (448th RC item 10.5): frozen accounts will no longer be reopened and mergers not processed; such firms must register afresh as new users (list attached).",
+  "w": "Firms with frozen accounts",
+  "a": "Register as a new user if your account is frozen."
  },
  "b138c25d361f2b36": {
   "s": "Dow AgroSciences: change of name of the import source of Diclosulam 84% WDG approved (447th RC item 9.79).",
@@ -570,7 +570,7 @@
   "a": "Submit the extra KYC information."
  },
  "0caef3356564e92e": {
-  "s": "Definition of 'non-crop area' framed by the DA&FW sub-committee (scanned notice).",
+  "s": "Definition of 'non-crop area' (440th RC item 10.9): land where no crop or planted vegetation grows, e.g. around bus stops, airports, railway tracks, refineries, power plants, defence sites, sports complexes, roads and farmhouses.",
   "w": "Herbicide registrants",
   "a": ""
  },
@@ -875,7 +875,7 @@
   "a": "Keep a single CROP account."
  },
  "b2a85b5106b56cf2": {
-  "s": "Draft harmonised toxicology guidelines/protocols for biopesticides, for comments (scanned notice).",
+  "s": "Draft harmonised toxicology guidelines/protocols for biopesticides (422nd RC item 10.16), for comments within 30 days.",
   "w": "Biopesticide applicants",
   "a": ""
  },
@@ -925,12 +925,12 @@
   "a": ""
  },
  "835f3a81d1fa7092": {
-  "s": "Dr Ranjit Roy Chaudhury Committee report (on pesticide registration/review), uploaded for reference (scanned).",
-  "w": "",
+  "s": "Report of the Dr Ranjit Roy Chaudhury expert committee reviewing the use of Chlorpyrifos in India.",
+  "w": "Chlorpyrifos registrants",
   "a": ""
  },
  "396397f9e150444f": {
-  "s": "Dr C.D. Mayee Committee report (review of pesticides), uploaded for reference (scanned).",
+  "s": "Report of the Dr C.D. Mayee expert group (2006) on pesticides reviewed for continued use in India, with product-specific recommendations (e.g. Atrazine).",
   "w": "",
   "a": ""
  },
@@ -940,17 +940,17 @@
   "a": ""
  },
  "1ac625cf75595bad": {
-  "s": "DAC&FW order of 14.10.2016 (scanned), uploaded with the Glyphosate court-ordered documents.",
-  "w": "",
+  "s": "DAC&FW order (14.10.2016) on the Dr Anupam Varma committee's review of 66 pesticides banned or restricted abroad but registered in India, sent to the RC under Section 27(2).",
+  "w": "Registrants of the 66 pesticides",
   "a": ""
  },
  "25154b7439d40a81": {
-  "s": "Reports and documents on Glyphosate uploaded in compliance with Delhi High Court orders (scanned).",
-  "w": "Glyphosate registrants",
+  "s": "Documents on the review of Glyphosate, Profenofos and neonicotinoids (404th RC, after a PMO reference), uploaded on Delhi High Court orders.",
+  "w": "Registrants of these pesticides",
   "a": ""
  },
  "953e8d01c4565811": {
-  "s": "Reports uploaded in compliance with the Delhi High Court order in W.P.(C) 4242/2020 (scanned).",
+  "s": "Dr Anupam Varma expert committee report (2015) on 66 pesticides banned/restricted abroad but registered in India, uploaded under the Delhi High Court order in W.P.(C) 4242/2020.",
   "w": "",
   "a": ""
  },
@@ -965,8 +965,8 @@
   "a": "Revise labels and leaflets to the new format."
  },
  "96f7c03db222b734": {
-  "s": "Hilfil Chemical: request for extension of validity of its Fipronil technical CR with a change (scanned notice).",
-  "w": "",
+  "s": "Hilfil Chemical's request on validity of its Fipronil technical CR with a change of source name; changes of source/supplier names to be notified for one month for comments, then applied to all registrants.",
+  "w": "Fipronil registrants",
   "a": ""
  },
  "07efa1f8ae646d6b": {
@@ -990,12 +990,12 @@
   "a": ""
  },
  "dd32a4d6a9df5cbc": {
-  "s": "Provisional exemption from submitting notarised documents/affidavits during the COVID-19 lockdown (scanned).",
+  "s": "During the COVID-19 lockdown, applicants were provisionally exempted from submitting notarised originals (normally due within 30 days of online submission, 412th RC item 11.3).",
   "w": "",
   "a": ""
  },
  "5cb5b18600d729ca": {
-  "s": "Friday open-house sessions at CIB&RC suspended because of COVID-19 (scanned).",
+  "s": "Friday open-house sessions at CIB&RC suspended because of COVID-19.",
   "w": "",
   "a": ""
  },
@@ -1080,13 +1080,13 @@
   "a": ""
  },
  "03dd595e146e0767": {
-  "s": "Advisory for pesticide dealers and retailers (Hindi, scanned).",
+  "s": "Advisory for pesticide dealers and retailers under the Insecticides Act and Rules (Hindi; text could not be read fully).",
   "w": "Dealers and retailers",
   "a": ""
  },
  "80fdca76dac19b87": {
-  "s": "Public notice of 23.01.2018 (scanned).",
-  "w": "",
+  "s": "Old NOCs issued for scheduled substances without RC concurrence were open-ended and lacked the import source; the 379th/380th RC set conditions on their status and use.",
+  "w": "NOC holders",
   "a": ""
  },
  "a335e3daf7bc66c6": {
@@ -1105,8 +1105,8 @@
   "a": ""
  },
  "be1bb019f1a8f27e": {
-  "s": "Public notice of 27.11.2017 (scanned).",
-  "w": "",
+  "s": "Registration for export is no longer required for 'Star Export Houses' (DAC&FW letter of 27.11.2017); documents they must submit to be decided by the RC.",
+  "w": "Exporters",
   "a": ""
  },
  "f0bf96e133f73ca1": {
@@ -1115,7 +1115,7 @@
   "a": ""
  },
  "afae3c69a9ce90b9": {
-  "s": "Draft guidelines on registration of pesticides for export (scanned).",
+  "s": "Draft report of the 374th RC committee reviewing guidelines for registration of pesticides for export, for comments by 17.10.2017.",
   "w": "Exporters",
   "a": ""
  },
@@ -1130,38 +1130,38 @@
   "a": ""
  },
  "ba573ddfa452bbe9": {
-  "s": "Mechanism for Specific Quantity Permission (SQP) to import registered insecticides under Make in India (scanned).",
+  "s": "Procedure for applying for Specific Quantity Permission (SQP) to import registered insecticides in 2017-18 under Make in India (375th/376th RC), from 28.08.2017.",
   "w": "Importers",
   "a": ""
  },
  "11ae7553824d57ba": {
-  "s": "Recommendations of various committees set up by the RC, April 2017 (scanned).",
-  "w": "",
+  "s": "Recommendations of RC committees (April 2017), including five-batch analysis for chemical equivalence of technicals in line with EU and FAO/WHO practice.",
+  "w": "TI / TIM applicants",
   "a": ""
  },
  "ba78f86a3e63f93c": {
-  "s": "Public notice on laboratories, March 2017 (scanned).",
+  "s": "RC decisions (356th–372nd) on approving laboratories/institutions for generating registration data: 18 labs approved, with renewable validity.",
   "w": "Laboratories",
   "a": ""
  },
  "76a221f8019ca31e": {
-  "s": "Report on crop grouping for MRL fixation of pesticides (scanned).",
+  "s": "Report of the committee on crop grouping for fixing MRLs (2015): principles, Indian crop groups and representative crops.",
   "w": "Registrants",
   "a": ""
  },
  "bee933e3d9b64930": {
-  "s": "Public notice, March 2017 (scanned).",
-  "w": "",
+  "s": "Pesticide associations asked to send information in the annexed format by email (March 2017).",
+  "w": "Associations",
   "a": ""
  },
  "2edd86b0acbe52da": {
-  "s": "Notice of an open-house meeting with stakeholders, 14.02.2017 (scanned).",
-  "w": "",
+  "s": "9th open-house meeting of CIB&RC with the pesticide industry on 17.02.2017 at Krishi Bhawan, chaired by Dr J.S. Sandhu.",
+  "w": "Associations",
   "a": ""
  },
  "91dfe8f4ce90c8cd": {
-  "s": "Public notice, January 2017 (scanned).",
-  "w": "",
+  "s": "9(4) FIM 'me-too' CRs have been issued online and digitally signed since 01.05.2015; State licensing authorities can verify them online, so no separate attestation is needed.",
+  "w": "9(4) FIM registrants, State authorities",
   "a": ""
  },
  "464c334a4af6b8d8": {
@@ -1170,27 +1170,27 @@
   "a": ""
  },
  "903b9ad42dbfcab3": {
-  "s": "Public notice on 9(4) applications, September 2016 (scanned).",
-  "w": "9(4) applicants",
+  "s": "Final notice: applicants whose files are pending for want of consent letter or affidavit must submit them within 21 days.",
+  "w": "Applicants",
   "a": ""
  },
  "c593dc0a8b23e12c": {
-  "s": "Public notice of 20.08.2016 (scanned).",
-  "w": "",
+  "s": "Export registration applicants must upload coloured scans of labels (with the toxicity triangle in colour) and any cautionary note, to avoid delays.",
+  "w": "Exporters",
   "a": ""
  },
  "611614d2dd46646c": {
-  "s": "Public notice, August 2016, on a 9(3) FI file (scanned).",
-  "w": "",
+  "s": "Registrants of FI/FIM without a registered technical must submit a sample of the technical for analysis and send their CRs to add this condition (365th RC).",
+  "w": "FI / FIM registrants",
   "a": ""
  },
  "4584403541b4e029": {
-  "s": "Public notice, July 2016 (scanned).",
-  "w": "",
+  "s": "Exporters may visit CIB&RC every Wednesday, 2:30–4:30 pm, for the status of export applications and guidance from experts.",
+  "w": "Exporters",
   "a": ""
  },
  "657e94b1c003117f": {
-  "s": "Public notice of 10.05.2016 (scanned).",
+  "s": "Gujarat High Court Division Bench (LPA 404 & 405 of 2016) stayed the single-judge order of 26.04.2016 in SCA 6462/2016 until further orders.",
   "w": "",
   "a": ""
  },
@@ -1200,8 +1200,8 @@
   "a": ""
  },
  "49d8b62647033753": {
-  "s": "Public notice of 07.03.2016 publishing a consolidated list (partly scanned).",
-  "w": "",
+  "s": "Thirteen Schedule entries look like trade names (e.g. Metox, Zimet, Zulate, Brozone, Citicide); CIB asked stakeholders for information on them.",
+  "w": "Registrants",
   "a": ""
  },
  "c009640082339552": {
@@ -1235,8 +1235,8 @@
   "a": ""
  },
  "41346d36af84b225": {
-  "s": "Gazette notification of 13.02.2015 (scanned).",
-  "w": "",
+  "s": "Gazette of 13.02.2015 amending the Insecticides Rules, 1971 (bilingual; text partly unreadable).",
+  "w": "All registrants",
   "a": ""
  },
  "119f0f6f54624c61": {
@@ -1250,13 +1250,13 @@
   "a": ""
  },
  "09f71500e62aa9ab": {
-  "s": "Comments invited on the neonicotinoid pollinator-effect protocols (scanned).",
+  "s": "Project proposal by the AICRP on Honey Bees and Pollinators (IARI) for protocols to evaluate the impact of neonicotinoids on pollinators; comments invited.",
   "w": "Neonicotinoid registrants",
   "a": ""
  },
  "27dfbb184c0d4e75": {
-  "s": "Grow Safe Food campaign advisory: beware of counterfeit, spurious and illegal pesticides (scanned).",
-  "w": "Dealers, farmers",
+  "s": "Grow Safe Food advisory attached for compliance by all stakeholders.",
+  "w": "Registrants, dealers",
   "a": ""
  },
  "acab54111037cbeb": {
@@ -1265,7 +1265,7 @@
   "a": ""
  },
  "f247508706504572": {
-  "s": "Grow Safe Food campaign logo (scanned).",
+  "s": "Grow Safe Food campaign logo of the Department of Agriculture & Cooperation.",
   "w": "",
   "a": ""
  },
@@ -1285,7 +1285,7 @@
   "a": ""
  },
  "dfc552fe8b2586da": {
-  "s": "Guidance documents on toxicity for registration of pesticides in India (scanned copy).",
+  "s": "Guidance document on toxicology for registration of pesticides in India (2014).",
   "w": "All applicants",
   "a": ""
  },
@@ -1305,8 +1305,8 @@
   "a": ""
  },
  "89bdec357b800713": {
-  "s": "Public notice of 26.02.2014 from the Registration Committee (partly scanned).",
-  "w": "",
+  "s": "Streptomycin sulphate + Tetracycline HCl is registered as 90:10 (not 9% + 1% with 90% adjuvant); certificates to be harmonised (227th RC item 3.3).",
+  "w": "Registrants of this product",
   "a": ""
  },
  "17c0926731e652a4": {
@@ -1320,7 +1320,7 @@
   "a": ""
  },
  "cfa49dde673b771b": {
-  "s": "Public notice of 12.09.2013 (scanned).",
+  "s": "Notice displayed for information pending further guidance from DAC (12.09.2013; text mostly unreadable).",
   "w": "",
   "a": ""
  },
@@ -1380,22 +1380,22 @@
   "a": ""
  },
  "f18b06664d8332da": {
-  "s": "Supreme Court order of 30.09.2011 (scanned).",
+  "s": "DAC letter on the Supreme Court's ad-interim order (13.05.2011) in WP (C) 213/2011 banning production, use and sale of Endosulfan across India.",
   "w": "",
   "a": ""
  },
  "4faf02700ebefc21": {
-  "s": "Supreme Court order of 30.09.2011 (scanned).",
+  "s": "Supreme Court record of proceedings, 30.09.2011, in WP (C) 213/2011 (DYFI vs Union of India) on Endosulfan.",
   "w": "",
   "a": ""
  },
  "49de3d9865358a17": {
-  "s": "Hiring of a consultant for packaging of pesticides and chemicals in the CIB&RC Secretariat (scanned).",
+  "s": "Hiring of a part-time consultant (7 days a month) to scrutinise packaging data of applications and help prepare RC agendas.",
   "w": "",
   "a": ""
  },
  "081ea643998b1bd0": {
-  "s": "Hiring of a consultant for packaging of pesticides and chemicals in the CIB&RC Secretariat (scanned).",
+  "s": "Hiring of a part-time consultant (7 days a month) to scrutinise packaging data of applications and help prepare RC agendas.",
   "w": "",
   "a": ""
  },
@@ -1405,7 +1405,7 @@
   "a": ""
  },
  "cbafd5361b06e56c": {
-  "s": "Supreme Court ad-interim order of 13.05.2011 banning production, use and sale of Endosulfan (scanned).",
+  "s": "Supreme Court ad-interim order of 13.05.2011 banning production, use and sale of Endosulfan across India (image only).",
   "w": "",
   "a": ""
  },
@@ -1435,13 +1435,13 @@
   "a": ""
  },
  "a4692513513a6d1b": {
-  "s": "Time schedule notice of 22.01.2008 (scanned).",
-  "w": "",
+  "s": "Time schedule at CIL for analysing PRV samples under 9(3): about 1 day for request, 2 days codification, 15 days document scrutiny, then applicant replies and analysis.",
+  "w": "9(3) applicants",
   "a": ""
  },
  "d94b3c378c28822c": {
-  "s": "Gazette notifications restricting the use of certain insecticides (08.01.2008, scanned).",
-  "w": "",
+  "s": "Gazette S.O. 45(E) of 08.01.2008: final order under Section 27(2) restricting the use of certain insecticides (including Diazinon).",
+  "w": "Registrants of these insecticides",
   "a": ""
  },
  "0865a957788bfafc": {
@@ -1460,17 +1460,17 @@
   "a": ""
  },
  "79fd5764c683f479": {
-  "s": "Gazette S.O. 1792 and 1793 of 23.10.2007 (scanned).",
+  "s": "Gazette S.O. 1792 and 1793 of 23.10.2007: draft orders under Section 27(2); suggestions or objections invited within 45 days.",
   "w": "",
   "a": ""
  },
  "4bdae214a6845a85": {
-  "s": "Gazette S.O. 1472(E) of 29.08.2007 (scanned).",
+  "s": "Gazette S.O. 1472(E) of 29.08.2007: final order under Section 27(2) following the 2005 draft (S.O. 1532), prohibiting use of a pesticide.",
   "w": "",
   "a": ""
  },
  "5a165e4b2104fdf2": {
-  "s": "Gazette S.O. 1472(E) (scanned copy, dated 01.10.2007).",
+  "s": "Gazette notification of 01.10.2007 (S.O. 1687(E)) under the Insecticides Act, following an RC committee review.",
   "w": "",
   "a": ""
  },
@@ -1495,13 +1495,13 @@
   "a": ""
  },
  "01bcfa5a5f448afe": {
-  "s": "Gazette notification of 03.05.2007 (scanned).",
+  "s": "Gazette S.O. 706(E) of 03.05.2007: order under Section 27(2) after an earlier draft (bilingual; partly unreadable).",
   "w": "",
   "a": ""
  },
  "0c919fe27e5188f0": {
-  "s": "Import of Boric acid for non-insecticidal purposes (scanned).",
-  "w": "Dual-use importers",
+  "s": "End-use certificates from District Industries Centres or State Directors of Industries are accepted for importing Boric acid for non-insecticidal use.",
+  "w": "Boric acid importers",
   "a": ""
  },
  "9bf7a36c20ed524e": {
@@ -1515,72 +1515,72 @@
   "a": ""
  },
  "4758eb16aa33d522": {
-  "s": "Checklist for registering household pesticides (technical/formulation) under 9(3B) and 9(3) (scanned).",
+  "s": "Checklist for registering household pesticides (technical/formulation) under 9(3B) and 9(3): administrative/legal papers, Form-I, fee, authorisation, data folders.",
   "w": "Household-pest applicants",
   "a": ""
  },
  "fd6240ddf4432af6": {
-  "s": "Endorsement for including an already-approved additional import source in a CR (scanned checklist).",
+  "s": "Checklist for endorsing an already-approved additional import source in a CR: index, notarised BOD resolution, affidavit on earlier endorsements, etc.",
   "w": "Importers",
   "a": ""
  },
  "4196bfa8d1573dee": {
-  "s": "Checklist for submitting 9(3)/9(3B) applications in five folders (scanned).",
+  "s": "Checklist for 9(3)/9(3B) applications in five folders: Folder A administrative/legal (Form-I, fee, BOD resolution...), then chemistry, bio-efficacy, toxicity, packaging.",
   "w": "Applicants",
   "a": ""
  },
  "0193f1ec6c78c507": {
-  "s": "Checklist for registering neem-based pesticides under 9(3B) (scanned).",
+  "s": "Checklist for registering neem-based pesticides under 9(3B), including an undertaking that the product has no GM material.",
   "w": "Neem product applicants",
   "a": ""
  },
  "70b88cde18c7f25f": {
-  "s": "Checklist for registering baculovirus (NPV, GV) biopesticides under 9(3B) (scanned).",
+  "s": "Checklist for registering baculovirus (NPV, GV) biopesticides under 9(3B).",
   "w": "Biopesticide applicants",
   "a": ""
  },
  "6e71c398c8a771c6": {
-  "s": "Checklist for registering Bt / Bacillus sphaericus biopesticides under 9(3B) (scanned).",
+  "s": "Checklist for registering Bt / Bacillus sphaericus technical and formulations under 9(3B).",
   "w": "Biopesticide applicants",
   "a": ""
  },
  "f7ba0d6b92d18290": {
-  "s": "Checklist for registering antagonistic bacteria/fungi and entomogenous fungi biopesticides under 9(3B) (scanned).",
+  "s": "Checklist for registering antagonistic bacteria/fungi and entomogenous fungi biopesticides under 9(3B).",
   "w": "Biopesticide applicants",
   "a": ""
  },
  "07f21938c8fa28a9": {
-  "s": "Authority competent to issue end-use (no-objection) certificates for importing Boric acid for non-insecticidal purposes (scanned).",
-  "w": "Dual-use importers",
+  "s": "Ministries/Departments that may issue end-use (no-objection) certificates, stating quantity, for importing Boric acid for non-insecticidal use.",
+  "w": "Boric acid importers",
   "a": ""
  },
  "1034befdca681437": {
-  "s": "Checklist of submission requirements for registration and endorsement applications at preliminary scrutiny (scanned).",
-  "w": "Applicants",
+  "s": "Preliminary-scrutiny checklists: 9(3)/9(3B) registration, 9(3B) extension, 9(4) TIM, 9(4) FIM/RSF/CBN/NF, 9(4) TI/FI and export registration.",
+  "w": "All applicants",
   "a": ""
  },
  "c9c8f58b42d33a60": {
-  "s": "Draft notification 59(E) to ban Fenitrothion for agricultural use (scanned).",
+  "s": "Draft order 59(E) to ban Fenitrothion for agricultural use; objections invited within 45 days.",
   "w": "Fenitrothion registrants",
   "a": ""
  },
  "bd148c7c8f72558d": {
-  "s": "Notification 1874(E): prohibition of Endosulfan in Kerala (scanned).",
+  "s": "Gazette S.O. 1874(E) of 31.10.2006: Endosulfan prohibited in Kerala.",
   "w": "",
   "a": ""
  },
  "b0c43e2ef3e3a232": {
-  "s": "Notification 1747 on 'deemed to be registered' pesticides (scanned).",
+  "s": "Gazette S.O. 1747 (12.12.2005) under Section 27 on pesticides 'deemed to be registered' (list of molecules; bilingual).",
   "w": "Holders of deemed registrations",
   "a": ""
  },
  "26d96875c7da4493": {
-  "s": "Notification 915(E): deletion of label claims of certain deemed-registered pesticides (scanned).",
+  "s": "Gazette S.O. 915(E) of 15.06.2006: deletion of certain label claims of pesticides deemed to be registered.",
   "w": "Holders of deemed registrations",
   "a": ""
  },
  "432c97863db7d777": {
-  "s": "Notification 1532: draft order on Lindane (scanned).",
+  "s": "Draft order (S.O. 1532) on Lindane under Section 27(2); objections invited within 45 days.",
   "w": "Lindane registrants",
   "a": ""
  },
@@ -1680,7 +1680,7 @@
   "a": ""
  },
  "1377cccb0c62a338": {
-  "s": "Data requirements for baculovirus (NPV, GV) biopesticides from 01.01.2011 (scanned).",
+  "s": "Data requirements for baculoviruses (NPV, GV) under 9(3B) and 9(3), from 01.01.2011: strain, origin, POB/capsule count and specification.",
   "w": "Biopesticide applicants",
   "a": ""
  },

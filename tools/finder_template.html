@@ -1234,7 +1234,7 @@ function drawReg(pane){
   pane.innerHTML = `${misSwitch()}<div class="rhead">
       <div class="eyebrow">Notices, Gazettes &amp; guidelines · MIS</div>
       <h2>Every CIB&amp;RC public notice, Gazette, guideline and RC minutes</h2>
-      <div class="meta" style="margin:0">${all.length} documents from ppqs.gov.in, newest first · ${nNotes} recent ones (marked with an orange edge) have a plain-English summary, who it affects and the action needed; the rest are being added</div>
+      <div class="meta" style="margin:0">${all.length} documents from ppqs.gov.in, newest first · ${nNotes} (marked with an orange edge) have a plain-English summary, who it affects and the action needed: every notice, Gazette and guideline, plus the RC minutes of meetings in the MIS. Older RC minutes have the PDF only for now</div>
     </div>
     <div class="chips" id="regKinds">${REG_KINDS.map(k => `<button class="chip" data-k="${esc(k)}"${k === REG.kind ? ' style="border-color:var(--accent);color:var(--accent)"' : ""}>${esc(k)} · ${cnt(k)}</button>`).join("")}
       <label class="chip" style="cursor:pointer"><input type="checkbox" id="regNotes"${REG.notes ? " checked" : ""}> Only with summary</label></div>
